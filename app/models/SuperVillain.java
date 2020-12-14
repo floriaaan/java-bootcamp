@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import models.Citizen;
 
 
-@Entity(name = "Super-villain")
+@Entity(name = "super_villain")
 public class SuperVillain extends Model {
 
     @Required
