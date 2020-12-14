@@ -8,12 +8,13 @@ import play.data.validation.*;
 import java.util.*;
 
 import models.Organization;
+import models.Citizen;
 
 public class Organizations extends Controller {
 
     /**
      GET
-     CRUD : Read an incident
+     CRUD : Read an organization
      */
     public static void show(Long id) {
         Organization organization = Organization.findById(id);
@@ -22,17 +23,19 @@ public class Organizations extends Controller {
 
     /**
      GET
-     CRUD : Create an incident
+     CRUD : Create an organization
      */
     public static void form() {
-        render();
+        List<Citizen> cList = Citizen.findAll();
+        render(cList);
     }
 
     /**
      POST
-     CRUD : Create an incident
+     CRUD : Create an organization
      */
     public static void create(@Required @Valid Organization organization) {
+        System.out.println(organization.boss);
         if(Validation.hasErrors()) {
             flash.error("Erreur de validation.");
             params.flash();

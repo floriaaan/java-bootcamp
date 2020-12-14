@@ -6,7 +6,16 @@
     ${flash.error}
     <input type="text" required placeholder="Name" name="organization.name" />
     <input type="text" required placeholder="Address" name="organization.address" />
-    <input type="text" required placeholder="Boss" name="organization.boss" />
+    <select name="organization.boss">
+        #{list cList, as:'c'}
+        <option value="${c.id}">${c.getName()}</option>
+        #{/list}
+    </select>
+    <select name="organization.members" multiple>
+        #{list cList, as:'c'}
+        <option value="${c.id}">${c.getName()}</option>
+        #{/list}
+    </select>
 
     <hr />
     <button type="submit">Envoyer</button>

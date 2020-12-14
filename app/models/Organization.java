@@ -18,6 +18,8 @@ public class Organization extends Model {
     public String address;
 
     @Required
+    @ManyToOne
+    @PrimaryKeyJoinColumn(name="citizen", referencedColumnName="id")
     public Citizen boss;
 
     @ManyToMany(cascade = CascadeType.ALL)
