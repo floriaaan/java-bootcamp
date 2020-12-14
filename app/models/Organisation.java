@@ -10,8 +10,8 @@ import play.data.validation.*;
 import java.util.*;
 import models.Citizen;
 
-@Entity(name = "organisations")
-public class Organisation extends Model {
+@Entity(name = "organizations")
+public class Organization extends Model {
 
     @Required
     public String name;
@@ -22,7 +22,7 @@ public class Organisation extends Model {
     @Required
     public Citizen boss;
 
-    @OneToMany(mappedBy = "organisation", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "organization", cascade = CascadeType.ALL)
     public List<Citizen> members = new ArrayList<>();
 
     public String comments;
