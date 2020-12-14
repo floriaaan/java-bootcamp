@@ -1,11 +1,10 @@
 package models;
 
+import models.Citizen;
 import play.data.validation.*;
 import play.db.jpa.Model;
-import play
 
 import javax.persistence.Entity;
-import models.Citizen;
 
 
 @Entity(name = "super_villains")
@@ -14,18 +13,21 @@ public class SuperVillain extends Model {
     @Required
     public String name;
 
+    @Required
+    @ManyToOne
+    @PrimaryKeyJoinColumn(name="citizen", referencedColumnName="id")
     public Citizen identity;
 
     @Required
-    public string power;
+    public String power;
 
     @Required
-    public string weakness;
+    public String weakness;
 
     public String comments;
 
     @Required
-    public Integer malicious-score
+    public Integer maliciousScore;
 
 
 }
