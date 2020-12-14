@@ -7,6 +7,9 @@ import java.util.*;
 import javax.persistence.*;
 import play.data.format.*;
 
+import play.db.ebean.*;
+import com.avaje.ebean.*;
+
 @Entity(name = "citizens")
 public class Citizen extends Model {
 
@@ -27,7 +30,7 @@ public class Citizen extends Model {
 
     @Required
     public Date birthdate;
-    public String deathdate;
+    public Date deathdate;
     @Required
     public String nationality;
 
@@ -43,4 +46,9 @@ public class Citizen extends Model {
     public Integer reported_incidents;
 
     public Integer victim;
+
+
+    public String getName(){
+        return this.fname + " " + this.lname;
+    }
 }

@@ -30,4 +30,7 @@ public class SuperHero extends Model{
     public int score;
 
     public String comments;
+
+    @ManyToOne
+    public Mission mission;
 }

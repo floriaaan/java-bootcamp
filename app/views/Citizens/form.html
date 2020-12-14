@@ -1,6 +1,8 @@
 #{extends 'main.html' /}
 
-<form action="@{Citizen.create}" method="POST">
+#{set title:'Create a citizen' /}
+
+<form action="@{Citizens.create}" method="POST">
   ${flash.error}
   <input type="text" required placeholder="First name" name="citizen.fname" />
   <input type="text" required placeholder="Last name" name="citizen.lname" />
