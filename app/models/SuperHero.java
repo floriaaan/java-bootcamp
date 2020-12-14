@@ -30,11 +30,11 @@ public class SuperHero extends Model{
 
     public String comments;
 
-    @ManyToOne
-    public Mission mission;
-
     public Date created_at;
     public Date updated_at;
+
+    @ManyToOne
+    public Mission mission;
 
     @PrePersist
     public void created_at() {

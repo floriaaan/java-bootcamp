@@ -36,6 +36,9 @@ public class Incident extends Model{
 //    @PrimaryKeyJoinColumn(name="organization", referencedColumnName="id")
 //    public Organization organization_id;
 
+    @ManyToOne
+    public Mission mission;
+
     public String comments;
 
     @PrePersist

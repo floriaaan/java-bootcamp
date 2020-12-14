@@ -1,15 +1,17 @@
 package models;
 
 import play.db.jpa.Model;
+
 import javax.persistence.*;
 
 import play.data.validation.*;
 import play.data.format.*;
 
 import java.util.*;
+
 import io.ebean.*;
 
-@Entity(name="missions")
+@Entity(name = "missions")
 public class Mission extends Model {
 
     @Required
@@ -17,6 +19,10 @@ public class Mission extends Model {
 
     @Required
     public String title;
+
+    @Required
+    @OneToMany(mappedBy = "mission", cascade = CascadeType.ALL)
+    public List<Incident> incidentList = new ArrayList<>();
 
     @Required
     public Date startedDate;
@@ -33,10 +39,10 @@ public class Mission extends Model {
     public List<SuperHero> superHeroList = new ArrayList<>();
 
     @Required
-    public Integer gravityLevel;
+    public String gravityLevel;
 
     @Required
-    public Integer emergencyLevel;
+    public String emergencyLevel;
 
 
     public Date created_at;
