@@ -6,7 +6,7 @@
     ${flash.error}
     <input type="text" required placeholder="Title" name="incident.title"/>
     <input type="text" required placeholder="Address" name="incident.address"/>
-    <select required name="incident.citizen_id.id">
+    <select required name="incident.citizen.id">
         #{list cList, as:'c'}
         <option value="${c.id}">${c.getName()}</option>
         #{/list}
