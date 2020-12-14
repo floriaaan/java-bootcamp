@@ -1,0 +1,34 @@
+#{extends 'main.html' /} #{set title:'Create a SuperHero' /}
+
+<div class="">
+  #{ifErrors}
+  <h1>Oops…</h1>
+
+  #{errors}
+  <li>${error}</li>
+
+  #{/errors}
+  <hr />
+  #{/ifErrors}
+</div>
+
+<form action="@{SuperHeroes.create}" method="POST">
+  <input type="text" required placeholder="Name" name="superhero.name" />
+
+  <select required name="superhero.identity.id">
+    #{list cList, as:'c'}
+    <option value="${c.id}">${c.getName()}</option>
+    #{/list}
+  </select>
+
+  <input type="text" required placeholder="Power" name="superhero.power" />
+  <input
+    type="text"
+    required
+    placeholder="Weakness"
+    name="superhero.weakness"
+  />
+
+  <hr />
+  <button type="submit">Envoyer</button>
+</form>

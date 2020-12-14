@@ -7,16 +7,17 @@ import play.data.validation.*;
 
 import java.util.*;
 
-import models.*;
+import models.Citizen;
 
-public class Citizen extends Controller {
+public class Citizens extends Controller {
 
     /**
     GET
     CRUD : Read a citizen
      */
-    public static void show(Integer id) {
-        render(id);
+    public static void show(Long id) {
+        Citizen c = Citizen.findById(id);
+        render(c);
     }
     
     /**
@@ -39,7 +40,7 @@ public class Citizen extends Controller {
             form();
         }
 
-        //citizen.save();
-        //show(citizen.id);
+        citizen.save();
+        show(citizen.id);
     }
 }

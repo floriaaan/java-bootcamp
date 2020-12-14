@@ -17,8 +17,7 @@ public class SuperHero extends Model{
     public String name;
 
     @Required
-    @ManyToOne
-    @PrimaryKeyJoinColumn(name="citizen", referencedColumnName="id")
+    @OneToOne
     public Citizen identity;
 
     public Date created_at;
@@ -33,4 +32,7 @@ public class SuperHero extends Model{
     public int score;
 
     public String comments;
+
+    @ManyToOne
+    public Mission mission;
 }
