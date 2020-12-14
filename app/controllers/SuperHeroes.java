@@ -38,7 +38,6 @@ public class SuperHeroes extends Controller {
     CRUD : Create a superhero
      */
     public static void create(@Required @Valid SuperHero superhero) {
-        System.out.println(superhero.identity);
         if(Validation.hasErrors()) {
             params.flash();
             Validation.keep();

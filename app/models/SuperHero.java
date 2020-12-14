@@ -17,9 +17,8 @@ public class SuperHero extends Model{
     public String name;
 
     @Required
-    //@ManyToOne
-    @PrimaryKeyJoinColumn(name="citizen", referencedColumnName="id")
-    public Citizen identity;
+    //@JoinColumn(name="citizen", referencedColumnName="id")
+    public Long identity;
 
     @Required
     public String power;
