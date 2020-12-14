@@ -12,6 +12,11 @@ import models.Citizen;
 
 public class Incidents extends SuperController {
 
+    public static void showAll() {
+        List<Incident> incidentsList = Incident.findAll();
+        render(incidentsList);
+    }
+
     /**
      GET
      CRUD : Read an incident

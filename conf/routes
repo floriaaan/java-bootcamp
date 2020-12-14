@@ -31,6 +31,7 @@ POST        /organization/create           Organizations.create
 GET         /incident/show/{id}        Incidents.show
 GET         /incident/create           Incidents.form
 POST        /incident/create           Incidents.create
+GET         /incident/showAll          Incidents.showAll
 
 # SuperHeroes pages
 

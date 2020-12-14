@@ -24,7 +24,7 @@ public class Incident extends Model{
 
     @ManyToOne
     @PrimaryKeyJoinColumn(name="citizen", referencedColumnName="id")
-    public Citizen citizen_id;
+    public Citizen citizen;
 
 //    public Long reporter_type;
 //
@@ -32,9 +32,9 @@ public class Incident extends Model{
 //
 //    public boolean is_civil;
 //    public boolean is_organization;
-    @ManyToOne
-    @PrimaryKeyJoinColumn(name="organization", referencedColumnName="id")
-    public Organization organization_id;
+//    @ManyToOne
+//    @PrimaryKeyJoinColumn(name="organization", referencedColumnName="id")
+//    public Organization organization_id;
 
     public String comments;
 

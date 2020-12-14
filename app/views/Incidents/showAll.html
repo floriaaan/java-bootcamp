@@ -1,0 +1,27 @@
+#{extends 'main.html' /}
+#{set title:'Incidents list' /}
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>Entitled</th>
+        <th>Address</th>
+        <th>Creation</th>
+        <th>Last update</th>
+        <th>Creator</th>
+        <th>Comments</th>
+    </tr>
+    </thead>
+    <tbody>
+    #{list incidentsList, as:'incident'}
+    <tr>
+        <td>${incident.title}</td>
+        <td>${incident.address}</td>
+        <td>${incident.created_at}</td>
+        <td>${incident.updated_at}</td>
+        <td>${incident.citizen}</td>
+        <td>${incident.comments}</td>
+    </tr>
+    #{/list}
+    </tbody>
+</table>
