@@ -7,10 +7,10 @@ import java.util.*;
 
 import models.*;
 
-public class CitizenController extends Controller {
+public class Citizen extends Controller {
 
-    public static void index() {
-        render();
+    public static void show(Integer id) {
+        render(id);
     }
 
 }

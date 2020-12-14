@@ -5,6 +5,10 @@
 # Home page
 GET     /                                       Application.index
 
+# Citizen pages
+
+GET     /citizen/{id}                           Citizen.show 
+
 # Ignore favicon requests
 GET     /favicon.ico                            404
 
