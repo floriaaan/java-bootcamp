@@ -25,6 +25,7 @@ public class Citizen extends Model {
     public String address;
     @Required
     public String mail;
+    public String password;
     @Required
     public String phone;
 

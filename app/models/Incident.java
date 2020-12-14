@@ -21,6 +21,7 @@ public class Incident extends Model{
 
     @Required
     public Date created_at;
+    public Date updated_at;
 
     public Date updated_at;
 

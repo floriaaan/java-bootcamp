@@ -31,6 +31,12 @@ GET     /superhero/show/{id}                    SuperHeroes.show
 GET     /superhero/create                       SuperHeroes.form
 POST    /superhero/create                       SuperHeroes.create
 
+# Supervillains pages
+
+GET     /supervillain/show/{id}                    SuperVillains.show
+GET     /supervillain/create                       SuperVillains.form
+POST    /supervillain/create                       SuperVillains.create
+
 # Ignore favicon requests
 GET         /favicon.ico                            404
 

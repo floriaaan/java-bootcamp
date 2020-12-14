@@ -30,6 +30,9 @@ public class SuperVillain extends Model {
 
     public String comments;
 
+    public Date created_at;
+    public Date updated_at;
+
     @Required
     public Integer maliciousScore;
 
