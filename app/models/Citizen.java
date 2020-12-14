@@ -8,6 +8,9 @@ import play.data.validation.*;
 
 import java.util.*;
 
+import play.db.ebean.*;
+import com.avaje.ebean.*;
+
 @Entity(name = "citizens")
 public class Citizen extends Model {
 
@@ -43,4 +46,9 @@ public class Citizen extends Model {
     public Integer reported_incidents;
 
     public Integer victim;
+
+
+    public String getName(){
+        return this.fname + " " + this.lname;
+    }
 }
