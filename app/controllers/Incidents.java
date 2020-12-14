@@ -10,7 +10,7 @@ import java.util.*;
 import models.Incident;
 import models.Citizen;
 
-public class Incidents extends Controller {
+public class Incidents extends SuperController {
 
     /**
      GET

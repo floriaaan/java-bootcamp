@@ -10,6 +10,9 @@ import play.data.format.*;
 import play.db.ebean.*;
 import com.avaje.ebean.*;
 
+import lib.BCrypt;
+
+
 @Entity(name = "citizens")
 public class Citizen extends Model {
 
@@ -55,6 +58,7 @@ public class Citizen extends Model {
 
     @PrePersist
     public void created_at() {
+        this.password = BCrypt.hashpw(this.password, BCrypt.gensalt());
         this.created_at = new java.util.Date();
         this.updated_at = new java.util.Date();
     }

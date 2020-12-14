@@ -1,0 +1,10 @@
+#{extends 'main.html' /}
+
+${c?.getName()}
+
+<form action="@{Authentication.connect}" method="POST">
+    <input type="text" name="mail" placeholder="Email address">
+    <input type="password" name="password" placeholder="Password">
+
+    <button type="submit">Connect</button>
+</form>

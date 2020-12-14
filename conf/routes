@@ -5,6 +5,13 @@
 # Home page
 GET         /                          Application.index
 
+# Authentication page
+
+GET         /auth/login                Authentication.login
+POST        /auth/login                Authentication.connect
+GET         /auth/logout               Authentication.logout
+
+
 # Citizens pages
 
 GET         /citizen/show/{id}         Citizens.show
