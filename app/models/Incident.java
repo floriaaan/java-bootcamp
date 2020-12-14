@@ -19,15 +19,19 @@ public class Incident extends Model{
     @Required
     public String address;
 
-    @Required
     public Date created_at;
     public Date updated_at;
-
 
     @ManyToOne
     @PrimaryKeyJoinColumn(name="citizen", referencedColumnName="id")
     public Citizen citizen_id;
 
+//    public Long reporter_type;
+//
+//    public String comments;
+//
+//    public boolean is_civil;
+//    public boolean is_organization;
     @ManyToOne
     @PrimaryKeyJoinColumn(name="organization", referencedColumnName="id")
     public Organization organization_id;
