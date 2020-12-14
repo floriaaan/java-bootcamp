@@ -3,19 +3,31 @@
 # ~~~~
 
 # Home page
-GET     /                                       Application.index
+GET         /                          Application.index
 
 # Citizen pages
 
-GET     /citizen/show/{id}                      Citizens.show
-GET     /citizen/create                         Citizens.form
-POST    /citizen/create                         Citizens.create
+GET         /citizen/show/{id}         Citizens.show
+GET         /citizen/create            Citizens.form
+POST        /citizen/create            Citizens.create
+
+# Organization pages
+
+GET         /organization/show/{id}        Organizations.show
+GET         /organization/create           Organizations.form
+POST        /organization/create           Organizations.create
+
+# Incident pages
+
+GET         /incident/show/{id}        Incidents.show
+GET         /incident/create           Incidents.form
+POST        /incident/create           Incidents.create
 
 # Ignore favicon requests
-GET     /favicon.ico                            404
+GET         /favicon.ico                            404
 
 # Map static resources from the /app/public folder to the /public path
-GET     /public/                                staticDir:public
+GET         /public/                   staticDir:        public
 
 # Catch all
 #*       /{controller}/{action}                  {controller}.{action}
