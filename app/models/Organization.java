@@ -1,9 +1,7 @@
 package models;
 
 import play.db.jpa.Model;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.CascadeType;
+import javax.persistence.*;
 
 import play.data.validation.*;
 
@@ -22,7 +20,7 @@ public class Organization extends Model {
     @Required
     public Citizen boss;
 
-    @OneToMany(targetEntity=Citizen.class, mappedBy="id")
+    @ManyToMany(cascade = CascadeType.ALL)
     public List<Citizen> members = new ArrayList<>();
 
     public String comments;
