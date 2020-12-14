@@ -7,7 +7,9 @@ GET     /                                       Application.index
 
 # Citizen pages
 
-GET     /citizen/{id}                           Citizen.show 
+GET     /citizen/{id}                           Citizen.show
+GET     /citizen/form                         Citizen.form
+POST    /citizen/create                         Citizen.create
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

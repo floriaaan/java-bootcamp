@@ -1,0 +1,25 @@
+#{extends 'main.html' /}
+
+<form action="@{Citizen.create}" method="POST">
+  ${flash.error}
+  <input type="text" required placeholder="First name" name="citizen.fname" />
+  <input type="text" required placeholder="Last name" name="citizen.lname" />
+  <select required name="citizen.sex">
+    <option>Male</option>
+    <option>Female</option>
+    <option>Cis-genre croisé dauphin islamophobe</option>
+  </select>
+  <input type="text" required placeholder="Address" name="citizen.address" />
+  <input type="text" required placeholder="Mail" name="citizen.mail" />
+  <input type="text" required placeholder="Phone" name="citizen.phone" />
+  <input type="date" required name="citizen.birthdate" />
+
+  <select required name="citizen.nationality">
+    <option>French</option>
+    <option>English</option>
+    <option>German</option>
+  </select>
+
+  <hr />
+  <button type="submit">Envoyer</button>
+</form>
