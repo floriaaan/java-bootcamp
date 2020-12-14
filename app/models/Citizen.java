@@ -25,6 +25,7 @@ public class Citizen extends Model {
     public String address;
     @Required
     public String mail;
+    public String password;
     @Required
     public String phone;
 
@@ -50,5 +51,16 @@ public class Citizen extends Model {
 
     public String getName(){
         return this.fname + " " + this.lname;
+    }
+
+    @PrePersist
+    public void created_at() {
+        this.created_at = new java.util.Date();
+        this.updated_at = new java.util.Date();
+    }
+
+    @PreUpdate
+    public void updated_at() {
+        this.updated_at = new java.util.Date();
     }
 }

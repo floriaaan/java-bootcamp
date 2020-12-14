@@ -1,0 +1,41 @@
+#{extends 'main.html' /}
+
+#{set title:'Update a citizen' /}
+
+<div class="">
+  #{ifErrors}
+  <h1>Oops…</h1>
+
+  #{errors}
+  <li>${error}</li>
+
+  #{/errors}
+  <hr />
+  #{/ifErrors}
+</div>
+
+<form action="@{Citizens.edit}" method="POST">
+
+  <input type="hidden" value="${c.id}" required name="citizen.id" />
+
+  <input type="text" value="${c.fname}" required placeholder="First name" name="citizen.fname" />
+  <input type="text" value="${c.lname}" required placeholder="Last name" name="citizen.lname" />
+  <select required name="citizen.sex">
+    <option #{if c.sex == "Male"} selected #{/if} >Male</option>
+    <option #{if c.sex == "Female"} selected #{/if} >Female</option>
+    <option #{if c.sex == "Cis-genre croisé dauphin islamophobe"} selected #{/if} >Cis-genre croisé dauphin islamophobe</option>
+  </select>
+  <input type="text" value="${c.address}" required placeholder="Address" name="citizen.address" />
+  <input type="text" value="${c.mail}" required placeholder="Mail" name="citizen.mail" />
+  <input type="text" value="${c.phone}" required placeholder="Phone" name="citizen.phone" />
+  <input type="date" value="${c.birthdate}" required name="citizen.birthdate" />
+
+  <select required name="citizen.nationality">
+    <option #{if c.nationality == "French"} selected #{/if}>French</option>
+    <option #{if c.nationality == "English"} selected #{/if}>English</option>
+    <option #{if c.nationality == "German"} selected #{/if}>German</option>
+  </select>
+
+  <hr />
+  <button type="submit">Envoyer</button>
+</form>

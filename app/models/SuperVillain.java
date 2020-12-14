@@ -36,4 +36,17 @@ public class SuperVillain extends Model {
     @Required
     public Integer maliciousScore;
 
+    public Date created_at;
+    public Date updated_at;
+
+    @PrePersist
+    public void created_at() {
+        this.created_at = new java.util.Date();
+        this.updated_at = new java.util.Date();
+    }
+
+    @PreUpdate
+    public void updated_at() {
+        this.updated_at = new java.util.Date();
+    }
 }

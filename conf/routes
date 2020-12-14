@@ -10,6 +10,8 @@ GET         /                          Application.index
 GET         /citizen/show/{id}         Citizens.show
 GET         /citizen/create            Citizens.form
 POST        /citizen/create            Citizens.create
+GET         /citizen/edit/{id}         Citizens.editForm
+POST        /citizen/edit/             Citizens.edit
 
 # Organization pages
 
@@ -28,6 +30,12 @@ POST        /incident/create           Incidents.create
 GET     /superhero/show/{id}                    SuperHeroes.show
 GET     /superhero/create                       SuperHeroes.form
 POST    /superhero/create                       SuperHeroes.create
+
+# Supervillains pages
+
+GET     /supervillain/show/{id}                    SuperVillains.show
+GET     /supervillain/create                       SuperVillains.form
+POST    /supervillain/create                       SuperVillains.create
 
 # Ignore favicon requests
 GET         /favicon.ico                            404
