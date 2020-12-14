@@ -1,10 +1,14 @@
 package models;
 
 import models.Citizen;
+
 import play.data.validation.*;
 import play.db.jpa.Model;
+import play.data.format.*;
+import io.ebean.*;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
+import java.util.*;
 
 
 @Entity(name = "super_villains")
@@ -28,6 +32,5 @@ public class SuperVillain extends Model {
 
     @Required
     public Integer maliciousScore;
-
 
 }
