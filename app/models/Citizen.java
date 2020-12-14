@@ -33,7 +33,7 @@ public class Citizen extends Model {
     public String nationality;
 
     @OneToOne
-    public Organisation organisation;
+    public Organization organization;
 
     public String comments;
 
