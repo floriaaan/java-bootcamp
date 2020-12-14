@@ -31,7 +31,7 @@ public class Citizen extends Model {
 
     @Required
     public Date birthdate;
-    public String deathdate;
+    public Date deathdate;
     @Required
     public String nationality;
 
