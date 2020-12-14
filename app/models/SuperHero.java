@@ -21,6 +21,9 @@ public class SuperHero extends Model{
     @PrimaryKeyJoinColumn(name="citizen", referencedColumnName="id")
     public Citizen identity;
 
+    public Date created_at;
+    public Date updated_at;
+
     @Required
     public String power;
 
