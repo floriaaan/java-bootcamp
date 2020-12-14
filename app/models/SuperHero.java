@@ -17,7 +17,7 @@ public class SuperHero extends Model{
     public String name;
 
     @Required
-    @ManyToOne
+    //@ManyToOne
     @PrimaryKeyJoinColumn(name="citizen", referencedColumnName="id")
     public Citizen identity;
 

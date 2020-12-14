@@ -5,11 +5,17 @@
 # Home page
 GET     /                                       Application.index
 
-# Citizen pages
+# Citizens pages
 
 GET     /citizen/show/{id}                      Citizens.show
 GET     /citizen/create                         Citizens.form
 POST    /citizen/create                         Citizens.create
+
+# SuperHeroes pages
+
+GET     /superhero/show/{id}                    SuperHeroes.show
+GET     /superhero/create                       SuperHeroes.form
+POST    /superhero/create                       SuperHeroes.create
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
