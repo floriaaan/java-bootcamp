@@ -37,18 +37,6 @@ public class Missions extends Controller {
      * CRUD : Create an Mission
      */
     public static void create(@Required @Valid Mission mission) {
-        System.out.println(mission.title);
-        System.out.println(mission.type);
-        System.out.println(mission.incidentList);
-        System.out.println(mission.startedDate);
-        System.out.println(mission.enddedDate);
-        System.out.println(mission.address);
-        System.out.println(mission.informartions);
-        System.out.println(mission.superHeroList);
-        System.out.println(mission.gravityLevel);
-        System.out.println(mission.emergencyLevel);
-        System.out.println(mission.created_at);
-        System.out.println(mission.updated_at);
         if (Validation.hasErrors()) {
             flash.error("Erreur de validation.");
             params.flash();
