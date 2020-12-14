@@ -1,0 +1,45 @@
+version: "3.4"
+
+
+ 
+
+services:
+  # database:
+  #   environment:
+  #     POSTGRES_USER: formation
+  #     POSTGRES_PASSWORD: secure
+  #     POSTGRES_DB: example
+  #   healthcheck:
+  #     test: ["CMD", "pg_isready", "-U", "formation"]
+  #     interval: 5s
+  #     timeout: 5s
+  #     retries: 5
+  #   image: postgres:11.5-alpine
+  #   restart: always
+
+  database:
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+      MYSQL_USER: formation
+      MYSQL_PASSWORD: secure
+      MYSQL_DATABASE: example
+    image: mysql:5.7.21
+    restart: always
+
+ 
+
+  app:
+    command: run /app --deps
+    healthcheck:
+      interval: 5s
+    depends_on:
+      - database
+    image: xylphid/play:1.5.3-alpine
+    links:
+      - database
+    ports:
+      - 9000:9000
+      - 8082:8082
+    restart: always
+    volumes:
+      - ./:/app
