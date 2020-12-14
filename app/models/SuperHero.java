@@ -10,7 +10,7 @@ import java.util.*;
 import io.ebean.*;
 
 /**  **/
-@Entity(name="superhero")
+@Entity(name="super_heroes")
 public class SuperHero extends Model{
 
     @Required
@@ -22,7 +22,7 @@ public class SuperHero extends Model{
     public Citizen identity;
 
     @Required
-    public String Power;
+    public String power;
 
     @Required
     public String weakness;
