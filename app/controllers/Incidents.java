@@ -8,6 +8,7 @@ import play.data.validation.*;
 import java.util.*;
 
 import models.Incident;
+import models.Citizen;
 
 public class Incidents extends Controller {
 
@@ -25,7 +26,8 @@ public class Incidents extends Controller {
      CRUD : Create an incident
      */
     public static void form() {
-        render();
+        List<Citizen> cList = Citizen.findAll();
+        render(cList);
     }
 
     /**
