@@ -13,20 +13,17 @@ import models.Citizen;
 public class SuperHeroes extends Controller {
 
     /**
-    GET
-    CRUD : Read a superhero
+     * GET CRUD : Read a superhero
      */
     public static void show(Long id) {
+        System.out.println(id);
         SuperHero s = SuperHero.findById(id);
-        System.out.println(s.identity);
-        Citizen identity = Citizen.findById(s.identity);
 
-        render(s, identity);
+        render(s);
     }
-    
+
     /**
-    GET
-    CRUD : Create a superhero
+     * GET CRUD : Create a superhero
      */
     public static void form() {
         List<Citizen> cList = Citizen.findAll();
@@ -34,12 +31,10 @@ public class SuperHeroes extends Controller {
     }
 
     /**
-    POST
-    CRUD : Create a superhero
+     * POST CRUD : Create a superhero
      */
     public static void create(@Required @Valid SuperHero superhero) {
-        System.out.println(superhero.identity);
-        if(Validation.hasErrors()) {
+        if (Validation.hasErrors()) {
             params.flash();
             Validation.keep();
             form();
