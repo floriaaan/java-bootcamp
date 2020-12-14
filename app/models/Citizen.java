@@ -2,15 +2,14 @@ package models;
 
 import play.db.jpa.Model;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
 import play.data.validation.*;
 
 import java.util.*;
 
-@Entity(name="citizens")
+@Entity(name = "citizens")
 public class Citizen extends Model {
-
-
 
     @Required
     public String fname;
@@ -19,7 +18,6 @@ public class Citizen extends Model {
 
     @Required
     public String sex;
-
 
     @Required
     public String address;
@@ -34,7 +32,8 @@ public class Citizen extends Model {
     @Required
     public String nationality;
 
-    // public List<Integer> organization;
+    @OneToOne
+    public Organisation organisation;
 
     public String comments;
 
@@ -43,5 +42,5 @@ public class Citizen extends Model {
 
     public Integer reported_incidents;
 
-    public Integer victim; 
+    public Integer victim;
 }
