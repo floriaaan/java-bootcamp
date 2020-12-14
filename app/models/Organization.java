@@ -22,7 +22,7 @@ public class Organization extends Model {
     @Required
     public Citizen boss;
 
-    @OneToMany(mappedBy = "organization", cascade = CascadeType.ALL)
+    @OneToMany(targetEntity=Citizen.class, mappedBy="id")
     public List<Citizen> members = new ArrayList<>();
 
     public String comments;

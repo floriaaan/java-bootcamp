@@ -1,12 +1,11 @@
 package models;
 
 import play.db.jpa.Model;
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
-
 import play.data.validation.*;
-
+import io.ebean.*;
 import java.util.*;
+import javax.persistence.*;
+import play.data.format.*;
 
 import play.db.ebean.*;
 import com.avaje.ebean.*;
@@ -35,7 +34,8 @@ public class Citizen extends Model {
     @Required
     public String nationality;
 
-    @OneToOne
+    @ManyToOne
+    @PrimaryKeyJoinColumn(name="organization", referencedColumnName="id")
     public Organization organization;
 
     public String comments;
