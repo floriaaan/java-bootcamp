@@ -7,7 +7,7 @@ import play.db.jpa.Model;
 import javax.persistence.Entity;
 
 
-@Entity(name = "super_villain")
+@Entity(name = "super_villains")
 public class SuperVillain extends Model {
 
     @Required
