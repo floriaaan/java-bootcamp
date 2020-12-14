@@ -20,9 +20,6 @@ public class SuperHero extends Model{
     @OneToOne
     public Citizen identity;
 
-    public Date created_at;
-    public Date updated_at;
-
     @Required
     public String power;
 

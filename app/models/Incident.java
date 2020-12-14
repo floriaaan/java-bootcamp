@@ -23,7 +23,6 @@ public class Incident extends Model{
     public Date created_at;
     public Date updated_at;
 
-    public Date updated_at;
 
     @ManyToOne
     @PrimaryKeyJoinColumn(name="citizen", referencedColumnName="id")
