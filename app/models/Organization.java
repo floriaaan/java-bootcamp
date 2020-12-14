@@ -30,6 +30,17 @@ public class Organization extends Model {
     public Date created_at;
     public Date updated_at;
 
+    @PrePersist
+    public void created_at() {
+        this.created_at = new java.util.Date();
+        this.updated_at = new java.util.Date();
+    }
+
+    @PreUpdate
+    public void updated_at() {
+        this.updated_at = new java.util.Date();
+    }
+
     public Integer reported_incidents;
 
     public Integer implicated;

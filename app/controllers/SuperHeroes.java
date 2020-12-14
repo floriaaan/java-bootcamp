@@ -16,9 +16,7 @@ public class SuperHeroes extends Controller {
      * GET CRUD : Read a superhero
      */
     public static void show(Long id) {
-        System.out.println(id);
         SuperHero s = SuperHero.findById(id);
-
         render(s);
     }
 

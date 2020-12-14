@@ -10,6 +10,8 @@ GET         /                          Application.index
 GET         /citizen/show/{id}         Citizens.show
 GET         /citizen/create            Citizens.form
 POST        /citizen/create            Citizens.create
+GET         /citizen/edit/{id}         Citizens.editForm
+POST        /citizen/edit/             Citizens.edit
 
 # Organization pages
 

@@ -34,12 +34,35 @@ public class Citizens extends Controller {
      */
     public static void create(@Required @Valid Citizen citizen) {
         if(Validation.hasErrors()) {
-            flash.error("Erreur de validation.");
             params.flash();
             Validation.keep();
             form();
         }
+        
+        citizen.save();
+        show(citizen.id);
+    }
 
+    /**
+    GET
+    CRUD : Edit a citizen
+     */
+    public static void editForm(Long id) {
+        Citizen c = Citizen.findById(id);
+        render(c);
+    }
+
+    /**
+    POST
+    CRUD : Edit a citizen
+     */
+    public static void edit(@Required @Valid Citizen citizen) {
+        if(Validation.hasErrors()) {
+            params.flash();
+            Validation.keep();
+            form();
+        }
+        
         citizen.save();
         show(citizen.id);
     }
