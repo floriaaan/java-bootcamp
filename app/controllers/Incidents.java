@@ -60,4 +60,10 @@ public class Incidents extends Rights {
         incident.save();
         show(incident.id);
     }
+
+    public static void delete(Long id) {
+        Incident incident = Incident.findById(id);
+        incident.delete();
+        showAll();
+    }
 }

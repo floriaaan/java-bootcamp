@@ -35,6 +35,7 @@ GET         /incident/create           Incidents.form
 POST        /incident/create           Incidents.create
 GET         /incident/showAll          Incidents.showAll
 POST         /incident/setAside         Incidents.setAside
+POST         /incident/delete       Incidents.delete
 
 # Satisfaction pages
 
