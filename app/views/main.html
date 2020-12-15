@@ -90,10 +90,10 @@
 
                   <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
                     href="/citizen/show/${user?.id}">Profile</a>
-
+                  #{if superhero == 0}
                   <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
                     href="@{SuperHeroes.create}">Declare as superhero</a>
-
+                  #{/if}
                   #{if user.is_superuser}
                   <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
                     href="#">Super-user
