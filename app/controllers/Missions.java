@@ -11,7 +11,7 @@ import models.Mission;
 import models.Incident;
 import models.SuperHero;
 
-public class Missions extends Controller {
+public class Missions extends SuperController {
 
     /**
      * GET
