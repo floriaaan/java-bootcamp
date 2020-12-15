@@ -34,10 +34,10 @@ public class SuperController extends Controller {
     public void middleware_auth() {
     
         if(this.INSTANCE == null) {
-            System.out.println("unauth");
+            //System.out.println("unauth");
             //renderTemplate("Authentication/login.html");
         } else {
-            System.out.println(this.INSTANCE.getName());
+            //System.out.println(this.INSTANCE.getName());
             renderArgs.put("user", this.INSTANCE);
         }
     }

@@ -1,0 +1,39 @@
+#{extends 'main.html' /}
+#{set title:'Missions list' /}
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>Type</th>
+        <th>Title</th>
+        <th>Start date</th>
+        <th>End date</th>
+        <th>Incidents</th>
+        <th>Address</th>
+        <th>Informations</th>
+        <th>Super Heroes</th>
+        <th>Gravity level</th>
+        <th>Emergency level</th>
+        <th>Creation date</th>
+        <th>Last update</th>
+    </tr>
+    </thead>
+    <tbody>
+    #{list missionList, as:'mission'}
+    <tr>
+        <td>${mission.type}</td>
+        <td>${mission.title}</td>
+        <td>${mission.start_date}</td>
+        <td>${mission.end_date}</td>
+        <td>${mission.incident_list}</td>
+        <td>${mission.address}</td>
+        <td>${mission.informations}</td>
+        <td>${mission.super_heroes_list}</td>
+        <td>${mission.gravity_level}</td>
+        <td>${mission.emergency_level}</td>
+        <td>${mission.created_at}</td>
+        <td>${mission.updated_at}</td>
+    </tr>
+    #{/list}
+    </tbody>
+</table>

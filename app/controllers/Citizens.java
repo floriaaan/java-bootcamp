@@ -8,8 +8,18 @@ import play.data.validation.*;
 import java.util.*;
 
 import models.Citizen;
+import middlewares.Rights;
 
-public class Citizens extends SuperController {
+public class Citizens extends Rights {
+
+    /**
+     GET
+     CRUD : Read all citizens
+     */
+    public static void showAll() {
+        List<Citizen> citizenList = Citizen.findAll();
+        render(citizenList);
+    }
 
     /**
     GET
@@ -19,7 +29,7 @@ public class Citizens extends SuperController {
         Citizen c = Citizen.findById(id);
         render(c);
     }
-    
+
     /**
     GET
     CRUD : Create a citizen
@@ -32,14 +42,15 @@ public class Citizens extends SuperController {
     POST
     CRUD : Create a citizen
      */
-    public static void create(@Required @Valid Citizen citizen) {
+    public void create(@Required @Valid Citizen citizen) {
         if(Validation.hasErrors()) {
             params.flash();
             Validation.keep();
             form();
         }
-        
+
         citizen.save();
+        this.setAuth(citizen);
         show(citizen.id);
     }
 
@@ -62,7 +73,7 @@ public class Citizens extends SuperController {
             Validation.keep();
             form();
         }
-        
+
         citizen.save();
         show(citizen.id);
     }

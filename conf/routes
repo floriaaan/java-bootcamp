@@ -9,12 +9,14 @@ GET         /                          Application.index
 
 GET         /auth/login                Authentication.login
 POST        /auth/login                Authentication.connect
+GET         /auth/register             Authentication.register
 GET         /auth/logout               Authentication.logout
 
 
 # Citizens pages
 
 GET         /citizen/show/{id}         Citizens.show
+GET         /citizen/showAll           Citizens.showAll
 GET         /citizen/create            Citizens.form
 POST        /citizen/create            Citizens.create
 GET         /citizen/edit/{id}         Citizens.editForm
@@ -43,13 +45,14 @@ GET         /satisfaction/showAll          Satisfactions.showAll
 # Mission pages
 
 GET         /mission/show/{id}        Missions.show
+GET         /mission/showAll          Missions.showAll
 GET         /mission/create           Missions.form
 POST        /mission/create           Missions.create
-GET         /mission/showAll          Missions.showAll
 
 # SuperHeroes pages
 
 GET     /superhero/show/{id}                    SuperHeroes.show
+GET     /superhero/showAll                      SuperHeroes.showAll
 GET     /superhero/create                       SuperHeroes.form
 POST    /superhero/create                       SuperHeroes.create
 
