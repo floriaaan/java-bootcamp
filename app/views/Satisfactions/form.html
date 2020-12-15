@@ -9,8 +9,8 @@
         <option value="${m.id}">${m.getName()}</option>
         #{/list}
     </select>
-    <input type="text" required placeholder="Note" name="satisfaction.Note"/>
-    <input type="text" required placeholder="Comment" name="satisfaction.Comment"/>
+    <input type="text" required placeholder="Note" name="satisfaction.note"/>
+    <input type="text" required placeholder="Comment" name="satisfaction.comment"/>
     <!--    TODO: replace by currently logged in user-->
     <select required name="satisfaction.citizen.id">
         #{list cList, as:'c'}

@@ -31,7 +31,7 @@ public class Mission extends Model {
     @Required
     public String address;
 
-    public String informartions;
+    public String informations;
 
     @Required
     @ManyToMany(cascade = CascadeType.ALL)
