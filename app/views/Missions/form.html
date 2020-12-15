@@ -10,37 +10,198 @@
     <li>${error}</li>
 
     #{/errors}
-    <hr/>
+    <hr />
     #{/ifErrors}
 </div>
 
-<form action="@{Missions.create}" method="POST">
+<form action="@{Missions.create}" method="POST" class="p-12">
+    <h3 class="mb-2 text-center font-medium text-gray-500" style="font-size: 3rem;">Launch a mission on</h3>
+    <h4 class="mb-8 text-center font-medium text-gray-400" style="font-size: 1.5rem;">${incident.title}</h4>
     ${flash.error}
-    <input type="text" required placeholder="Title" name="mission.title"/>
-    <input type="text" required placeholder="Type" name="mission.type"/>
-    <input type="date" required name="mission.start_date"/>
-    <input type="date" name="mission.end_date"/>
-    <input type="text" readonly value="incident.name">
-    <input type="text" required placeholder="Address" name="mission.address"/>
-    <textarea required placeholder="Informations complémentaire" name="mission.informations"></textarea>
-    <select required multiple name="mission.super_heroes_list.id">
-        #{list sList, as:'superHero'}
-        <option value="${superHero.id}">${superHero.name}</option>
-        #{/list}
-    </select>
+    <div class="md:flex md:items-center mb-6">
+        <div class="md:w-1/4">
+            <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
+                Mission title
+            </label>
 
-    <select required name="mission.gravity_level">
-        <option value="bas">bas</option>
-        <option value="moyen">moyen</option>
-        <option value="élevé">élevé</option>
-        <option value="urgent">urgent</option>
-    </select>
+        </div>
+        <div class="md:w-2/4">
+            <input type="text" required placeholder="Title" name="mission.title"
+                class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-enedisB-100">
+        </div>
 
-    <select required name="mission.emergency_level">
-        <option value="moins urgent">moins urgent</option>
-        <option value="urgent">urgent</option>
-        <option value="très urgent">très urgent</option>
-    </select>
-    <hr/>
-    <button type="submit">Envoyer</button>
+    </div>
+
+    <div class="md:flex md:items-center mb-6">
+        <div class="md:w-1/4">
+            <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
+                Mission type
+            </label>
+
+        </div>
+        <div class="md:w-2/4">
+            <input type="text" required placeholder="Type" name="mission.type"
+                class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-enedisB-100">
+        </div>
+
+    </div>
+
+    <div class="md:flex md:items-center mb-6">
+        <div class="md:w-1/4">
+            <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
+                Start date
+            </label>
+
+        </div>
+        <div class="md:w-2/4">
+            <input type="date" required name="mission.start_date"
+                class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-enedisB-100">
+        </div>
+
+    </div>
+
+    <div class="md:flex md:items-center mb-6">
+        <div class="md:w-1/4">
+            <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
+                End date
+            </label>
+
+        </div>
+        <div class="md:w-2/4">
+            <input type="date" required name="mission.end_date"
+                class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-enedisB-100">
+        </div>
+
+    </div>
+
+    <div class="md:flex md:items-center mb-6">
+        <div class="md:w-1/4">
+            <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
+                Incident
+            </label>
+        </div>
+        <div class="md:w-2/4">
+            <input name="mission.incident.id" readonly value="${incident.id}" type="hidden">
+            <input readonly value="${incident.title}"
+                class="bg-gray-400 appearance-none border-2 border-gray-400 rounded w-full py-2 px-4 text-gray-800 leading-tight"
+                type="text">
+        </div>
+    </div>
+
+    <div class="md:flex md:items-center mb-6">
+        <div class="md:w-1/4">
+            <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
+                Address
+            </label>
+
+        </div>
+        <div class="md:w-2/4">
+            <input type="text" required placeholder="Address" name="mission.address"
+                class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-enedisB-100">
+        </div>
+
+    </div>
+
+    <div class="md:flex md:items-center mb-6">
+        <div class="md:w-1/4">
+            <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="comments">
+                Comments
+                <span class="ml-1 text-red-700 font-bold">*</span>
+            </label>
+        </div>
+        <div class="md:w-2/4">
+            <textarea name="mission.informations"
+                class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-enedisB-100"
+                id="comments" rows="5"></textarea>
+        </div>
+    </div>
+
+
+    <div class="md:flex md:items-center mb-6">
+        <div class="md:w-1/4">
+            <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="sh">
+                Super-heroes
+            </label>
+        </div>
+        <div class="md:w-2/4">
+            <div class="relative">
+                <select required                
+                    class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    name="mission.super_heroes_list.id"
+                    id="sh"
+                    >
+
+                    #{list sList, as:'superHero'}
+                    <option value="${superHero.id}">${superHero.name}</option>
+                    #{/list}
+                </select>
+
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                        <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="md:flex md:items-center mb-6">
+        <div class="md:w-1/4">
+            <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="gl">
+                Gravity level
+            </label>
+        </div>
+        <div class="md:w-2/4">
+            <div class="relative">
+                <select required
+                    class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    name="mission.gravity_level"
+                    id="gl">
+                    <option value="low">Low</option>
+                    <option value="moderate">Moderate</option>
+                    <option value="high">High</option>
+                    <option value="urgent">Urgent</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                        <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="md:flex md:items-center mb-6">
+        <div class="md:w-1/4">
+            <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="civility">
+                Emergency level
+            </label>
+        </div>
+        <div class="md:w-2/4">
+            <div class="relative">
+                <select required
+                    class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    name="mission.emergency_level">
+                    <option value="less urgent">Less urgent</option>
+                    <option value="urgent">Urgent</option>
+                    <option value="extremely urgent">Extremely urgent</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                        <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="md:flex md:items-center">
+        <div class="md:w-1/4"></div>
+        <div class="md:w-2/4">
+            <button
+                    class="shadow bg-enedisB-100 hover:bg-enedisB-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+                    type="submit">
+                Launch the mission
+            </button>
+        </div>
+    </div>
 </form>

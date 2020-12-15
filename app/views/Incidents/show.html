@@ -26,7 +26,7 @@
 
                             <div class="flex flex-row mt-6 space-x-4">
 
-                                #{if user.id == incident.citizen.id || user.is_superuser}
+                                #{if user?.id == incident.citizen.id || user?.is_superuser}
                                 <a href="/incident/edit/${incident.id}"
                                     class="bg-gray-500 hover:text-white border-gray-600 hover:bg-gray-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
                                     type="submit">
@@ -34,15 +34,15 @@
                                     Edit
                                 </a>
                                 #{/if}
-                                #{if user.is_authority || user.is_superuser}
-                                <a href="#"
+                                #{if user?.is_authority || user?.is_superuser}
+                                <a href="/mission/create/${incident.id}"
                                     class="bg-enedisG-100 border-enedisG-100 hover:bg-enedisG-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
                                     type="submit">
-                                    <i class="fas fa-add"></i>
+                                    <i class="fas fa-rocket"></i>
                                     Launch a mission
                                 </a>
                                 <a href="#"
-                                    class=" bg-red-500 border-red-600 hover:bg-red-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+                                    class=" bg-red-500 hover:text-white border-red-600 hover:bg-red-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
                                     type="submit">
                                     <i class="fas fa-exclamation-triangle"></i>
                                     Close

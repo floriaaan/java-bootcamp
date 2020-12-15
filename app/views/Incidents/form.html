@@ -59,7 +59,8 @@
         <div class="md:flex md:items-center mb-6">
             <div class="md:w-1/4">
                 <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="comments">
-                    Comments*
+                    Comments
+                    <span class="ml-2 text-red-700 font-bold">*</span>
                 </label>
             </div>
             <div class="md:w-2/4">
@@ -75,8 +76,8 @@
                 </label>
             </div>
             <div class="md:w-2/4">
-                <input name="incident.citizen.id" readonly value="${user?.id}" type="hidden">
-                <input readonly value="${user?.getName()}"
+                <input name="incident.citizen.id" readonly value="${user.id}" type="hidden">
+                <input readonly value="${user.getName()}"
                        class="bg-gray-400 appearance-none border-2 border-gray-400 rounded w-full py-2 px-4 text-gray-800 leading-tight"
                        type="text">
             </div>
