@@ -18,17 +18,17 @@
 
   <input type="hidden" value="${c.id}" required name="citizen.id" />
 
-  <input type="text" value="${c.fname}" required placeholder="First name" name="citizen.fname" />
-  <input type="text" value="${c.lname}" required placeholder="Last name" name="citizen.lname" />
-  <select required name="citizen.sex">
-    <option #{if c.sex == "Male"} selected #{/if} >Male</option>
-    <option #{if c.sex == "Female"} selected #{/if} >Female</option>
-    <option #{if c.sex == "Cis-genre croisé dauphin islamophobe"} selected #{/if} >Cis-genre croisé dauphin islamophobe</option>
-  </select>
+<!--  <input type="text" value="${c.fname}" required placeholder="First name" name="citizen.fname" />-->
+<!--  <input type="text" value="${c.lname}" required placeholder="Last name" name="citizen.lname" />-->
+<!--  <select required name="citizen.sex">-->
+<!--    <option #{if c.sex == "Male"} selected #{/if} >Male</option>-->
+<!--    <option #{if c.sex == "Female"} selected #{/if} >Female</option>-->
+<!--    <option #{if c.sex == "Cis-genre croisé dauphin islamophobe"} selected #{/if} >Cis-genre croisé dauphin islamophobe</option>-->
+<!--  </select>-->
   <input type="text" value="${c.address}" required placeholder="Address" name="citizen.address" />
-  <input type="text" value="${c.mail}" required placeholder="Mail" name="citizen.mail" />
+<!--  <input type="text" value="${c.mail}" required placeholder="Mail" name="citizen.mail" />-->
   <input type="text" value="${c.phone}" required placeholder="Phone" name="citizen.phone" />
-  <input type="date" value="${c.birthdate}" required name="citizen.birthdate" />
+<!--  <input type="date" value="${c.birthdate}" required name="citizen.birthdate" />-->
 
   <select required name="citizen.nationality">
     <option #{if c.nationality == "French"} selected #{/if}>French</option>

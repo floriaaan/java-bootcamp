@@ -17,7 +17,6 @@ public class SuperVillain extends Model {
     @Required
     public String name;
 
-    @Required
     @ManyToOne
     @PrimaryKeyJoinColumn(name="citizen", referencedColumnName="id")
     public Citizen identity;
