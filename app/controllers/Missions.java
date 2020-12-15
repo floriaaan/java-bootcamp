@@ -35,10 +35,10 @@ public class Missions extends SuperController {
      * GET
      * CRUD : Create an Mission
      */
-    public static void form() {
-        List<Incident> iList = Incident.findAll();
+    public static void form(Long id) {
         List<SuperHero> sList = SuperHero.findAll();
-        render(iList, sList);
+        Incident incident = Incident.findById(id);
+        render(sList, incident);
     }
 
     /**
@@ -50,7 +50,7 @@ public class Missions extends SuperController {
             flash.error("Erreur de validation.");
             params.flash();
             Validation.keep();
-            form();
+            form(mission.incident.id);
         }
 
         mission.save();

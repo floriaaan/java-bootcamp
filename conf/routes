@@ -47,7 +47,7 @@ GET         /satisfaction/showAll          Satisfactions.showAll
 
 GET         /mission/show/{id}        Missions.show
 GET         /mission/showAll          Missions.showAll
-GET         /mission/create           Missions.form
+GET         /mission/create/{id}           Missions.form
 POST        /mission/create           Missions.create
 
 # MissionReport pages

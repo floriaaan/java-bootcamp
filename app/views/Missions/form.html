@@ -20,11 +20,7 @@
     <input type="text" required placeholder="Type" name="mission.type"/>
     <input type="date" required name="mission.start_date"/>
     <input type="date" name="mission.end_date"/>
-    <select required multiple name="mission.incident_list.id">
-        #{list iList, as:'incident'}
-        <option value="${incident.id}">${incident.title}</option>
-        #{/list}
-    </select>
+    <input type="text" readonly value="incident.name">
     <input type="text" required placeholder="Address" name="mission.address"/>
     <textarea required placeholder="Informations complémentaire" name="mission.informations"></textarea>
     <select required multiple name="mission.super_heroes_list.id">
