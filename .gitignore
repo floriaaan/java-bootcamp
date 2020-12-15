@@ -2,4 +2,3 @@ tmp/*
 tmp
 build.sbt
 .idea
-lib

@@ -10,7 +10,7 @@ import java.util.*;
 import models.SuperHero;
 import models.Citizen;
 
-public class SuperHeroes extends Controller {
+public class SuperHeroes extends SuperController {
 
     /**
      * GET CRUD : Read a superhero

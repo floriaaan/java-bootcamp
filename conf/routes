@@ -5,6 +5,13 @@
 # Home page
 GET         /                          Application.index
 
+# Authentication page
+
+GET         /auth/login                Authentication.login
+POST        /auth/login                Authentication.connect
+GET         /auth/logout               Authentication.logout
+
+
 # Citizens pages
 
 GET         /citizen/show/{id}         Citizens.show
@@ -25,6 +32,13 @@ GET         /incident/show/{id}        Incidents.show
 GET         /incident/create           Incidents.form
 POST        /incident/create           Incidents.create
 GET         /incident/showAll          Incidents.showAll
+
+# Mission pages
+
+GET         /mission/show/{id}        Missions.show
+GET         /mission/create           Missions.form
+POST        /mission/create           Missions.create
+GET         /mission/showAll          Missions.showAll
 
 # SuperHeroes pages
 
