@@ -1,6 +1,7 @@
 package models;
 
 import models.Citizen;
+import models.MissionReport;
 
 import play.data.validation.*;
 import play.db.jpa.Model;
@@ -17,8 +18,7 @@ public class SuperVillain extends Model {
     @Required
     public String name;
 
-    @ManyToOne
-    @PrimaryKeyJoinColumn(name="citizen", referencedColumnName="id")
+    @OneToOne
     public Citizen identity;
 
     @Required
@@ -35,6 +35,8 @@ public class SuperVillain extends Model {
     @Required
     public Integer malicious_score;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    public List<MissionReport> mission_reportList = new ArrayList<>();
 
     @PrePersist
     public void created_at() {

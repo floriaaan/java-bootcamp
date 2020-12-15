@@ -37,7 +37,6 @@ public class SuperVillains extends SuperController {
      * CRUD : Create a super villains
      */
     public static void create(@Required @Valid SuperVillain supervillain) {
-
         if (Validation.hasErrors()) {
             params.flash();
             Validation.keep();
