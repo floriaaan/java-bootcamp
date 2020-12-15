@@ -9,6 +9,8 @@ import play.data.format.*;
 import java.util.*;
 import io.ebean.*;
 
+import models.Mission;
+
 /**  **/
 @Entity(name="incidents")
 public class Incident extends Model{
@@ -38,7 +40,7 @@ public class Incident extends Model{
 //    @PrimaryKeyJoinColumn(name="organization", referencedColumnName="id")
 //    public Organization organization_id;
 
-    @ManyToOne
+    @OneToOne
     public Mission mission;
 
     public String comments;

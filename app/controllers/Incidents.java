@@ -18,9 +18,16 @@ public class Incidents extends Rights {
         render(incidentsList);
     }
 
+    public static void setAside(Long id) {
+        Incident incident = Incident.findById(id);
+        incident.state = "aside";
+        incident.save();
+        showAll();
+    }
+
     /**
-     GET
-     CRUD : Read an incident
+     * GET
+     * CRUD : Read an incident
      */
     public static void show(Long id) {
         Incident incident = Incident.findById(id);
@@ -29,20 +36,21 @@ public class Incidents extends Rights {
     }
 
     /**
-     GET
-     CRUD : Create an incident
+     * GET
+     * CRUD : Create an incident
      */
     public static void form() {
         List<Citizen> cList = Citizen.findAll();
-        render(cList);
+        Long incidentsNb = Incident.count();
+        render(cList, incidentsNb);
     }
 
     /**
-     POST
-     CRUD : Create an incident
+     * POST
+     * CRUD : Create an incident
      */
     public static void create(@Required @Valid Incident incident) {
-        if(Validation.hasErrors()) {
+        if (Validation.hasErrors()) {
             flash.error("Erreur de validation.");
             params.flash();
             Validation.keep();
