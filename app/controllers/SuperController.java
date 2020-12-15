@@ -2,6 +2,7 @@ package controllers;
 
 import play.*;
 import play.mvc.*;
+import play.mvc.Scope.*;
 
 import java.util.*;
 import play.data.validation.*;
@@ -26,6 +27,17 @@ public class SuperController extends Controller {
     public static void setAuth(Citizen c)
     {   
         INSTANCE = c;
+    }
+
+
+    @Before
+    public void middleware_Auth() {
+        if(this.INSTANCE == null) {
+            // System.out.println("unauth");
+            // Redirect to login
+        } else {
+            renderArgs.put("user", this.INSTANCE);
+        }
     }
 
 }
