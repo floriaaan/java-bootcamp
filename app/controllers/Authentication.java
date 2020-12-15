@@ -11,6 +11,7 @@ import models.*;
 import lib.BCrypt;
 import java.lang.Object;
 
+
 public class Authentication extends SuperController {
 
 
@@ -29,7 +30,7 @@ public class Authentication extends SuperController {
         List<Citizen> auth = Citizen.find("mail", mail).fetch();
         if(BCrypt.checkpw(password, auth.get(0).password)) {
             this.setAuth(auth.get(0));
-            login();
+            // root();
         } else {
             flash.error("Wrong credentials");
             params.flash();
@@ -43,5 +44,9 @@ public class Authentication extends SuperController {
         this.setAuth(null);
         login();
     }
+
+    // public static Result root() {
+    //     return redirect(controllers.routes.Application.index()); 
+    // }
 
 }
