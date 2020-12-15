@@ -32,7 +32,7 @@ public class Citizens extends SuperController {
     POST
     CRUD : Create a citizen
      */
-    public static void create(@Required @Valid Citizen citizen) {
+    public void create(@Required @Valid Citizen citizen) {
         if(Validation.hasErrors()) {
             params.flash();
             Validation.keep();
@@ -40,6 +40,7 @@ public class Citizens extends SuperController {
         }
         
         citizen.save();
+        this.setAuth(citizen);
         show(citizen.id);
     }
 

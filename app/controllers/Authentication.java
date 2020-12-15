@@ -29,7 +29,7 @@ public class Authentication extends SuperController {
         List<Citizen> auth = Citizen.find("mail", mail).fetch();
         if(BCrypt.checkpw(password, auth.get(0).password)) {
             this.setAuth(auth.get(0));
-            // root();
+            Application.index();
         } else {
             flash.error("Wrong credentials");
             params.flash();
@@ -44,8 +44,12 @@ public class Authentication extends SuperController {
         login();
     }
 
-    // public static Result root() {
-    //     return redirect(controllers.routes.Application.index()); 
-    // }
+    /**
+    GET
+    CRUD : Create a citizen
+     */
+    public static void register() {
+        render();
+    }
 
 }

@@ -9,6 +9,7 @@ GET         /                          Application.index
 
 GET         /auth/login                Authentication.login
 POST        /auth/login                Authentication.connect
+GET         /auth/register             Authentication.register
 GET         /auth/logout               Authentication.logout
 
 
