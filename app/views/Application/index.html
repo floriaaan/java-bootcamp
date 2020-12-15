@@ -12,9 +12,8 @@
 
 
 
-<div class="py-12" >
+<div class="py-12">
     <div
-        
         class="flex flex-col md:flex-row items-center px-6 pt-16 pb-6 md:pt-32 md:pb-16 lg:pt-40 lg:pb-32 xl:pt-48 xl:pb-30">
         <div class="text-center md:max-w-4xl mx-auto">
             <p class="text-4xl md:text-5xl font-semibold pb-4">Project
@@ -23,12 +22,28 @@
                 to you and give you feedback.</p>
             <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3 justify-center"><a
                     class="bg-enedisB-500 hover:bg-enedisB-100 active:bg-enedisB-100 text-white hover:text-white py-3 px-5 rounded-md transition duration-200 ease-in-out shadow font-medium"
-                    href="@{Incidents.create}">Report an incident</a>
-                <div class="group relative">
+                    #{if user} href="@{Incidents.create}" #{/if} #{else} href="@{Authentication.login}" #{/else}>
+                    #{if user}
+                    Report an Incident
+                    #{/if}
+                    #{else}
+                    Log in
+                    #{/else}
+                </a>
+                <div class="group relative flex items-center">
+                    #{if user}
                     <button
                         class="py-3 px-5 rounded-md transition duration-200 ease-in-out bg-gray-100 hover:bg-gray-200 active:bg-gray-300 font-medium shadow w-full">
                         Ask for roles
                     </button>
+                    #{/if}
+                    #{else}
+                    <a class="py-3 px-5 rounded-md transition duration-200 ease-in-out bg-gray-100 hover:bg-gray-200 active:bg-gray-300 font-medium shadow w-full"
+                        href="@{Authentication.register}">
+                        Register
+                    </a>
+                    #{/else}
+
                 </div>
             </div>
         </div>

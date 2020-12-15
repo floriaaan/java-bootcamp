@@ -50,7 +50,7 @@ public class Citizens extends Rights {
         }
 
         citizen.save();
-        this.setAuth(citizen);
+        setAuth(citizen);
         show(citizen.id);
     }
 
