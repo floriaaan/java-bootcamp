@@ -1,0 +1,17 @@
+#{extends 'main.html' /}
+
+#{set title:'Answer satisfaction form' /}
+
+<form action="@{Satisfactions.create}" method="POST">
+    ${flash.error}
+    <select required name="satisfaction.mission.id">
+        #{list mList, as:'m'}
+        <option value="${m.id}">${m.getName()}</option>
+        #{/list}
+    </select>
+    <input type="number" required placeholder="Note" name="satisfaction.note"/>
+    <input type="text" required placeholder="Comment" name="satisfaction.comment"/>
+    <!--    TODO: replace by currently logged in user-->
+    <hr />
+    <button type="submit">Envoyer</button>
+</form>

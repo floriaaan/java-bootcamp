@@ -10,23 +10,19 @@ import java.util.*;
 import io.ebean.*;
 
 /**  **/
-@Entity(name="incidents")
-public class Incident extends Model{
-
-    @Required
-    public String title;
-
-    @Required
-    public String address;
+@Entity(name="satisfactions")
+public class Satisfaction extends Model{
 
     public Date created_at;
     public Date updated_at;
 
-    public String state;
+    @OneToOne
+    @PrimaryKeyJoinColumn(name="mission", referencedColumnName="id")
+    public Mission mission;
 
-    @ManyToOne
-    @PrimaryKeyJoinColumn(name="citizen", referencedColumnName="id")
-    public Citizen citizen;
+    @ManyToMany(cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn(name="superHero", referencedColumnName="id")
+    public List<SuperHero> superHeroes = new ArrayList<>();
 
 //    public Long reporter_type;
 //
@@ -38,10 +34,9 @@ public class Incident extends Model{
 //    @PrimaryKeyJoinColumn(name="organization", referencedColumnName="id")
 //    public Organization organization_id;
 
-    @ManyToOne
-    public Mission mission;
+    public int note;
 
-    public String comments;
+    public String comment;
 
     @PrePersist
     public void created_at() {

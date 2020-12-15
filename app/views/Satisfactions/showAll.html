@@ -1,0 +1,31 @@
+#{extends 'main.html' /}
+#{set title:'Satisfaction forms list' /}
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Note</th>
+        <th>Comment</th>
+        <th>superHeroes</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    #{list satisfactionsList, as:'satisfaction'}
+    <tr>
+        <td>${satisfaction.id}</td>
+        <td>${satisfaction.note}</td>
+        <td>${satisfaction.comment}</td>
+        <td>
+            <ul>
+            #{list satisfaction.superHeroes, as: 'sh' } 
+               <li>${sh.id}</li> 
+            #{/list}
+            </ul>
+        </td>
+        
+    </tr>
+    #{/list}
+    </tbody>
+</table>
