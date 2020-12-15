@@ -42,6 +42,13 @@ GET         /mission/showAll          Missions.showAll
 GET         /mission/create           Missions.form
 POST        /mission/create           Missions.create
 
+# MissionReport pages
+
+GET         /mission_report/show/{id}        MissionsReports.show
+GET         /mission_report/create           MissionsReports.form
+POST        /mission_report/create           MissionsReports.create
+GET         /mission_report/showAll          MissionsReports.showAll
+
 # SuperHeroes pages
 
 GET     /superhero/show/{id}                    SuperHeroes.show
