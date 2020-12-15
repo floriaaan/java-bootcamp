@@ -51,6 +51,9 @@ public class Citizen extends Model {
 
     public Integer victim;
 
+    public Boolean is_superuser;
+
+    public Boolean is_authority;
 
     public String getName(){
         return this.fname + " " + this.lname;

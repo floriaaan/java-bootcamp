@@ -1,0 +1,33 @@
+#{extends 'main.html' /}
+#{set title:'Super Heroes list' /}
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>Nom</th>
+        <th>Secret identity</th>
+        <th>Power</th>
+        <th>Weakness</th>
+        <th>Score</th>
+        <th>Comments</th>
+        <th>Missions</th>
+        <th>Creation date</th>
+        <th>Last update</th>
+    </tr>
+    </thead>
+    <tbody>
+    #{list superHeroesList, as:'hero'}
+    <tr>
+        <td>${hero.name}</td>
+        <td>${hero.identity}</td>
+        <td>${hero.power}</td>
+        <td>${hero.weakness}</td>
+        <td>${hero.score}</td>
+        <td>${hero.comments}</td>
+        <td>${hero.mission}</td>
+        <td>${hero.created_at}</td>
+        <td>${hero.updated_at}</td>
+    </tr>
+    #{/list}
+    </tbody>
+</table>
