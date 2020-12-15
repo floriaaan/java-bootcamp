@@ -20,12 +20,12 @@
         <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
          Incident title
         </label>
-        
+
       </div>
         <div class="md:w-2/4">
             <input type="text" required placeholder="Title" name="incident.title" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-enedisB-100">
         </div>
-      
+
     </div>
 
     <div class="md:flex md:items-center mb-6">
@@ -33,15 +33,15 @@
           <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
            Incident address
           </label>
-          
+
         </div>
           <div class="md:w-2/4">
               <input type="text" required placeholder="Adress" name="incident.address" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-enedisB-100">
           </div>
-        
+
       </div>
-  
-  
+
+
     <div class="md:flex md:items-center mb-6">
       <div class="md:w-1/4">
         <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
@@ -53,10 +53,9 @@
       <input readonly value="${user?.getName()}" class="bg-gray-400 appearance-none border-2 border-gray-400 rounded w-full py-2 px-4 text-gray-800 leading-tight" type="text">
       </div>
     </div>
-  
-    
-    
-  
+
+    <input name="incident.state" readonly value="todo" hidden>
+
     <div class="md:flex md:items-center">
       <div class="md:w-1/4"></div>
       <div class="md:w-2/4">
@@ -66,5 +65,5 @@
       </div>
     </div>
   </form>
-  
+
 </div>
