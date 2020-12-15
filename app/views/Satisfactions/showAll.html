@@ -1,26 +1,30 @@
 #{extends 'main.html' /}
-#{set title:'Incidents list' /}
+#{set title:'Satisfaction forms list' /}
 
 <table border="1">
     <thead>
     <tr>
-        <th>Entitled</th>
-        <th>Address</th>
-        <th>Creation</th>
-        <th>Last update</th>
-        <th>Creator</th>
-        <th>Comments</th>
+        <th>Id</th>
+        <th>Note</th>
+        <th>Comment</th>
+        <th>superHeroes</th>
+
     </tr>
     </thead>
     <tbody>
-    #{list incidentsList, as:'incident'}
+    #{list satisfactionsList, as:'satisfaction'}
     <tr>
-        <td>${incident.title}</td>
-        <td>${incident.address}</td>
-        <td>${incident.created_at}</td>
-        <td>${incident.updated_at}</td>
-        <td>${incident.citizen}</td>
-        <td>${incident.comments}</td>
+        <td>${satisfaction.id}</td>
+        <td>${satisfaction.note}</td>
+        <td>${satisfaction.comment}</td>
+        <td>
+            <ul>
+            #{list satisfaction.superHeroes, as: 'sh' } 
+               <li>${sh.id}</li> 
+            #{/list}
+            </ul>
+        </td>
+        
     </tr>
     #{/list}
     </tbody>

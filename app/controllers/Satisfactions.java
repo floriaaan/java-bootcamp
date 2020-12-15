@@ -35,14 +35,14 @@ public class Satisfactions extends SuperController {
     public static void form() {
         List<Citizen> cList = Citizen.findAll();
         List<Mission> mList = Mission.findAll();
-        render(cList);
+        render(cList , mList);
     }
 
     /**
      POST
      CRUD : Create an incident
      */
-    public static void create(@Required @Valid Satisfaction satifaction) {
+    public static void create(@Required @Valid Satisfaction satisfaction) {
         if(Validation.hasErrors()) {
             flash.error("Erreur de validation.");
             params.flash();
@@ -50,7 +50,7 @@ public class Satisfactions extends SuperController {
             form();
         }
 
-        satifaction.save();
-        show(satifaction.id);
+        satisfaction.save();
+        show(satisfaction.id);
     }
 }

@@ -21,6 +21,7 @@ public class Satisfaction extends Model{
     public Mission mission;
 
     @ManyToMany(cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn(name="superHero", referencedColumnName="id")
     public List<SuperHero> superHeroes = new ArrayList<>();
 
 //    public Long reporter_type;

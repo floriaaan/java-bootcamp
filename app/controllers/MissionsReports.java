@@ -7,6 +7,7 @@ import models.SuperVillain;
 import play.*;
 import play.data.validation.*;
 import play.mvc.*;
+import java.util.*;
 
 public class MissionsReports extends SuperController {
 

@@ -46,6 +46,11 @@ public class Mission extends Model {
     public Date created_at;
     public Date updated_at;
 
+    public String getName(){
+        return this.title;
+    }
+
+
     @PrePersist
     public void created_at() {
         this.created_at = new java.util.Date();
