@@ -31,6 +31,7 @@ public class SuperHero extends Model{
     public String comments;
 
     @ManyToOne
+    @PrimaryKeyJoinColumn(name="missions", referencedColumnName="id")
     public Mission mission;
 
     public Date created_at;

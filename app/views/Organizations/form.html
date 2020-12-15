@@ -6,16 +6,17 @@
     ${flash.error}
     <input type="text" required placeholder="Name" name="organization.name" />
     <input type="text" required placeholder="Address" name="organization.address" />
+<!--    TODO: replace by currently logged in user-->
     <select name="organization.boss.id">
         #{list cList, as:'c'}
         <option value="${c.id}">${c.getName()}</option>
         #{/list}
     </select>
-    <select name="organization.members.id" multiple>
-        #{list cList, as:'c'}
-        <option value="${c.id}">${c.getName()}</option>
-        #{/list}
-    </select>
+<!--    <select name="organization.members.id" multiple>-->
+<!--        #{list cList, as:'c'}-->
+<!--        <option value="${c.id}">${c.getName()}</option>-->
+<!--        #{/list}-->
+<!--    </select>-->
 
     <hr />
     <button type="submit">Envoyer</button>

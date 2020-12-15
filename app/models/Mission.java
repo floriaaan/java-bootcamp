@@ -19,9 +19,9 @@ public class Mission extends Model {
     public String title;
 
     @Required
-    public Date startedDate;
+    public Date start_date;
 
-    public Date enddedDate;
+    public Date end_date;
 
     @Required
     public String address;
@@ -29,14 +29,14 @@ public class Mission extends Model {
     public String informartions;
 
     @Required
-    @OneToMany(mappedBy = "mission", cascade = CascadeType.ALL)
-    public List<SuperHero> superHeroList = new ArrayList<>();
+    @ManyToMany(cascade = CascadeType.ALL)
+    public List<SuperHero> super_heroes_list = new ArrayList<>();
 
     @Required
-    public Integer gravityLevel;
+    public Integer gravity_level;
 
     @Required
-    public Integer emergencyLevel;
+    public Integer emergency_level;
 
 
     public Date created_at;
