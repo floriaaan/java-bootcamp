@@ -237,10 +237,12 @@
     </div>
     <script>
       (function() {
+        #{if user}
         document.getElementsByClassName("dropdown-toggle")[0].addEventListener('click', () => {
           let menu = document.getElementsByClassName("dropdown-menu")[0];
           menu.style.display = (menu.style.display === "none" ? "block" : "none")
         })
+        #{/if}
         document.getElementById("responsive-nav-toggle").addEventListener('click', () => {
           document.getElementById("responsive-nav-content").classList.toggle("hidden");
         })
