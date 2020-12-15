@@ -15,6 +15,15 @@ public class Missions extends SuperController {
 
     /**
      * GET
+     * CRUD : Read all Missions
+     */
+    public static void showAll() {
+        List<Mission> missionList = Mission.findAll();
+        render(missionList);
+    }
+
+    /**
+     * GET
      * CRUD : Read an Mission
      */
     public static void show(Long id) {

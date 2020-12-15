@@ -9,8 +9,9 @@ import java.util.*;
 
 import models.Incident;
 import models.Citizen;
+import middlewares.Rights;
 
-public class Incidents extends SuperController {
+public class Incidents extends Rights {
 
     public static void showAll() {
         List<Incident> incidentsList = Incident.findAll();
