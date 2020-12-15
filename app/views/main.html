@@ -9,6 +9,7 @@
       media="screen"
       href="@{'/public/stylesheets/main.css'}"
     />
+
     #{get 'moreStyles' /}
     <link
       rel="shortcut icon"
@@ -30,7 +31,7 @@
             <div class="flex">
               <!-- Logo -->
               <div class="flex-shrink-0 flex items-center">
-                <a href="http://localhost:8000">
+                <a href="/">
                   <img
                     width="100"
                     src="https://upload.wikimedia.org/wikipedia/commons/0/02/Marvel%27s_Avengers_2019_logo.png"
@@ -103,15 +104,17 @@
                   </div>
                 </div>
               </div>
-
+              #{if user}
               <div
                 class="relative"
                 x-data="{ open: false }"
                 @click.away="open = false"
                 @close.stop="open = false"
               >
-                #{if user}
-                <div @click="open = ! open">
+                
+                <div
+                  class="dropdown-toggle"
+                @click="open = ! open">
                   <button
                     class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out"
                   >
@@ -131,7 +134,7 @@
                   x-transition:leave="transition ease-in duration-75"
                   x-transition:leave-start="transform opacity-100 scale-100"
                   x-transition:leave-end="transform opacity-0 scale-95"
-                  class="absolute z-50 mt-2 w-48 rounded-md shadow-lg origin-top-right right-0"
+                  class="absolute z-50 mt-2 w-48 rounded-md shadow-lg origin-top-right right-0 dropdown-menu"
                   style="display: none"
                   @click="open = false"
                 >
@@ -166,20 +169,27 @@
                     >
                   </div>
                 </div>
-                #{/if} #{else}
+                
+              </div>
+              #{/if} #{else}
                 <a
                   href="@{Authentication.login}"
                   class="inline-flex items-center h-16 px-1 pt-1 border-b-2 cursor-pointer border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out"
                   >Login</a
                 >
+                <a
+                  href="@{Authentication.login}"
+                  class="inline-flex items-center h-16 px-1 pt-1 border-b-2 cursor-pointer border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out"
+                  >Register</a
+                >
                 #{/else}
-              </div>
             </div>
 
             <!-- Hamburger -->
             <div class="-mr-2 flex items-center sm:hidden">
               <button
                 @click="open = ! open"
+                id="responsive-nav-toggle"
                 class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
               >
                 <svg
@@ -212,13 +222,14 @@
 
         <!-- Responsive Navigation Menu -->
         <div
+          id="responsive-nav-content"
           :class="{'block': open, 'hidden': ! open}"
           class="hidden sm:hidden"
         >
           <div class="pt-2 pb-3 space-y-1">
             <a
               class="block pl-3 pr-4 py-2 border-l-4 border-indigo-400 text-base font-medium text-indigo-700 bg-indigo-50 focus:outline-none focus:text-indigo-800 focus:bg-indigo-100 focus:border-indigo-700 transition duration-150 ease-in-out"
-              href="http://localhost:8000"
+              href="/"
             >
               Dashboard
             </a>
@@ -277,13 +288,19 @@
       <!-- Page Heading -->
       <main>#{doLayout /}</main>
     </div>
-    
+    <script>
+      (function() {
+        document.getElementsByClassName("dropdown-toggle")[0].addEventListener('click', () => {
+          let menu = document.getElementsByClassName("dropdown-menu")[0];
+          menu.style.display = (menu.style.display === "none" ? "block" : "none")
+        })
+        document.getElementById("responsive-nav-toggle").addEventListener('click', () => {
+          document.getElementById("responsive-nav-content").classList.toggle("hidden");
+        })
+      })();
 
-    <script
-      src="@{'/public/javascripts/jquery-1.6.4.min.js'}"
-      type="text/javascript"
-      charset="${_response_encoding}"
-    ></script>
+    </script>    
+
     <script src="@{'/public/javascripts/app.js'}"></script>
     #{get 'moreScripts' /}
   </body>

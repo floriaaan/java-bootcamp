@@ -31,11 +31,13 @@ public class SuperController extends Controller {
 
 
     @Before
-    public void middleware_Auth() {
+    public void middleware_auth() {
+    
         if(this.INSTANCE == null) {
-            // System.out.println("unauth");
-            // Redirect to login
+            System.out.println("unauth");
+            //renderTemplate("Authentication/login.html");
         } else {
+            System.out.println(this.INSTANCE.getName());
             renderArgs.put("user", this.INSTANCE);
         }
     }
