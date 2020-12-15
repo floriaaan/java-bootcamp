@@ -2,22 +2,65 @@
 
 #{set title:'Create an organization' /}
 
-<form action="@{Organizations.create}" method="POST">
-    ${flash.error}
-    <input type="text" required placeholder="Name" name="organization.name" />
-    <input type="text" required placeholder="Address" name="organization.address" />
-<!--    TODO: replace by currently logged in user-->
-    <select name="organization.boss.id">
-        #{list cList, as:'c'}
-        <option value="${c.id}">${c.getName()}</option>
-        #{/list}
-    </select>
-<!--    <select name="organization.members.id" multiple>-->
-<!--        #{list cList, as:'c'}-->
-<!--        <option value="${c.id}">${c.getName()}</option>-->
-<!--        #{/list}-->
-<!--    </select>-->
+<div class="p-10">
+    <h3 class="mb-8 text-center font-medium text-gray-500" style="font-size: 3rem;">Create an organization</h3>
+    <form action="@{Organizations.create}" method="POST">
+        <div class="md:flex md:items-center mb-6">
+            <div class="md:w-1/4">
+                <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="name">
+                    Organization name
+                </label>
 
-    <hr />
-    <button type="submit">Envoyer</button>
-</form>
+            </div>
+            <div class="md:w-2/4">
+                <input type="text" required placeholder="Name" name="organization.name" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-enedisB-100">
+            </div>
+
+        </div>
+
+
+        <div class="md:flex md:items-center mb-6">
+            <div class="md:w-1/4">
+                <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="boss">
+                    Boss
+                </label>
+            </div>
+            <div class="md:w-2/4">
+                <input name="organization.boss.id" readonly value="${user?.id}"type="hidden">
+                <input readonly value="${user?.getName()}" class="bg-gray-400 appearance-none border-2 border-gray-400 rounded w-full py-2 px-4 text-gray-800 leading-tight" type="text">
+            </div>
+        </div>
+
+
+        <div class="md:flex md:items-center mb-6">
+            <div class="md:w-1/4">
+                <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="address">
+                    Address
+                </label>
+            </div>
+            <div class="md:w-2/4">
+                <input type="text" required placeholder="Address" name="organization.address" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-enedisB-100">
+            </div>
+        </div>
+
+        <div class="md:flex md:items-center mb-6">
+            <div class="md:w-1/4">
+                <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="comments">
+                    Comments
+                </label>
+            </div>
+            <div class="md:w-2/4">
+                <textarea name="organization.comments" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-enedisB-100" id="comments" rows="5"></textarea>
+            </div>
+        </div>
+
+        <div class="md:flex md:items-center">
+            <div class="md:w-2/4"></div>
+            <div class="md:w-2/4">
+                <button class="shadow bg-enedisB-100 hover:bg-enedisB-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
+                    Declare
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
