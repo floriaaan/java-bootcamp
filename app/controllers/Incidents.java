@@ -19,8 +19,8 @@ public class Incidents extends Rights {
     }
 
     /**
-     GET
-     CRUD : Read an incident
+     * GET
+     * CRUD : Read an incident
      */
     public static void show(Long id) {
         Incident incident = Incident.findById(id);
@@ -28,20 +28,21 @@ public class Incidents extends Rights {
     }
 
     /**
-     GET
-     CRUD : Create an incident
+     * GET
+     * CRUD : Create an incident
      */
     public static void form() {
         List<Citizen> cList = Citizen.findAll();
-        render(cList);
+        Incident lastIncident = Incident.find("order by id desc").first();
+        render(cList, lastIncident);
     }
 
     /**
-     POST
-     CRUD : Create an incident
+     * POST
+     * CRUD : Create an incident
      */
     public static void create(@Required @Valid Incident incident) {
-        if(Validation.hasErrors()) {
+        if (Validation.hasErrors()) {
             flash.error("Erreur de validation.");
             params.flash();
             Validation.keep();
