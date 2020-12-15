@@ -24,7 +24,7 @@
             </div>
             <div class="md:w-2/4">
                 <input type="text" required placeholder="Title" name="incident.title"
-                       value="Incident ${lastIncident.id + 1}"
+                       value="Incident #${lastIncident.id + 1}"
                        class="bg-gray-200 appearance-none border-2 border-gray-200 rounded
                    w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none
                    focus:bg-white focus:border-enedisB-100">
@@ -60,6 +60,8 @@
                        type="text">
             </div>
         </div>
+
+        <input name="incident.state" readonly value="todo" hidden>
 
         <div class="md:flex md:items-center">
             <div class="md:w-1/4"></div>
