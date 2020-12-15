@@ -20,7 +20,7 @@ public class Rights extends SuperController {
         if (citizen == null) {
             Application.index();
         }
-        if (!citizen.is_authority || !citizen.is_superuser) {
+        if (!citizen.is_authority) {
             Application.index();
         }
     }
