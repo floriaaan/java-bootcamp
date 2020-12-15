@@ -23,11 +23,20 @@
 
             </div>
             <div class="md:w-2/4">
+                #{if incidentNb != 0}
                 <input type="text" required placeholder="Title" name="incident.title"
-                       value="Incident #${lastIncident.id + 1}"
+                       value="Incident #${incidentsNb + 1}"
                        class="bg-gray-200 appearance-none border-2 border-gray-200 rounded
                    w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none
                    focus:bg-white focus:border-enedisB-100">
+                #{/if}
+                #{else}
+                <input type="text" required placeholder="Title" name="incident.title"
+                       value="Incident #1"
+                       class="bg-gray-200 appearance-none border-2 border-gray-200 rounded
+                   w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none
+                   focus:bg-white focus:border-enedisB-100">
+                #{/else}
             </div>
 
         </div>
@@ -40,10 +49,22 @@
 
             </div>
             <div class="md:w-2/4">
-                <input type="text" required placeholder="Adress" name="incident.address"
+                <input type="text" required placeholder="Address" name="incident.address"
                        class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-enedisB-100">
             </div>
 
+        </div>
+
+
+        <div class="md:flex md:items-center mb-6">
+            <div class="md:w-1/4">
+                <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="comments">
+                    Comments*
+                </label>
+            </div>
+            <div class="md:w-2/4">
+                <textarea name="incident.comments" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-enedisB-100" id="comments" rows="5"></textarea>
+            </div>
         </div>
 
 

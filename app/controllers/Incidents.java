@@ -41,8 +41,8 @@ public class Incidents extends Rights {
      */
     public static void form() {
         List<Citizen> cList = Citizen.findAll();
-        Incident lastIncident = Incident.find("order by id desc").first();
-        render(cList, lastIncident);
+        Long incidentsNb = Incident.count();
+        render(cList, incidentsNb);
     }
 
     /**
