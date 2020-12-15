@@ -31,7 +31,7 @@ public class Mission extends Model {
     @Required
     public String address;
 
-    public String informartions;
+    public String informations;
 
     @Required
     @ManyToMany(cascade = CascadeType.ALL)
@@ -45,6 +45,11 @@ public class Mission extends Model {
 
     public Date created_at;
     public Date updated_at;
+
+    public String getName(){
+        return this.title;
+    }
+
 
     @PrePersist
     public void created_at() {

@@ -36,6 +36,13 @@ POST        /incident/create           Incidents.create
 GET         /incident/showAll          Incidents.showAll
 POST         /incident/setAside         Incidents.setAside
 
+# Satisfaction pages
+
+GET         /satisfaction/show/{id}        Satisfactions.show
+GET         /satisfaction/create           Satisfactions.form
+POST        /satisfaction/create           Satisfactions.create
+GET         /satisfaction/showAll          Satisfactions.showAll
+
 # Mission pages
 
 GET         /mission/show/{id}        Missions.show

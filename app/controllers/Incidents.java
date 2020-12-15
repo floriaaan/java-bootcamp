@@ -31,6 +31,7 @@ public class Incidents extends Rights {
      */
     public static void show(Long id) {
         Incident incident = Incident.findById(id);
+        // TODO : render mission as mission
         render(incident);
     }
 
