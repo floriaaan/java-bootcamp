@@ -15,7 +15,7 @@
 <form action="@{SuperVillains.create}" method="POST">
     <input type="text" required placeholder="Name" name="supervillain.name"/>
 
-    <select required name="supervillain.identity.id">
+    <select name="supervillain.identity.id">
         #{list cList, as:'c'}
         <option value="${c.id}">${c.getName()}</option>
         #{/list}

@@ -18,34 +18,33 @@
     ${flash.error}
     <input type="text" required placeholder="Title" name="mission.title"/>
     <input type="text" required placeholder="Type" name="mission.type"/>
-    <input type="date" required name="mission.startedDate"/>
-    <input type="date" name="mission.enddedDate"/>
-    <select required multiple name="mission.incidentList.id">
+    <input type="date" required name="mission.start_date"/>
+    <input type="date" name="mission.end_date"/>
+    <select required multiple name="mission.incident_list.id">
         #{list iList, as:'incident'}
         <option value="${incident.id}">${incident.title}</option>
         #{/list}
     </select>
     <input type="text" required placeholder="Address" name="mission.address"/>
     <textarea required placeholder="Informations complémentaire" name="mission.informartions"></textarea>
-    <select required multiple name="mission.superHeroList.id">
+    <select required multiple name="mission.super_heroes_list.id">
         #{list sList, as:'superHero'}
         <option value="${superHero.id}">${superHero.name}</option>
         #{/list}
     </select>
 
-    <select required name="mission.gravityLevel">
+    <select required name="mission.gravity_level">
         <option value="bas">bas</option>
         <option value="moyen">moyen</option>
         <option value="élevé">élevé</option>
         <option value="urgent">urgent</option>
     </select>
 
-    <select required name="mission.emergencyLevel">
+    <select required name="mission.emergency_level">
         <option value="moins urgent">moins urgent</option>
         <option value="urgent">urgent</option>
         <option value="très urgent">très urgent</option>
     </select>
-    <input type="date" required name="mission.created_at"/>
     <hr/>
     <button type="submit">Envoyer</button>
 </form>
