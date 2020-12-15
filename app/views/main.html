@@ -1,170 +1,130 @@
 <!DOCTYPE html>
 
 <html>
-  <head>
-    <title>#{get 'title' /}</title>
-    <meta charset="${_response_encoding}" />
-    <link
-      rel="stylesheet"
-      media="screen"
-      href="@{'/public/stylesheets/main.css'}"
-    />
 
-    #{get 'moreStyles' /}
-    <link
-      rel="shortcut icon"
-      type="image/png"
-      href="@{'/public/images/favicon.png'}"
-    />
-  </head>
+<head>
+  <title>#{get 'title' /}</title>
+  <meta charset="${_response_encoding}" />
+  <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.css" />
 
-  <body class="font-sans antialiased">
-    <div class="min-h-screen bg-gray-100">
-      <nav
-        wire:id="rBVNoPVND0zODHdUsaNC"
-        x-data="{ open: false }"
-        class="bg-white border-b border-gray-100"
-      >
-        <!-- Primary Navigation Menu -->
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="flex justify-between h-16">
-            <div class="flex">
-              <!-- Logo -->
-              <div class="flex-shrink-0 flex items-center">
-                <a href="/">
-                  <img
-                    width="100"
-                    src="https://upload.wikimedia.org/wikipedia/commons/0/02/Marvel%27s_Avengers_2019_logo.png"
-                    alt="AVENGERS"
-                  />
-                </a>
-              </div>
 
-              <!-- Navigation Links -->
-              <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                <a
-                  class="inline-flex items-center px-1 pt-1 border-b-2 border-enedisB-100 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-enedisB-100 transition duration-150 ease-in-out"
-                  href="@{Application.index}"
-                >
-                  Dashboard
-                </a>
+  #{get 'moreStyles' /}
+  <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}" />
 
-                #{if user}
-                #{if user.is_authority}
-                <a
-                  class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out"
-                  href="@{Incidents.showAll}"
-                >
-                  Incidents
-                </a>
+</head>
 
-                <a
-                  class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out"
-                  href="@{Missions.showAll}"
-                >
-                  Missions
-                </a>
-                #{/if}
-
-                <a
-                  class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out"
-                  href="@{Incidents.create}"
-                >
-                  Report an incident
-                </a>
-                #{/if}
-              </div>
+<body class="font-sans antialiased">
+  <div class="min-h-screen bg-gray-100">
+    <nav class="bg-white border-b border-gray-100">
+      <!-- Primary Navigation Menu -->
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+          <div class="flex">
+            <!-- Logo -->
+            <div class="flex-shrink-0 flex items-center">
+              <a href="/">
+                <img width="100"
+                  src="https://upload.wikimedia.org/wikipedia/commons/0/02/Marvel%27s_Avengers_2019_logo.png"
+                  alt="AVENGERS" />
+              </a>
             </div>
 
-            <!-- Settings Dropdown -->
-            <div class="hidden sm:flex sm:items-center sm:ml-6">
+            <!-- Navigation Links -->
+            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+              <a class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out"
+                href="@{Application.index}">
+                Dashboard
+              </a>
 
               #{if user}
-              <div
-                class="relative"
-                x-data="{ open: false }"
-                @click.away="open = false"
-                @close.stop="open = false"
-              >
+              #{if user.is_authority}
+              <a class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out"
+                href="@{Incidents.showAll}">
+                Incidents
+              </a>
 
-                <div
-                  class="dropdown-toggle"
-                @click="open = ! open">
-                  <button
-                    class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out"
-                  >
-                    <img
-                      class="h-8 w-8 rounded-full object-cover"
-                      src="https://ui-avatars.com/api/?name=${user?.getName()}&amp;color=7F9CF5&amp;background=EBF4FF"
-                      alt="${user?.getName()}"
-                    />
-                  </button>
-                </div>
+              <a class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out"
+                href="@{Missions.showAll}">
+                Missions
+              </a>
+              #{/if}
 
-                <div
-                  x-show="open"
-                  x-transition:enter="transition ease-out duration-200"
-                  x-transition:enter-start="transform opacity-0 scale-95"
-                  x-transition:enter-end="transform opacity-100 scale-100"
-                  x-transition:leave="transition ease-in duration-75"
-                  x-transition:leave-start="transform opacity-100 scale-100"
-                  x-transition:leave-end="transform opacity-0 scale-95"
-                  class="absolute z-50 mt-2 w-48 rounded-md shadow-lg origin-top-right right-0 dropdown-menu"
-                  style="display: none"
-                  @click="open = false"
-                >
-                  <div class="rounded-md shadow-xs py-1 bg-white">
-                    <!-- Account Management -->
-                    <div class="block px-4 py-2 text-xs text-gray-400">
-                      ${user?.getName()}
-                    </div>
-
-                    <a
-                      class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
-                      href="/citizen/show/${user?.id}"
-                      >Profile</a
-                    >
-
-                    <a
-                      class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
-                      href="@{SuperHeroes.create}"
-                      >Declare as superhero</a
-                    >
-
-                    #{if user.is_superuser}
-                    <a
-                      class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
-                      href="#"
-                      >Super-user
-                    </a>
-                    #{/if}
-
-                    <div class="border-t border-gray-100"></div>
-
-                    <!-- Team Management -->
-
-                    <!-- Authentication -->
-
-                    <a
-                      class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
-                      href="@{Authentication.logout}"
-                      >Logout</a
-                    >
-              </div>
-
+              <a class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out"
+                href="@{Incidents.create}">
+                Report an incident
+              </a>
+              #{/if}
             </div>
-            #{/if} #{else}
-            <div class="space-x-8">
-              <a href="@{Authentication.login}"
-                class="inline-flex items-center h-16 px-1 pt-1 border-b-2 cursor-pointer border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">Login</a>
-              <a href="@{Authentication.register}"
-                class="inline-flex items-center h-16 px-1 pt-1 border-b-2 cursor-pointer border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">Register</a>
-            </div>
-
-            #{/else}
           </div>
 
-          <!-- Hamburger -->
+          <!-- Settings Dropdown -->
+          <div class="hidden sm:flex sm:items-center sm:ml-6">
+
+            #{if user}
+            <div class="relative" x-data="{ open: false }" @click.away="open = false" @close.stop="open = false">
+
+              <div class="dropdown-toggle" @click="open = ! open">
+                <button
+                  class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out">
+                  <img class="h-8 w-8 rounded-full object-cover"
+                    src="https://ui-avatars.com/api/?name=${user?.getName()}&amp;color=7F9CF5&amp;background=EBF4FF"
+                    alt="${user?.getName()}" />
+                </button>
+              </div>
+
+              <div x-show="open" x-transition:enter="transition ease-out duration-200"
+                x-transition:enter-start="transform opacity-0 scale-95"
+                x-transition:enter-end="transform opacity-100 scale-100"
+                x-transition:leave="transition ease-in duration-75"
+                x-transition:leave-start="transform opacity-100 scale-100"
+                x-transition:leave-end="transform opacity-0 scale-95"
+                class="absolute z-50 mt-2 w-48 rounded-md shadow-lg origin-top-right right-0 dropdown-menu"
+                style="display: none" @click="open = false">
+                <div class="rounded-md shadow-xs py-1 bg-white">
+                  <!-- Account Management -->
+                  <div class="block px-4 py-2 text-xs text-gray-400">
+                    ${user?.getName()}
+                  </div>
+
+                  <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
+                    href="/citizen/show/${user?.id}">Profile</a>
+
+                  <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
+                    href="@{SuperHeroes.create}">Declare as superhero</a>
+
+                  #{if user.is_superuser}
+                  <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
+                    href="#">Super-user
+                  </a>
+                  #{/if}
+
+                  <div class="border-t border-gray-100"></div>
+
+                  <!-- Team Management -->
+
+                  <!-- Authentication -->
+
+                  <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
+                    href="@{Authentication.logout}">Logout</a>
+                </div>
+
+              </div>
+              #{/if}
+              #{else}
+              <div class="space-x-8">
+                <a href="@{Authentication.login}"
+                  class="inline-flex items-center h-16 px-1 pt-1 border-b-2 cursor-pointer border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">Login</a>
+                <a href="@{Authentication.register}"
+                  class="inline-flex items-center h-16 px-1 pt-1 border-b-2 cursor-pointer border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">Register</a>
+              </div>
+
+              #{/else}
+            </div>
+
+            <!-- Hamburger -->
+
+          </div>
           <div class="-mr-2 flex items-center sm:hidden">
             <button @click="open = ! open" id="responsive-nav-toggle"
               class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
@@ -176,81 +136,98 @@
               </svg>
             </button>
           </div>
+
         </div>
-      </div>
 
         <!-- Responsive Navigation Menu -->
-        <div
-          id="responsive-nav-content"
-          :class="{'block': open, 'hidden': ! open}"
-          class="hidden sm:hidden"
-        >
+        <div id="responsive-nav-content" class="hidden sm:hidden">
           #{if user}
-          <!-- Responsive Settings Options -->
-          <div class="pt-4 pb-1 border-t border-gray-200">
-            <div class="flex items-center px-4">
+          <div class="flex flex-col">
+            <div class="flex flex-row">
               <div class="flex-shrink-0">
-                <img
-                  class="h-10 w-10 rounded-full"
+                <img class="h-10 w-10 rounded-full"
                   src="https://ui-avatars.com/api/?name=${user?.getName()}&amp;color=7F9CF5&amp;background=EBF4FF"
-                  alt="${user?.getName()}"
-                />
-            <div class="ml-3">
-              <div class="font-medium text-base text-gray-800">
-                ${user?.getName()}
+                  alt="${user?.getName()}" />
               </div>
-              <div class="font-medium text-sm text-gray-500">
-                ${user?.mail}
+              <div class="ml-3">
+                <div class="font-medium text-base text-gray-800">
+                  ${user?.getName()}
+                </div>
+                <div class="font-medium text-sm text-gray-500">
+                  ${user?.mail}
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="mt-3 space-y-1">
-            <!-- Account Management -->
-            <a class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition duration-150 ease-in-out"
-              href="#">
-              Citizen profile
-            </a>
+
+
+            <div class="mt-3 space-y-1">
+              <!-- Account Management -->
+              <a class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition duration-150 ease-in-out"
+                href="/citizen/show/${user?.id}">
+                Citizen profile
+              </a>
+              <a class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition duration-150 ease-in-out"
+                href="@{SuperHeroes.create}">
+                Declare as superhero
+              </a>
 
               #{if user.is_superuser}
-              <a
-                class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition duration-150 ease-in-out"
-                href="#"
-              >
+              <a class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition duration-150 ease-in-out"
+                href="#">
                 Super-user
               </a>
               #{/if}
 
-            <!-- Authentication -->
+              <!-- Authentication -->
 
-            <a class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition duration-150 ease-in-out"
-              href="@{Authentication.logout}">
-              Logout
-            </a>
+              <a class="block mb-2 pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition duration-150 ease-in-out"
+                href="@{Authentication.logout}">
+                Logout
+              </a>
+            </div>
           </div>
-          #{/if}
-        </div>
-      </nav>
 
-      <!-- Page Heading -->
-      <main>#{doLayout /}</main>
-    </div>
-    <script>
-      (function() {
-        #{if user}
-        document.getElementsByClassName("dropdown-toggle")[0].addEventListener('click', () => {
-          let menu = document.getElementsByClassName("dropdown-menu")[0];
-          menu.style.display = (menu.style.display === "none" ? "block" : "none")
-        })
+          #{/if}
+
+          #{else}
+          <div class="flex flex-column">
+            <div class="mt-3 space-y-1">
+              <a class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition duration-150 ease-in-out"
+                href="@{Authentication.login}">
+                Login
+              </a>
+              <a class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition duration-150 ease-in-out"
+                href="@{Authentication.register}">
+                Register
+              </a>
+            </div>
+          </div>
+
+          #{/else}
+        </div>
+    </nav>
+
+    <!-- Page Heading -->
+    <main>#{doLayout /}</main>
+  </div>
+  <script>
+    (function () {
+        #{ if user }
+      document.getElementsByClassName("dropdown-toggle")[0].addEventListener('click', () => {
+        let menu = document.getElementsByClassName("dropdown-menu")[0];
+        menu.style.display = (menu.style.display === "none" ? "block" : "none")
+      })
         #{/if}
         document.getElementById("responsive-nav-toggle").addEventListener('click', () => {
           document.getElementById("responsive-nav-content").classList.toggle("hidden");
         })
-      })();
+      }) ();
 
-    </script>
+  </script>
 
-    <script src="@{'/public/javascripts/app.js'}"></script>
-    #{get 'moreScripts' /}
-  </body>
+  <script src="@{'/public/javascripts/app.js'}"></script>
+  #{get 'moreScripts' /}
+</body>
+
 </html>
