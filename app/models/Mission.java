@@ -11,7 +11,7 @@ import java.util.*;
 
 import io.ebean.*;
 
-@Entity(name = "missions")
+@Entity(name="missions")
 public class Mission extends Model {
 
     @Required
@@ -21,13 +21,12 @@ public class Mission extends Model {
     public String title;
 
     @Required
+    public Date start_date;
+
     @OneToMany(mappedBy = "mission", cascade = CascadeType.ALL)
-    public List<Incident> incidentList = new ArrayList<>();
+    public List<Incident> incident_list = new ArrayList<>();
 
-    @Required
-    public Date startedDate;
-
-    public Date enddedDate;
+    public Date end_date;
 
     @Required
     public String address;
@@ -35,15 +34,14 @@ public class Mission extends Model {
     public String informartions;
 
     @Required
-    @OneToMany(mappedBy = "mission", cascade = CascadeType.ALL)
-    public List<SuperHero> superHeroList = new ArrayList<>();
+    @ManyToMany(cascade = CascadeType.ALL)
+    public List<SuperHero> super_heroes_list = new ArrayList<>();
 
     @Required
-    public String gravityLevel;
+    public Integer gravity_level;
 
     @Required
-    public String emergencyLevel;
-
+    public Integer emergency_level;
 
     public Date created_at;
     public Date updated_at;

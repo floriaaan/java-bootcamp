@@ -6,6 +6,7 @@
     ${flash.error}
     <input type="text" required placeholder="Title" name="incident.title"/>
     <input type="text" required placeholder="Address" name="incident.address"/>
+    <!--    TODO: replace by currently logged in user-->
     <select required name="incident.citizen.id">
         #{list cList, as:'c'}
         <option value="${c.id}">${c.getName()}</option>

@@ -34,7 +34,7 @@ public class SuperVillain extends Model {
     public Date updated_at;
 
     @Required
-    public Integer maliciousScore;
+    public Integer malicious_score;
 
 
     @PrePersist
