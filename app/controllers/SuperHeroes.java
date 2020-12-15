@@ -9,8 +9,17 @@ import java.util.*;
 
 import models.SuperHero;
 import models.Citizen;
+import middlewares.Rights;
 
-public class SuperHeroes extends SuperController {
+public class SuperHeroes extends Rights {
+
+    /**
+     * GET CRUD : Read all superheroes
+     */
+    public static void showAll() {
+        List<SuperHero> superHeroesList = SuperHero.findAll();
+        render(superHeroesList);
+    }
 
     /**
      * GET CRUD : Read a superhero

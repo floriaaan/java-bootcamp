@@ -1,0 +1,49 @@
+#{extends 'main.html' /}
+#{set title:'Citizen list' /}
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Civility</th>
+        <th>Address</th>
+        <th>Mail</th>
+        <th>Phone</th>
+        <th>Birthdate</th>
+        <th>Deathdate</th>
+        <th>Nationality</th>
+        <th>Organization</th>
+        <th>Comments</th>
+        <th>Creation date</th>
+        <th>Last update</th>
+        <th>Reported incidents</th>
+        <th>Victim</th>
+        <th>Has Superuser rights</th>
+        <th>Has Authority rights</th>
+    </tr>
+    </thead>
+    <tbody>
+    #{list citizenList, as:'citizen'}
+    <tr>
+        <td>${citizen.fname}</td>
+        <td>${citizen.lname}</td>
+        <td>${citizen.sex}</td>
+        <td>${citizen.address}</td>
+        <td>${citizen.mail}</td>
+        <td>${citizen.phone}</td>
+        <td>${citizen.birthdate}</td>
+        <td>${citizen.deathdate}</td>
+        <td>${citizen.nationality}</td>
+        <td>${citizen.organization}</td>
+        <td>${citizen.comments}</td>
+        <td>${citizen.created_at}</td>
+        <td>${citizen.updated_at}</td>
+        <td>${citizen.reported_incidents}</td>
+        <td>${citizen.victim}</td>
+        <td>${citizen.is_superuser}</td>
+        <td>${citizen.is_authority}</td>
+    </tr>
+    #{/list}
+    </tbody>
+</table>
