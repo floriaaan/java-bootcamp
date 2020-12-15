@@ -18,12 +18,20 @@ public class Incidents extends Rights {
         render(incidentsList);
     }
 
+    public static void setAside(Long id) {
+        Incident incident = Incident.findById(id);
+        incident.state = "aside";
+        incident.save();
+        showAll();
+    }
+
     /**
      * GET
      * CRUD : Read an incident
      */
     public static void show(Long id) {
         Incident incident = Incident.findById(id);
+        // TODO : render mission as mission
         render(incident);
     }
 

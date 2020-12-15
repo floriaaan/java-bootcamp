@@ -1,3 +1,87 @@
 #{extends 'main.html' /}
 
-<h1>#${incident.id} - ${incident.title}</h1>
+<div class="py-12">
+    <div class="max-w-7xl mx-auto xs:px-3 sm:px-6 md:px-6 lg:px-8">
+        <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+            <div class="sm:px-20 xs:px-8 bg-white border-b border-gray-200">
+                <div class="flex flex-column mt-8 mb-3">
+                    <div class="md:flex md:items-center mb-6">
+
+                        <div class="">
+                            <h4 class="font-semibold" style="font-size: 3rem;">${incident.title}</h4>
+                            <div class="text-xs ml-5 flex flex-row">
+                                created on <span
+                                    class="font-semibold text-enedisB-100 ml-1">${incident.created_at}</span>,
+                                #{if incident.created_at != incident.updated_at}
+                                updated last on <span
+                                    class="font-semibold text-enedisB-100 ml-1">${incident.updated_at}, </span>
+                                #{/if}
+                                by <span
+                                    class="font-semibold text-enedisB-100 ml-1">${incident.citizen.getName()}</span>
+                            </div>
+                            <div class="text-xs ml-5 flex flex-row">
+                                located at <span class="font-semibold text-enedisB-100 ml-1">${incident.address}</span>
+                            </div>
+                            <p class="lead ml-4 mt-2">${incident.comments}</p>
+
+                            <div class="flex flex-row mt-6 space-x-4">
+
+                                #{if user.id == incident.citizen.id || user.is_superuser}
+                                <a href="/incident/edit/${incident.id}"
+                                    class="bg-gray-500 hover:text-white border-gray-600 hover:bg-gray-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+                                    type="submit">
+                                    <i class="fas fa-pencil-alt"></i>
+                                    Edit
+                                </a>
+                                #{/if}
+                                #{if user.is_authority || user.is_superuser}
+                                <a href="#"
+                                    class="bg-enedisG-100 border-enedisG-100 hover:bg-enedisG-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+                                    type="submit">
+                                    <i class="fas fa-add"></i>
+                                    Launch a mission
+                                </a>
+                                <a href="#"
+                                    class=" bg-red-500 border-red-600 hover:bg-red-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+                                    type="submit">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                    Close
+                                </a>
+                                #{/if}
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- here                 -->
+                #{if incident.mission}
+                <div class="p-12 border-b">
+                    <div class="flex content-center items-center">
+                        <a href="/mission/show/${incident.mission.id}" target="_blank">
+                            ded
+                        </a>
+
+                    </div>
+                </div>
+
+                #{/if}
+                #{else}
+                <div class="p-12 border-b">
+                    <div class="flex content-center items-center">
+                        <p>Still no mission launched. 😶</p>
+
+                    </div>
+                </div>
+                #{/else}
+
+            </div>
+
+
+        </div>
+    </div>
+</div>

@@ -13,7 +13,6 @@ POST        /auth/login                Authentication.connect
 GET         /auth/register             Authentication.register
 GET         /auth/logout               Authentication.logout
 
-
 # Citizens pages
 
 GET         /citizen/show/{id}         Citizens.show
@@ -35,6 +34,7 @@ GET         /incident/show/{id}        Incidents.show
 GET         /incident/create           Incidents.form
 POST        /incident/create           Incidents.create
 GET         /incident/showAll          Incidents.showAll
+POST         /incident/setAside         Incidents.setAside
 
 # Satisfaction pages
 
