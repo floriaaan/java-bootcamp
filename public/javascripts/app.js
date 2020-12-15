@@ -40912,11 +40912,7 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-__webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
-
-console.log(moment.now());
 
 /***/ }),
 
