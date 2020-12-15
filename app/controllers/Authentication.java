@@ -16,8 +16,7 @@ public class Authentication extends SuperController {
 
 
     public static void login() {
-        Citizen c = getAuth();
-        render(c);
+        render();
     }
 
     public void connect(@Required String mail, @Required String password) {
