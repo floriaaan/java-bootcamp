@@ -61,6 +61,30 @@ public class Incidents extends Rights {
         show(incident.id);
     }
 
+    /**
+     GET
+     CRUD : Edit an incident
+     */
+    public static void editForm(Long id) {
+        Incident incident = Incident.findById(id);
+        render(incident);
+    }
+
+    /**
+     POST
+     CRUD : Edit an incident
+     */
+    public static void edit(@Required @Valid Incident incident) {
+        if(Validation.hasErrors()) {
+            params.flash();
+            Validation.keep();
+            form();
+        }
+
+        incident.save();
+        show(incident.id);
+    }
+
     public static void delete(Long id) {
         Incident incident = Incident.findById(id);
         incident.delete();
