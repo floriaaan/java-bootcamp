@@ -1,49 +1,47 @@
 #{extends 'main.html' /}
 #{set title:'Citizen list' /}
 
-<table border="1">
-    <thead>
-    <tr>
-        <th>First name</th>
-        <th>Last name</th>
-        <th>Civility</th>
-        <th>Address</th>
-        <th>Mail</th>
-        <th>Phone</th>
-        <th>Birthdate</th>
-        <th>Deathdate</th>
-        <th>Nationality</th>
-        <th>Organization</th>
-        <th>Comments</th>
-        <th>Creation date</th>
-        <th>Last update</th>
-        <th>Reported incidents</th>
-        <th>Victim</th>
-        <th>Has Superuser rights</th>
-        <th>Has Authority rights</th>
-    </tr>
-    </thead>
-    <tbody>
+<div class="p-12">
+
+
     #{list citizenList, as:'citizen'}
-    <tr>
-        <td>${citizen.fname}</td>
-        <td>${citizen.lname}</td>
-        <td>${citizen.sex}</td>
-        <td>${citizen.address}</td>
-        <td>${citizen.mail}</td>
-        <td>${citizen.phone}</td>
-        <td>${citizen.birthdate}</td>
-        <td>${citizen.deathdate}</td>
-        <td>${citizen.nationality}</td>
-        <td>${citizen.organization}</td>
-        <td>${citizen.comments}</td>
-        <td>${citizen.created_at}</td>
-        <td>${citizen.updated_at}</td>
-        <td>${citizen.reported_incidents}</td>
-        <td>${citizen.victim}</td>
-        <td>${citizen.is_superuser}</td>
-        <td>${citizen.is_authority}</td>
-    </tr>
+    <a href="/citizen/show/${citizen.id}">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                <div class="p-4 sm:px-20 bg-white border-b border-gray-200">
+                    <div class="flex flex-row my-4 text-2xl">
+
+                        <img class="h-20 w-20 rounded-full object-cover"
+                            src="https://ui-avatars.com/api/?name=${citizen?.getName()}&amp;color=7F9CF5&amp;background=EBF4FF"
+                            alt="${citizen?.getName()}" />
+
+                        <div class="flex flex-col ml-5">
+                            <div class="font-medium text-base text-gray-800" style="font-size: 1.2rem;">
+                                ${citizen?.getName()}
+                            </div>
+                            <div class="font-medium text-sm text-gray-500" style="font-size: 0.8rem; margin-left: 5px;">
+                                ${citizen?.mail}
+                            </div>
+
+                            #{if citizen.getOrg()}
+                            <div class="font-medium text-sm text-gray-500" style="font-size: 0.8rem; margin-left: 5px;">
+                                Boss of <span class="text-enedisB-100">${citizen.getOrg().name}</span> organisation
+                            </div>
+                            #{/if}
+
+                            <div class="font-medium text-sm text-gray-500" style="margin-left: 5px;">
+                                inscribed the <span class="text-enedisB-100 font-semibold">${citizen?.created_at}</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </a>
     #{/list}
-    </tbody>
-</table>
+
+</div>
