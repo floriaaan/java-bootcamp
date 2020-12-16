@@ -12,11 +12,15 @@ import models.Citizen;
 
 import lib.BCrypt;
 
+/**
+ * Organisations Controller
+ */
 public class Organizations extends SuperController {
 
     /**
-     GET
-     CRUD : Read an organization
+     * GET
+     * CRUD : Read an organization
+     * @param {Long} id
      */
     public static void show(Long id) {
         Organization organization = Organization.findById(id);
@@ -24,8 +28,8 @@ public class Organizations extends SuperController {
     }
 
     /**
-     GET
-     CRUD : Create an organization
+     * GET
+     * CRUD : Create an organization
      */
     public static void form() {
         List<Citizen> cList = Citizen.findAll();
@@ -33,11 +37,12 @@ public class Organizations extends SuperController {
     }
 
     /**
-     POST
-     CRUD : Create an organization
+     * POST
+     * CRUD : Create an organization
+     * @param {Organization} organization
      */
     public static void create(@Required @Valid Organization organization) {
-        if(Validation.hasErrors()) {
+        if (Validation.hasErrors()) {
             flash.error("Erreur de validation.");
             params.flash();
             Validation.keep();
@@ -51,6 +56,7 @@ public class Organizations extends SuperController {
     /**
      * GET
      * CRUD : Edit an organization
+     * @param {Long} id
      */
     public static void editForm(Long id) {
         Organization organization = Organization.findById(id);
@@ -60,6 +66,8 @@ public class Organizations extends SuperController {
     /**
      * POST
      * CRUD : Edit an organization
+     * @param {Organization} organization
+     * @param {String} pwd
      */
     public static void edit(Organization organization, String pwd) {
         if (BCrypt.checkpw(pwd, organization.boss.password)) {

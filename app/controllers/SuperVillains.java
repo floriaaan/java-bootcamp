@@ -10,9 +10,12 @@ import java.util.*;
 import models.SuperVillain;
 import models.Citizen;
 
+/**
+ * Super Villains Controller
+ */
 public class SuperVillains extends SuperController {
 
-/**
+    /**
      * GET CRUD : Read all villains
      */
     public static void showAll() {
@@ -23,6 +26,7 @@ public class SuperVillains extends SuperController {
     /**
      * GET
      * CRUD : Read a super villains
+     * @param {Long} id
      */
     public static void show(Long id) {
         SuperVillain s = SuperVillain.findById(id);
@@ -43,6 +47,7 @@ public class SuperVillains extends SuperController {
     /**
      * POST
      * CRUD : Create a super villains
+     * @param {SuperVillain} supervillain
      */
     public static void create(@Required @Valid SuperVillain supervillain) {
         if (Validation.hasErrors()) {

@@ -12,6 +12,9 @@ import models.Mission;
 import models.SuperHero;
 import models.Citizen;
 
+/**
+ * Satisfactions Controller
+ */
 public class Satisfactions extends SuperController {
 
     public static void showAll() {
@@ -20,8 +23,9 @@ public class Satisfactions extends SuperController {
     }
 
     /**
-     GET
-     CRUD : Read an incident
+     * GET
+     * CRUD : Read an incident
+     * @param {Long} id
      */
     public static void show(Long id) {
         Satisfaction satisfaction = Satisfaction.findById(id);
@@ -29,8 +33,9 @@ public class Satisfactions extends SuperController {
     }
 
     /**
-     GET
-     CRUD : Create an satifaction form
+     * GET
+     * CRUD : Create an satifaction form
+     * @param {Long} id
      */
     public static void form(Long id) {
         Mission mission = Mission.findById(id);
@@ -38,11 +43,12 @@ public class Satisfactions extends SuperController {
     }
 
     /**
-     POST
-     CRUD : Create an incident
+     * POST
+     * CRUD : Create an incident
+     * @param {Satisfaction} satisfaction
      */
     public static void create(@Required @Valid Satisfaction satisfaction) {
-        if(Validation.hasErrors()) {
+        if (Validation.hasErrors()) {
             flash.error("Erreur de validation.");
             params.flash();
             Validation.keep();

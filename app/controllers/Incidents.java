@@ -13,8 +13,14 @@ import play.mvc.Http;
 import models.*;
 import middlewares.Rights;
 
+/**
+ * Incidents Controller
+ */
 public class Incidents extends Rights {
-
+    /**
+     * GET
+     * CRUD : Read all incidents
+     */
     public static void showAll() {
         List<Incident> incidentsList = Incident.findAll();
         render(incidentsList);
@@ -30,6 +36,7 @@ public class Incidents extends Rights {
     /**
      * GET
      * CRUD : Read an incident
+     * @param {Long} id
      */
     public static void show(Long id) {
         Incident incident = Incident.findById(id);
@@ -49,7 +56,6 @@ public class Incidents extends Rights {
         if (auth != null) {
             organization = auth.getOrg();
         }
-            
 
         render(incidentsNb, organization);
     }
@@ -57,6 +63,8 @@ public class Incidents extends Rights {
     /**
      * POST
      * CRUD : Create an incident
+     * @param {Incident} incident
+     * @param {String}   reporter_type
      */
     public static void create(@Required @Valid Incident incident, @Required String reporter_type) {
         System.out.println(reporter_type);
@@ -80,6 +88,7 @@ public class Incidents extends Rights {
     /**
      * GET
      * CRUD : Edit an incident
+     * @param {Long} id
      */
     public static void editForm(Long id) {
         Incident incident = Incident.findById(id);
@@ -89,6 +98,7 @@ public class Incidents extends Rights {
     /**
      * POST
      * CRUD : Edit an incident
+     * @param {Incident} incident
      */
     public static void edit(@Required @Valid Incident incident) {
         if (Validation.hasErrors()) {
@@ -101,6 +111,11 @@ public class Incidents extends Rights {
         show(incident.id);
     }
 
+    /**
+     * GET
+     * CRUD : Delete an incident
+     * @param {Long} id
+     */
     public static void delete(Long id) {
         Incident incident = Incident.findById(id);
         incident.delete();

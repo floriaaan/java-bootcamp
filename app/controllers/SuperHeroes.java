@@ -11,6 +11,9 @@ import models.SuperHero;
 import models.Citizen;
 import middlewares.Rights;
 
+/**
+ * Super Heroes Controller
+ */
 public class SuperHeroes extends Rights {
 
     /**
@@ -23,6 +26,7 @@ public class SuperHeroes extends Rights {
 
     /**
      * GET CRUD : Read a superhero
+     * @param {Long} id
      */
     public static void show(Long id) {
         SuperHero s = SuperHero.findById(id);
@@ -39,6 +43,7 @@ public class SuperHeroes extends Rights {
 
     /**
      * POST CRUD : Create a superhero
+     * @param {SuperHero} superhero
      */
     public static void create(@Required @Valid SuperHero superhero) {
         if (Validation.hasErrors()) {

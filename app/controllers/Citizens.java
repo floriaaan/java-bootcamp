@@ -12,7 +12,9 @@ import middlewares.Rights;
 
 import lib.BCrypt;
 
-
+/**
+ * Citizen Controller
+ */
 public class Citizens extends Rights {
 
     /**
@@ -27,6 +29,7 @@ public class Citizens extends Rights {
     /**
      * GET
      * CRUD : Read a citizen
+     * @param {Long} id
      */
     public static void show(Long id) {
         Citizen citizen = Citizen.findById(id);
@@ -69,6 +72,7 @@ public class Citizens extends Rights {
     /**
      * POST
      * CRUD : Create a citizen
+     * @param {Citizen} citizen
      */
     public void create(@Required @Valid Citizen citizen) {
         if (Validation.hasErrors()) {
@@ -97,6 +101,7 @@ public class Citizens extends Rights {
     /**
      * GET
      * CRUD : Edit a citizen
+     * @param {Long} id
      */
     public static void editForm(Long id) {
         Citizen citizen = Citizen.findById(id);
@@ -106,6 +111,8 @@ public class Citizens extends Rights {
     /**
      * POST
      * CRUD : Edit a citizen
+     * @param {Citizen} citizen
+     * @param {String} pwd
      */
     public static void edit(Citizen citizen, String pwd) {
         if (BCrypt.checkpw(pwd, citizen.password)) {
