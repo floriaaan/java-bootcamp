@@ -4,18 +4,7 @@ version: "3.4"
  
 
 services:
-  # database:
-  #   environment:
-  #     POSTGRES_USER: formation
-  #     POSTGRES_PASSWORD: secure
-  #     POSTGRES_DB: example
-  #   healthcheck:
-  #     test: ["CMD", "pg_isready", "-U", "formation"]
-  #     interval: 5s
-  #     timeout: 5s
-  #     retries: 5
-  #   image: postgres:11.5-alpine
-  #   restart: always
+
 
   database:
     environment:
@@ -24,7 +13,7 @@ services:
       MYSQL_PASSWORD: secure
       MYSQL_DATABASE: example
     image: mysql:5.7.21
-    restart: always
+    #restart: always
 
  
 
@@ -40,13 +29,13 @@ services:
     ports:
       - 9000:9000
       - 8082:8082
-    restart: always
+    #restart: always
     volumes:
       - ./:/app
 
   adminer:
     image: adminer
-    restart: always
+    #restart: always
     ports:
       - 8080:8080
     links:

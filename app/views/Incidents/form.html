@@ -14,7 +14,7 @@
 
 <div class="p-10">
     <h3 class="mb-8 text-center font-medium text-gray-500" style="font-size: 3rem;">Report an Incident</h3>
-    <form action="@{Incidents.create}" method="POST">
+    <form action="@{Incidents.create}" method="POST" enctype="multipart/form-data">
         <div class="md:flex md:items-center mb-6">
             <div class="md:w-1/4">
                 <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
@@ -82,7 +82,7 @@
                        type="text">
             </div>
         </div>
-
+        <input type="file" name="incident.picture"/>
         <input name="incident.state" readonly value="todo" hidden>
 
         <div class="md:flex md:items-center">

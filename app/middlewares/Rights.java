@@ -18,9 +18,15 @@ public class Rights extends SuperController {
     static void middleware() {
         Citizen citizen = getAuth();
         if (citizen == null) {
+            flash.error("You do not have access to this ressource");
+            params.flash();
+            Validation.keep();
             Application.index();
         }
         if (!citizen.is_authority) {
+             flash.error("You do not have access to this ressource");
+            params.flash();
+            Validation.keep();
             Application.index();
         }
     }
@@ -29,9 +35,15 @@ public class Rights extends SuperController {
     public static void middleware_superuser() {
         Citizen citizen = getAuth();
         if (citizen == null) {
+             flash.error("You do not have access to this ressource");
+            params.flash();
+            Validation.keep();
             Application.index();
         }
         if (!citizen.is_superuser) {
+             flash.error("You do not have access to this ressource");
+            params.flash();
+            Validation.keep();
             Application.index();
         }
     }

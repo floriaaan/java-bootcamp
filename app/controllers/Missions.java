@@ -11,7 +11,10 @@ import models.Mission;
 import models.Incident;
 import models.SuperHero;
 
-public class Missions extends SuperController {
+import middlewares.Rights;
+
+
+public class Missions extends Rights {
 
     /**
      * GET
@@ -52,6 +55,10 @@ public class Missions extends SuperController {
             Validation.keep();
             form(mission.incident.id);
         }
+
+        Incident incident = Incident.findById(mission.incident.id);
+        incident.state = "ended";
+        incident.save();
 
         mission.save();
         show(mission.id);

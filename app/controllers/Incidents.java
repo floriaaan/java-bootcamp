@@ -6,6 +6,9 @@ import play.mvc.*;
 import play.data.validation.*;
 
 import java.util.*;
+import java.io.File;
+
+import play.mvc.Http;
 
 import models.Incident;
 import models.Citizen;
@@ -62,8 +65,8 @@ public class Incidents extends Rights {
     }
 
     /**
-     GET
-     CRUD : Edit an incident
+     * GET
+     * CRUD : Edit an incident
      */
     public static void editForm(Long id) {
         Incident incident = Incident.findById(id);
@@ -71,11 +74,11 @@ public class Incidents extends Rights {
     }
 
     /**
-     POST
-     CRUD : Edit an incident
+     * POST
+     * CRUD : Edit an incident
      */
     public static void edit(@Required @Valid Incident incident) {
-        if(Validation.hasErrors()) {
+        if (Validation.hasErrors()) {
             params.flash();
             Validation.keep();
             form();
