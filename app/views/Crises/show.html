@@ -1,6 +1,93 @@
 #{extends 'main.html' /}
+#{set title:'Crisis report'/}
 
-<h1>#${crisis.id}</h1>
-<p>${crisis.comments}</p>
+<div class="py-12">
+    <div class="max-w-7xl mx-auto xs:px-3 sm:px-6 md:px-6 lg:px-8">
+        <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+            <div class="sm:px-20 xs:px-8 bg-white border-b border-gray-200">
+                <div class="flex flex-column mt-8 mb-3">
+                    <div class="md:flex md:items-center mb-6">
+
+                        <div class="">
+                            <h4 class="font-semibold" style="font-size: 3rem;">Crisis ${crisis.title}</h4>
+                            <h4 class="font-semibold" style="font-size: 2rem;">associated to Mission: ${crisis.mission.title}</h4>
+
+                            <div class="text-xs ml-5 flex flex-row">
+                                created on <span
+                                    class="font-semibold text-enedisB-100 ml-1">${crisis.created_at}</span>,
+                                #{if crisis.created_at != crisis.updated_at}
+                                , updated last on <span
+                                    class="font-semibold text-enedisB-100 ml-1">${crisis.updated_at} </span>
+                            </div>
+
+                            <hr>
+
+                            #{/if}
+
+                        </div>
+
+                        #{if !crisis.dispute}
+                        <div class="flex flex-row mt-6 space-x-4">
+                            <a href="/dispute/create"
+                               class="bg-enedisB-100 border-enedisB-100 hover:bg-enedisB-500 focus:shadow-outline focus:outline-none text-white hover:text-white font-bold py-2 px-4 rounded"
+                               type="submit">
+                                <i class="fas fa-doc"></i>
+                                Create a dispute
+                            </a>
+                        </div>
+                        #{/if}
+
+                        #{if crisis.mission}
+                        <div class="flex flex-row mt-6 space-x-4">
+                            <a href="/mission/show/${crisis.mission.id}"
+                               class="bg-enedisB-100 border-enedisB-100 hover:bg-enedisB-500 focus:shadow-outline focus:outline-none text-white hover:text-white font-bold py-2 px-4 rounded"
+                               type="submit">
+                                <i class="fas fa-doc"></i>
+                                Show associated mission
+                            </a>
+                        </div>
+                        #{/if}
+
+                        #{if crisis.dispute}
+                        <div class="max-w-7xl mx-auto xs:px-3 sm:px-6 md:px-6 lg:px-8">
+                            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                                <div class="sm:px-20 xs:px-8 bg-white border-b border-gray-200 py-5">
+                                    <div class="flex flex-column mt-8 ">
+                                        <div class="md:flex md:items-center mb-6">
+                                            <h4 class="font-semibold" style="font-size: 2rem;">Dispute linked : ${crisis.dispute.title}</h4>
+                                            <a href="/dispute/show/${crisis.dispute.id}" class="text-gray-500">
+                                                <svg viewBox="0 0 20 20" fill="currentColor" class="ml-10 w-6 h-6 float-right">
+                                                    <path fill-rule="evenodd"
+                                                          d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                                                          clip-rule="evenodd"></path>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <h4 class="font-semibold" style="font-size: 1rem;">By ${crisis.dispute.citizen.name}</h4>
+                                    <div class="text-xs ml-5 flex flex-row">
+                                        created on <span
+                                            class="font-semibold text-enedisB-100 ml-1">${crisis.dispute.created_at}</span>,
+                                        #{if crisis.dispute.created_at != crisis.dispute.updated_at}
+                                        , updated last on <span
+                                            class="font-semibold text-enedisB-100 ml-1">${crisis.dispute.updated_at} </span>
+                                        #{/if}
+                                    </div>
+                                    <div class="text-xs ml-5 flex flex-row">
+                                        Amount asked : <span class="font-semibold text-enedisB-100 ml-1">${crisis.dispute.amount}$</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        #{/if}
+
+                    </div>
+
+                </div>
+
+            </div>
 
 
+        </div>
+    </div>
+</div>

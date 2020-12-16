@@ -19,6 +19,10 @@ import models.Dispute;
  **/
 @Entity(name = "crises")
 public class Crisis extends Model {
+
+    @Required
+    public String title;
+
     @Required
     public String comments;
 
@@ -27,4 +31,18 @@ public class Crisis extends Model {
 
     @OneToOne
     public Dispute dispute;
+
+    public Date created_at;
+    public Date updated_at;
+
+    @PrePersist
+    public void created_at() {
+        this.created_at = new java.util.Date();
+        this.updated_at = new java.util.Date();
+    }
+
+    @PreUpdate
+    public void updated_at() {
+        this.updated_at = new java.util.Date();
+    }
 }
