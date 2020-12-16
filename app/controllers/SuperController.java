@@ -30,11 +30,14 @@ public class SuperController extends Controller {
     }
 
 
-    @Before(unless={"Authentication.login", "Authentication.connect"})
+    @Before(unless={"Authentication.login", "Authentication.connect", "Authentication.register", "Authentication.logout", "Citizens.create"})
     public void middleware_auth() {
 
         if(this.INSTANCE == null) {
             //System.out.println("unauth");
+            flash.error("Please log in.");
+            params.flash();
+            Validation.keep();
             renderTemplate("Authentication/login.html");
         } else {
             //System.out.println(this.INSTANCE.getName());
