@@ -82,7 +82,70 @@
                        type="text">
             </div>
         </div>
-        <input type="file" name="incident.picture"/>
+        <div class="md:flex md:items-center mb-6">
+            <div class="md:w-1/4">
+              <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="image">
+                Incident picture
+              </label>
+            </div>
+            <div class="md:w-2/4">
+                <style>
+                    .custom-file {
+                        position: relative;
+                        display: inline-block;
+                        width: 100%;
+                        height: calc(1.5em + .75rem + 2px);
+                        margin-bottom: 0;
+                    }
+                    .custom-file-input {
+                        position: relative;
+                        z-index: 2;
+                        width: 100%;
+                        height: calc(1.5em + .75rem + 2px);
+                        margin: 0;
+                        opacity: 0;
+                    }
+                    .custom-control-label::before, .custom-file-label, .custom-select {
+                        transition: background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+                    }
+
+                    .custom-file-label {
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        left: 0;
+                        z-index: 1;
+                        height: calc(1.5em + .75rem + 2px);
+                        font-weight: 400;
+                        line-height: 1.0;
+                        border-radius: .25rem;
+                    }
+                    .custom-file-label::after {
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        bottom: 0;
+                        z-index: 3;
+                        display: block;
+                        height: calc(1.5em + .75rem);
+                        padding: .375rem .75rem;
+                        line-height: 1.5;
+                        color: #495057;
+                        content: "Browse";
+                        background-color: #e9ecef;
+                        border-left: inherit;
+                        border-radius: 0 .25rem .25rem 0;
+                    }
+                </style>
+
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-enedisB-100" id="image" name="incident.picture">
+                    <label class="custom-file-label bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-enedisB-100" for="image">Upload a picture</label>
+                </div>
+
+            </div>
+          </div>
+
         <input name="incident.state" readonly value="todo" hidden>
 
         <div class="md:flex md:items-center">
