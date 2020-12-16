@@ -16,12 +16,15 @@ import middlewares.Rights;
 
 import lib.BCrypt;
 
-
+/**
+ * Crises Controller
+ */
 public class Crises extends Rights {
 
     /**
      * GET
      * CRUD : Read an crisis
+     * @param {Long} id
      */
     public static void show(Long id) {
         Crisis crisis = Crisis.findById(id);
@@ -41,6 +44,7 @@ public class Crises extends Rights {
     /**
      * POST
      * CRUD : Create an crisis
+     * @param {Crisis} crisis
      */
     public static void create(@Required @Valid Crisis crisis) {
         if (Validation.hasErrors()) {
@@ -49,8 +53,6 @@ public class Crises extends Rights {
             Validation.keep();
             form();
         }
-
-
 
         List<Citizen> cList = Citizen.findAll();
         for (int i = 0; i < cList.size(); i++) {
@@ -74,5 +76,4 @@ public class Crises extends Rights {
 
         show(crisis.id);
     }
-
 }

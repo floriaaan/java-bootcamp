@@ -15,6 +15,9 @@ import models.Dispute;
 import models.Citizen;
 import models.Mission;
 
+/**
+ * Disputes Controller
+ */
 public class Disputes extends Rights {
 
     /**
@@ -29,6 +32,7 @@ public class Disputes extends Rights {
     /**
      * GET
      * CRUD : Read a dispute
+     * @param {Long} id
      */
     public static void show(Long id) {
         Dispute dispute = Dispute.findById(id);
@@ -48,6 +52,7 @@ public class Disputes extends Rights {
     /**
      * POST
      * CRUD : Create an incident
+     * @param {Dispute} dispute
      */
     public static void create(@Required @Valid Dispute dispute) {
         if (Validation.hasErrors()) {
@@ -62,8 +67,9 @@ public class Disputes extends Rights {
     }
 
 //    /**
-//     GET
-//     CRUD : Edit an incident
+//     * GET
+//     * CRUD : Edit an incident
+//     * @param {Long} id
 //     */
 //    public static void editForm(Long id) {
 //        Dispute dispute = Dispute.findById(id);
@@ -71,8 +77,9 @@ public class Disputes extends Rights {
 //    }
 //
 //    /**
-//     POST
-//     CRUD : Edit an incident
+//     * POST
+//     * CRUD : Edit an incident
+//     * @param {Dispute} dispute
 //     */
 //    public static void edit(@Required @Valid Dispute dispute) {
 //        if(Validation.hasErrors()) {
@@ -85,6 +92,11 @@ public class Disputes extends Rights {
 //        show(dispute.id);
 //    }
 //
+//    /**
+//     * GET
+//     * CRUD : Delete an incident
+//     * @param {Long} id
+//     */
 //    public static void delete(Long id) {
 //        Dispute dispute = Dispute.findById(id);
 //        dispute.delete();
