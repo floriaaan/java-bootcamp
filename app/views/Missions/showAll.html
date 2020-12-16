@@ -22,7 +22,15 @@
 
                         <div class="flex flex-row justify-between items-center font-semibold">
                             <a href="/mission/show/${mission.id}">
-                                <h5 class="mt-0 mb-1 font-weight-bolder text-2xl">${mission.title}</h5>
+                                #{if mission.emergency_level == 'extremely urgent'}
+                                <h5 class="mt-0 mb-1 font-weight-bolder text-2xl">${mission.title} <i class="fas fa-arrow-up w-4 h-4" style="font-size: 20px; color: red"></i></h5>
+                                #{/if}
+                                #{if mission.emergency_level == 'urgent'}
+                                <h5 class="mt-0 mb-1 font-weight-bolder text-2xl">${mission.title} <i class="fas fa-arrow-right w-4 h-4 text-yellow-500" style="font-size: 20px"></i></h5>
+                                #{/if}
+                                #{if mission.emergency_level == 'less urgent'}
+                                <h5 class="mt-0 mb-1 font-weight-bolder text-2xl">${mission.title} <i class="fas fa-arrow-down w-4 h-4" style="font-size: 20px; color: green"></i></h5>
+                                #{/if}
                             </a>
 
                             <span class="flex flex-row space-x-3 items-center">
