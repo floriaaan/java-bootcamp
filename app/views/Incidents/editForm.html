@@ -1,4 +1,4 @@
-#{extends 'main.html' /} #{set title:'Report an incident' /}
+#{extends 'main.html' /} #{set title:'Edit an incident' /}
 
 <div class="">
     #{ifErrors}
@@ -13,30 +13,22 @@
 </div>
 
 <div class="p-10">
-    <h3 class="mb-8 text-center font-medium text-gray-500" style="font-size: 3rem;">Report an Incident</h3>
-    <form action="@{Incidents.create}" method="POST" enctype="multipart/form-data">
+    <h3 class="mb-8 text-center font-medium text-gray-500" style="font-size: 3rem;">Edit an Incident</h3>
+    <form action="@{Incidents.edit}" method="POST">
         <div class="md:flex md:items-center mb-6">
             <div class="md:w-1/4">
+                <input hidden name="incident.id" value="${incident.id}">
                 <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
                     Incident title
                 </label>
 
             </div>
             <div class="md:w-2/4">
-                #{if incidentNb != 0}
                 <input type="text" required placeholder="Title" name="incident.title"
-                       value="Incident #${incidentsNb + 1}"
+                       value="${incident.title}"
                        class="bg-gray-200 appearance-none border-2 border-gray-200 rounded
                    w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none
-                   focus:bg-white focus:border-enedisB-100">
-                #{/if}
-                #{else}
-                <input type="text" required placeholder="Title" name="incident.title"
-                       value="Incident #1"
-                       class="bg-gray-200 appearance-none border-2 border-gray-200 rounded
-                   w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none
-                   focus:bg-white focus:border-enedisB-100">
-                #{/else}
+                   focus:bg-white focus:border-enedisB-100" readonly>
             </div>
 
         </div>
@@ -49,7 +41,7 @@
 
             </div>
             <div class="md:w-2/4">
-                <input type="text" required placeholder="Address" name="incident.address"
+                <input type="text" required value="${incident.address}" name="incident.address" readonly
                        class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-enedisB-100">
             </div>
 
@@ -59,8 +51,7 @@
         <div class="md:flex md:items-center mb-6">
             <div class="md:w-1/4">
                 <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="comments">
-                    Comments
-                    <span class="ml-2 text-red-700 font-bold">*</span>
+                    Comments*
                 </label>
             </div>
             <div class="md:w-2/4">
@@ -76,13 +67,13 @@
                 </label>
             </div>
             <div class="md:w-2/4">
-                <input name="incident.citizen.id" readonly value="${user.id}" type="hidden">
-                <input readonly value="${user.getName()}"
+                <input name="incident.citizen.id" readonly value="${user?.id}" type="hidden">
+                <input readonly value="${incident.citizen.getName()}"
                        class="bg-gray-400 appearance-none border-2 border-gray-400 rounded w-full py-2 px-4 text-gray-800 leading-tight"
                        type="text">
             </div>
         </div>
-        <input type="file" name="incident.picture"/>
+
         <input name="incident.state" readonly value="todo" hidden>
 
         <div class="md:flex md:items-center">
@@ -91,7 +82,7 @@
                 <button
                         class="shadow bg-enedisB-100 hover:bg-enedisB-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
                         type="submit">
-                    Declare the incident
+                    Update
                 </button>
             </div>
         </div>

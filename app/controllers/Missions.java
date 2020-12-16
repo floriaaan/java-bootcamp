@@ -11,7 +11,10 @@ import models.Mission;
 import models.Incident;
 import models.SuperHero;
 
-public class Missions extends SuperController {
+import middlewares.Rights;
+
+
+public class Missions extends Rights {
 
     /**
      * GET
@@ -35,10 +38,10 @@ public class Missions extends SuperController {
      * GET
      * CRUD : Create an Mission
      */
-    public static void form() {
-        List<Incident> iList = Incident.findAll();
+    public static void form(Long id) {
         List<SuperHero> sList = SuperHero.findAll();
-        render(iList, sList);
+        Incident incident = Incident.findById(id);
+        render(sList, incident);
     }
 
     /**
@@ -50,8 +53,12 @@ public class Missions extends SuperController {
             flash.error("Erreur de validation.");
             params.flash();
             Validation.keep();
-            form();
+            form(mission.incident.id);
         }
+
+        Incident incident = Incident.findById(mission.incident.id);
+        incident.state = "ended";
+        incident.save();
 
         mission.save();
         show(mission.id);

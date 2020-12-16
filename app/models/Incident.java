@@ -9,9 +9,15 @@ import play.data.format.*;
 import java.util.*;
 import io.ebean.*;
 
-/**  **/
-@Entity(name="incidents")
-public class Incident extends Model{
+import java.io.File;
+
+import models.Mission;
+
+/**
+ *
+ **/
+@Entity(name = "incidents")
+public class Incident extends Model {
 
     @Required
     public String title;
@@ -25,7 +31,7 @@ public class Incident extends Model{
     public String state;
 
     @ManyToOne
-    @PrimaryKeyJoinColumn(name="citizen", referencedColumnName="id")
+    @PrimaryKeyJoinColumn(name = "citizen", referencedColumnName = "id")
     public Citizen citizen;
 
 //    public Long reporter_type;
@@ -38,10 +44,12 @@ public class Incident extends Model{
 //    @PrimaryKeyJoinColumn(name="organization", referencedColumnName="id")
 //    public Organization organization_id;
 
-    @ManyToOne
+    @OneToOne
     public Mission mission;
 
     public String comments;
+
+    public File picture;
 
     @PrePersist
     public void created_at() {

@@ -10,6 +10,7 @@ import play.data.format.*;
 import java.util.*;
 
 import io.ebean.*;
+import models.Incident;
 
 @Entity(name="missions")
 public class Mission extends Model {
@@ -23,8 +24,8 @@ public class Mission extends Model {
     @Required
     public Date start_date;
 
-    @OneToMany(mappedBy = "mission", cascade = CascadeType.ALL)
-    public List<Incident> incident_list = new ArrayList<>();
+    @OneToOne
+    public Incident incident;
 
     public Date end_date;
 

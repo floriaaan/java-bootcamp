@@ -13,7 +13,6 @@ POST        /auth/login                Authentication.connect
 GET         /auth/register             Authentication.register
 GET         /auth/logout               Authentication.logout
 
-
 # Citizens pages
 
 GET         /citizen/show/{id}         Citizens.show
@@ -35,6 +34,10 @@ GET         /incident/show/{id}        Incidents.show
 GET         /incident/create           Incidents.form
 POST        /incident/create           Incidents.create
 GET         /incident/showAll          Incidents.showAll
+POST         /incident/setAside         Incidents.setAside
+POST         /incident/delete       Incidents.delete
+GET         /incident/edit/{id}       Incidents.editForm
+POST        /incident/edit             Incidents.edit
 
 # Satisfaction pages
 
@@ -47,7 +50,7 @@ GET         /satisfaction/showAll          Satisfactions.showAll
 
 GET         /mission/show/{id}        Missions.show
 GET         /mission/showAll          Missions.showAll
-GET         /mission/create           Missions.form
+GET         /mission/create/{id}           Missions.form
 POST        /mission/create           Missions.create
 
 # MissionReport pages

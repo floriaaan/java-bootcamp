@@ -10,6 +10,9 @@ import java.util.*;
 import models.Citizen;
 import middlewares.Rights;
 
+import lib.BCrypt;
+
+
 public class Citizens extends Rights {
 
     /**
@@ -59,22 +62,23 @@ public class Citizens extends Rights {
     CRUD : Edit a citizen
      */
     public static void editForm(Long id) {
-        Citizen c = Citizen.findById(id);
-        render(c);
+        Citizen citizen = Citizen.findById(id);
+        render(citizen);
     }
 
     /**
     POST
     CRUD : Edit a citizen
      */
-    public static void edit(@Required @Valid Citizen citizen) {
-        if(Validation.hasErrors()) {
+    public static void edit(Citizen citizen, String pwd) {
+        if(BCrypt.checkpw(pwd, citizen.password)) {
+            citizen.save();
+            show(citizen.id);
+        } else {
+            flash.error("Wrong credentials");
             params.flash();
             Validation.keep();
-            form();
+            editForm(citizen.id);
         }
-
-        citizen.save();
-        show(citizen.id);
     }
 }
