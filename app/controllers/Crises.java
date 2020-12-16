@@ -21,6 +21,11 @@ import lib.BCrypt;
  */
 public class Crises extends Rights {
 
+    public static void showAll() {
+        List<Crisis> crisisList = Crisis.findAll();
+        render(crisisList);
+    }
+
     /**
      * GET
      * CRUD : Read an crisis

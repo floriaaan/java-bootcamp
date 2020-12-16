@@ -45,8 +45,8 @@ public class Disputes extends Rights {
      */
     public static void form() {
         List<Citizen> cList = Citizen.findAll();
-//        Mission mission = Mission.findById(id);
-        render(cList);
+        List<Mission> missions = Mission.findAll();
+        render(cList, missions);
     }
 
     /**

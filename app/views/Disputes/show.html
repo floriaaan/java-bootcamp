@@ -1,10 +1,74 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+#{extends 'main.html' /}
+#{set title:'Dispute report'/}
 
-</body>
-</html>
+<div class="py-12">
+    <div class="max-w-7xl mx-auto xs:px-3 sm:px-6 md:px-6 lg:px-8">
+        <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+            <div class="sm:px-20 xs:px-8 bg-white border-b border-gray-200">
+                <div class="flex flex-column mt-8 mb-3">
+                    <div class="md:flex md:items-center mb-6">
+
+                        <div class="">
+                            #{if !dispute.mission}
+                            <h4 class="font-semibold" style="font-size: 3rem;">Dispute ${dispute.title}</h4>
+
+                            <div class="text-xs ml-5 flex flex-row">
+                                created on <span
+                                    class="font-semibold text-enedisB-100 ml-1">${dispute.created_at}</span>,
+                                #{if dispute.created_at != dispute.updated_at}
+                                updated last on <span
+                                    class="font-semibold text-enedisB-100 ml-1">${dispute.updated_at} </span>
+                                #{/if}
+                            </div>
+                            #{/if}
+                            #{if dispute.mission}
+                            <h4 class="font-semibold" style="font-size: 3rem;">Dispute : ${dispute.mission.title}</h4>
+
+                            <div class="text-xs ml-5 flex flex-row">
+                                created on <span
+                                    class="font-semibold text-enedisB-100 ml-1">${dispute.created_at}</span>,
+                                #{if dispute.created_at != dispute.updated_at}
+                                updated last on <span
+                                    class="font-semibold text-enedisB-100 ml-1">${dispute.updated_at}, </span>
+                                #{/if}
+                            </div>
+                            <div class="text-xs ml-5 flex flex-row">
+                                located at <span class="font-semibold text-enedisB-100 ml-1">${dispute.mission.address}</span>
+                            </div>
+                            #{/if}
+
+                            <hr>
+
+                            #{if crisisId != null}
+                            <a href="/crisis/show/${crisisId}">
+                                <p class="font-semibold text-enedisB-100 ml-1">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                    caused by a crisis
+                                </p>
+                            </a>
+
+                            #{/if}
+                            #{if dispute.mission}
+                            <div class="flex flex-row mt-6 space-x-4">
+                                <a href="/mission/show/${dispute.mission.id}"
+                                   class="bg-enedisB-100 border-enedisB-100 hover:bg-enedisB-500 focus:shadow-outline focus:outline-none text-white hover:text-white font-bold py-2 px-4 rounded"
+                                   type="submit">
+                                    <i class="fas fa-doc"></i>
+                                    Show mission
+                                </a>
+
+                            </div>
+                            #{/if}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
