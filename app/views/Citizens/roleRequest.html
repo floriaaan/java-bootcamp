@@ -1,0 +1,74 @@
+#{extends 'main.html' /}
+#{set title:'Demand role' /}
+
+
+<div class="p-10">
+    <h3 class="mb-8 text-center font-medium text-gray-500" style="font-size: 3rem;">Ask for a role</h3>
+
+    <hr class="my-4">
+
+    <form action="@{Citizens.roleRequested}" method="POST">
+        <div class="md:flex md:items-center mb-6">
+            <div class="md:w-1/4">
+
+            </div>
+            <div class="md:w-2/4">
+                <h3 class="mb-8 font-medium text-gray-500 " style="font-size: 1.5rem;">Ask to be an
+                    authority :</h3>
+            </div>
+        </div>
+        <div class="md:flex md:items-center mb-6">
+            <div class="md:w-1/4">
+                <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
+                    The subject of the Request
+                </label>
+
+            </div>
+            <div class="md:w-2/4">
+                <input type="text" required name="roleRequest.title"
+                       class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-enedisB-100">
+            </div>
+        </div>
+
+        <div class="md:flex md:items-center mb-6">
+            <div class="md:w-1/4">
+                <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="comments">
+                    Specify your Request
+                    <span class="ml-2 text-red-700 font-bold">*</span>
+                </label>
+            </div>
+            <div class="md:w-2/4">
+                <textarea name="roleRequest.comments"
+                          class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-enedisB-100"
+                          id="comments" rows="5"></textarea>
+            </div>
+        </div>
+        <div class="md:flex md:items-center">
+            <div class="md:w-1/4"></div>
+            <div class="md:w-2/4">
+                <button
+                        class="shadow bg-enedisB-100 hover:bg-enedisB-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+                        type="submit">
+                    Ask to be an authority
+                </button>
+            </div>
+        </div>
+    </form>
+    <hr class="my-4">
+    <div class="md:flex md:items-center">
+        <div class="md:w-1/4">
+
+        </div>
+        <div class="py-5 md:w-2/4 flex flex-row">
+            <div class="md:w-2/4">
+                <h3 class="mb-8 font-medium text-gray-500 " style="font-size: 1.5rem;">Ask to be a Super Hero :</h3>
+            </div>
+            <div class="md:w-2/4">
+                <a href="@{SuperHeroes.create}"
+                   class="py-3 px-5 rounded-md transition duration-200 ease-in-out bg-gray-100 hover:bg-gray-200 active:bg-gray-300 font-medium shadow">
+                    Declare as a Super Hero
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
