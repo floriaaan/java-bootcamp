@@ -112,7 +112,7 @@ public class Citizens extends Rights {
      * POST
      * CRUD : Edit a citizen
      * @param {Citizen} citizen
-     * @param {String} pwd
+     * @param {String}  pwd
      */
     public static void edit(Citizen citizen, String pwd) {
         if (BCrypt.checkpw(pwd, citizen.password)) {
@@ -125,4 +125,34 @@ public class Citizens extends Rights {
             editForm(citizen.id);
         }
     }
+
+    /**
+     * GET
+     */
+    public static void roleValidation() {
+        List<Citizen> cList = Citizen.findAll();
+        render(cList);
+    }
+
+    /**
+     *
+     */
+    public static void roleRequest() {
+        render();
+    }
+
+    /**
+     *
+     */
+    public static void roleRequested(@Required @Valid Notification notification) {
+
+        List<Citizen> cList = Citizen.find("is_superuser", true).fetch();
+        Citizen superuser = cList.get(0);
+        notification.citizen = superuser;
+        superuser.notification_list.add(notification);
+        superuser.save();
+
+        show(getAuth().id);
+    }
+
 }

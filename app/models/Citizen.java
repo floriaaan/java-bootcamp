@@ -60,13 +60,15 @@ public class Citizen extends Model {
     @OneToMany(cascade = CascadeType.ALL)
     public List<Notification> notification_list = new ArrayList<>();
 
+    public Boolean waiting_validation = false;
+
     public String getName() {
         return this.fname + " " + this.lname;
     }
 
-    public Organization getOrg(){
+    public Organization getOrg() {
         List<Organization> query = Organization.find("boss.id", this.id).fetch();
-        if(query.size() > 0) {
+        if (query.size() > 0) {
             return query.get(0);
         } else {
             return null;
