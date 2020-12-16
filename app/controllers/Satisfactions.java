@@ -32,10 +32,9 @@ public class Satisfactions extends SuperController {
      GET
      CRUD : Create an satifaction form
      */
-    public static void form() {
-        List<Citizen> cList = Citizen.findAll();
-        List<Mission> mList = Mission.findAll();
-        render(cList , mList);
+    public static void form(Long id) {
+        Mission mission = Mission.findById(id);
+        render(mission);
     }
 
     /**
@@ -47,7 +46,7 @@ public class Satisfactions extends SuperController {
             flash.error("Erreur de validation.");
             params.flash();
             Validation.keep();
-            form();
+            form(satisfaction.mission.id);
         }
 
         satisfaction.save();

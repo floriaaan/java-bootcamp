@@ -28,6 +28,8 @@ public class MissionsReports extends SuperController {
      */
     public static void form(Long id) {
         Mission mission = Mission.findById(id);
+        mission.state = "ended";
+        mission.save();
         List<SuperVillain> superVillainList = SuperVillain.findAll();
         List<Citizen> CitizenList = Citizen.findAll();
 

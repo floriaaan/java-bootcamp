@@ -17,8 +17,10 @@ public class Satisfaction extends Model{
     public Date updated_at;
 
     @OneToOne
-    @PrimaryKeyJoinColumn(name="mission", referencedColumnName="id")
     public Mission mission;
+
+    @OneToOne
+    public Citizen citizen;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn(name="superHero", referencedColumnName="id")

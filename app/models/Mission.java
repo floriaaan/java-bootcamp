@@ -53,6 +53,8 @@ public class Mission extends Model {
     @OneToMany(cascade=CascadeType.ALL, mappedBy="mission")
     public List<Dispute> dispute_list;
 
+    public String state;
+
     public String getName(){
         return this.title;
     }
