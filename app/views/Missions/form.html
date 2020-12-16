@@ -26,7 +26,7 @@
 
         </div>
         <div class="md:w-2/4">
-            <input type="text" required placeholder="Title" name="mission.title"
+            <input type="text" required placeholder="Title" name="mission.title" id="title" value="Mission X - TYPE"
                 class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-enedisB-100">
         </div>
 
@@ -40,7 +40,7 @@
 
         </div>
         <div class="md:w-2/4">
-            <input type="text" required placeholder="Type" name="mission.type" value="Mission X - TYPE"
+            <input type="text" required placeholder="Type" name="mission.type" id="type"
                 class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-enedisB-100">
         </div>
 
@@ -205,3 +205,16 @@
         </div>
     </div>
 </form>
+
+
+
+<script>
+    let title = document.getElementById('title');
+    let type = document.getElementById('type');
+
+    type.addEventListener("keyup", (e) => {
+        let pos = title.value.lastIndexOf("-") + 1;
+        let newTitle = title.value.substr(0, pos + 1) + type.value
+        title.value = newTitle;
+    })
+</script>
