@@ -1,10 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+#{extends 'main.html' /}
+#{set title:'Missions Reports list' /}
 
-</body>
-</html>
+
+<div class="py-12">
+    <h3 class="mb-8 text-center font-medium text-gray-500" style="font-size: 3rem;">Missions reports</h3>
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+
+            <ul class="list-unstyled">
+                #{list missionReportList, as:'mr'}
+                <li class="media p-3 mx-5 border-b border-gray-200">
+
+                    <div class="media-body">
+                        <div class="flex flex-row justify-between items-center font-semibold">
+                            <a href="/mission_report/show/${mr.id}">
+                                <h5 class="mt-0 mb-1 font-weight-bolder text-2xl">${mr.mission.title}</h5>
+                            </a>
+
+                            <span class="flex flex-row space-x-3 items-center">
+                                <!-- Missions.status ? <form action="" method="POST"> -->
+                                <input hidden name="id" value="${mr.mission.id}">
+                                  <a href="/mission_report/edit/${mr.id}">
+                                    <div
+                                            class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-white text-yellow-700 border border-yellow-500 ">
+                                        <span slot="avatar" style="height: 12px; margin-top: -16px;">
+                                            <i class="fas fa-pencil-alt w-4 h-4" style="font-size: 10px;"></i>
+                                        </span>
+                                        <div class="text-xs font-normal leading-none max-w-full flex-initial">
+                                            Edit
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="/mission_report/delete/${mr.id}">
+                                    <div
+                                            class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-red-700 border border-red-500 ">
+                                        <span slot="avatar" style="height: 12px; margin-top: -16px;">
+                                            <i class="fas fa-trash-alt w-4 h-4" style="font-size: 10px;"></i>
+                                        </span>
+                                        <div class="text-xs font-normal leading-none max-w-full flex-initial">
+                                            Delete
+                                        </div>
+
+                                    </div>
+                                </a>
+                                <a href="/mission_report/show/${mr.id}" class="text-gray-500">
+                                    <svg viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
+                                        <path fill-rule="evenodd"
+                                              d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                                              clip-rule="evenodd"></path>
+                                    </svg>
+                                </a>
+                            </span>
+                        </div>
+
+                        <div class="flex flex-row justify-between items-center font-normal">
+                            <a href="/mission_report/show/${mr.id}">
+                                <h2 class="mt-0 mb-1 font-weight-bolder text-gray-700">${mr.details}</h5>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+                #{/list}
+            </ul>
+        </div>
+    </div>
+
+</div>

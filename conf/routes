@@ -3,97 +3,101 @@
 # ~~~~
 
 # Home page
-GET         /                                Application.index
-GET         /dashboard                       Application.dashboard
+GET         /                                  Application.index
+GET         /dashboard                         Application.dashboard
 
 # Authentication page
 
-GET         /auth/login                      Authentication.login
-POST        /auth/login                      Authentication.connect
-GET         /auth/register                   Authentication.register
-GET         /auth/logout                     Authentication.logout
+GET         /auth/login                        Authentication.login
+POST        /auth/login                        Authentication.connect
+GET         /auth/register                     Authentication.register
+GET         /auth/logout                       Authentication.logout
 
 # Citizens pages
 
-GET         /citizen/show/{id}               Citizens.show
-GET         /citizen/showAll                 Citizens.showAll
-GET         /citizen/create                  Citizens.form
-POST        /citizen/create                  Citizens.create
-GET         /citizen/edit/{id}               Citizens.editForm
-POST        /citizen/edit/                   Citizens.edit
+GET         /citizen/show/{id}                 Citizens.show
+GET         /citizen/showAll                   Citizens.showAll
+GET         /citizen/create                    Citizens.form
+POST        /citizen/create                    Citizens.create
+GET         /citizen/edit/{id}                 Citizens.editForm
+POST        /citizen/edit/                     Citizens.edit
 
 # Organization pages
 
-GET         /organization/show/{id}          Organizations.show
-GET         /organization/create             Organizations.form
-POST        /organization/create             Organizations.create
-GET         /organization/edit/{id}          Organizations.editForm
-POST        /organization/edit               Organizations.edit
+GET         /organization/show/{id}            Organizations.show
+GET         /organization/create               Organizations.form
+POST        /organization/create               Organizations.create
+GET         /organization/edit/{id}            Organizations.editForm
+POST        /organization/edit                 Organizations.edit
 
 # Incident pages
 
-GET         /incident/show/{id}              Incidents.show
-GET         /incident/create                 Incidents.form
-POST        /incident/create                 Incidents.create
-GET         /incident/showAll                Incidents.showAll
-POST        /incident/setAside               Incidents.setAside
-POST        /incident/delete                 Incidents.delete
-GET         /incident/edit/{id}              Incidents.editForm
-POST        /incident/edit                   Incidents.edit
+GET         /incident/show/{id}                Incidents.show
+GET         /incident/create                   Incidents.form
+POST        /incident/create                   Incidents.create
+GET         /incident/showAll                  Incidents.showAll
+POST        /incident/setAside                 Incidents.setAside
+POST        /incident/delete                   Incidents.delete
+GET         /incident/edit/{id}                Incidents.editForm
+POST        /incident/edit                     Incidents.edit
 
 # Satisfaction pages
 
-GET         /satisfaction/show/{id}          Satisfactions.show
-GET         /satisfaction/create/{id}        Satisfactions.form
-POST        /satisfaction/create             Satisfactions.create
-GET         /satisfaction/showAll            Satisfactions.showAll
+GET         /satisfaction/show/{id}            Satisfactions.show
+GET         /satisfaction/create/{id}          Satisfactions.form
+POST        /satisfaction/create               Satisfactions.create
+GET         /satisfaction/showAll              Satisfactions.showAll
 
 # Mission pages
 
-GET         /mission/show/{id}               Missions.show
-GET         /mission/showAll                 Missions.showAll
-GET         /mission/create/{id}             Missions.form
-POST        /mission/create                  Missions.create
+GET         /mission/show/{id}                 Missions.show
+GET         /mission/showAll                   Missions.showAll
+GET         /mission/create/{id}               Missions.form
+POST        /mission/create                    Missions.create
 
 # MissionReport pages
 
-GET         /mission_report/show/{id}        MissionsReports.show
-GET         /mission_report/create/{id}      MissionsReports.form
-POST        /mission_report/create           MissionsReports.create
-GET         /mission_report/showAll          MissionsReports.showAll
+GET         /mission_report/show/{id}          MissionsReports.show
+GET         /mission_report/create/{id}        MissionsReports.form
+POST        /mission_report/create             MissionsReports.create
+GET         /mission_report/showAll            MissionsReports.showAll
 
 # SuperHeroes pages
 
-GET         /superhero/show/{id}             SuperHeroes.show
-GET         /superhero/showAll               SuperHeroes.showAll
-GET         /superhero/create                SuperHeroes.form
-POST        /superhero/create                SuperHeroes.create
+GET         /superhero/show/{id}               SuperHeroes.show
+GET         /superhero/showAll                 SuperHeroes.showAll
+GET         /superhero/create                  SuperHeroes.form
+POST        /superhero/create                  SuperHeroes.create
 
 # Supervillains pages
 
-GET         /supervillain/show/{id}          SuperVillains.show
-GET         /supervillain/showAll            SuperVillains.showAll
-GET         /supervillain/create             SuperVillains.form
-POST        /supervillain/create             SuperVillains.create
+GET         /supervillain/show/{id}            SuperVillains.show
+GET         /supervillain/showAll              SuperVillains.showAll
+GET         /supervillain/create               SuperVillains.form
+POST        /supervillain/create               SuperVillains.create
+
+# Notifications pages
+
+GET         /notification/showAll              Notifications.showAll
 
 # Disputes pages
 
-GET         /dispute/show/{id}               Disputes.show
-GET         /dispute/create                  Disputes.form
-POST        /dispute/create                  Disputes.create
+GET         /dispute/show/{id}                 Disputes.show
+GET         /dispute/create                    Disputes.form
+POST        /dispute/create                    Disputes.create
 
 # Crisis pages
 
-GET         /crisis/show/{id}                Crises.show
-GET         /crisis/showAll                  Crises.showAll
-GET         /crisis/create                   Crises.form
-POST        /crisis/create                   Crises.create
+GET         /crisis/show/{id}                  Crises.show
+GET         /crisis/showAll                    Crises.showAll
+GET         /crisis/create                     Crises.form
+POST        /crisis/create                     Crises.create
 
 # Ignore favicon requests
 GET         /favicon.ico                     404
 
 # Map static resources from the /app/public folder to the /public path
-GET         /public/                         staticDir:public
+GET         /public/                           staticDir:public
 
 # Catch all
 #*       /{controller}/{action}              {controller}.{action}

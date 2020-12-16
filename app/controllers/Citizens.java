@@ -83,6 +83,7 @@ public class Citizens extends Rights {
             Crisis crisis = cList.get(i);
 
             Notification notif = new Notification();
+            notif.title = "Crisis notification";
             notif.comments = crisis.comments;
             notif.citizen = citizen;
 

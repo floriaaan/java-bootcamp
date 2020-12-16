@@ -50,6 +50,8 @@ public class Crises extends Rights {
             form();
         }
 
+
+
         List<Citizen> cList = Citizen.findAll();
         for (int i = 0; i < cList.size(); i++) {
 
@@ -65,6 +67,11 @@ public class Crises extends Rights {
         }
 
         crisis.save();
+
+        Mission mission = Mission.findById(crisis.mission.id);
+        mission.crisis = crisis;
+        mission.save();
+
         show(crisis.id);
     }
 

@@ -24,7 +24,6 @@
             <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
                 Mission title
             </label>
-
         </div>
         <div class="md:w-2/4">
             <input readonly type="text" required placeholder="Title" name="missionReport.title" value="${mission.title}"
@@ -54,8 +53,8 @@
 
         </div>
         <div class="md:w-2/4">
-            <input name="missionReport.interlocutor.id" readonly value="${user.id}" type="hidden">
-            <input readonly type="text" value="${user.getName()}"
+            <input name="missionReport.interlocutor.id" readonly value="${interlocutor.id}" type="hidden">
+            <input readonly type="text" value="${interlocutor.getName()}"
                 class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-enedisB-100">
         </div>
     </div>

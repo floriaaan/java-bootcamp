@@ -1,0 +1,12 @@
+#{extends 'main.html' /}
+#{set title:'Notifications list' /}
+
+#{if nList}
+#{list nList, as:'notification'}
+${notification.title}
+${notification.comments}
+${notification.is_viewed}
+${notification.citizen.id}
+
+#{/list}
+#{/if}
