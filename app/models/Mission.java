@@ -27,6 +27,9 @@ public class Mission extends Model {
     @OneToOne
     public Incident incident;
 
+    @OneToOne
+    public Crisis crisis;
+
     public Date end_date;
 
     @Required
