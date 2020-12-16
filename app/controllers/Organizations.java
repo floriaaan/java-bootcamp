@@ -10,6 +10,8 @@ import java.util.*;
 import models.Organization;
 import models.Citizen;
 
+import lib.BCrypt;
+
 public class Organizations extends SuperController {
 
     /**
@@ -44,5 +46,30 @@ public class Organizations extends SuperController {
 
         organization.save();
         show(organization.id);
+    }
+
+    /**
+     * GET
+     * CRUD : Edit an organization
+     */
+    public static void editForm(Long id) {
+        Organization organization = Organization.findById(id);
+        render(organization);
+    }
+
+    /**
+     * POST
+     * CRUD : Edit an organization
+     */
+    public static void edit(Organization organization, String pwd) {
+        if (BCrypt.checkpw(pwd, organization.boss.password)) {
+            organization.save();
+            show(organization.id);
+        } else {
+            flash.error("Wrong credentials");
+            params.flash();
+            Validation.keep();
+            editForm(organization.id);
+        }
     }
 }

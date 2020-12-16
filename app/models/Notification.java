@@ -11,10 +11,16 @@ import java.util.*;
 @Entity(name = "notifications")
 public class Notification extends Model {
     @Required
+    public String title;
+
+    @Required
     @ManyToOne
     @PrimaryKeyJoinColumn(name = "citizens", referencedColumnName = "id")
     public Citizen citizen;
 
     @Required
     public String comments;
+
+    @Required
+    public Boolean is_viewed = false;
 }

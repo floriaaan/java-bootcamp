@@ -33,10 +33,10 @@
             <!-- Navigation Links -->
             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
               #{if user}
-              <a class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out"
+              <!-- <a class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out"
                 href="@{Application.dashboard}">
                 Dashboard
-              </a>
+              </a> -->
 
 
               #{if user.is_authority}
@@ -44,7 +44,8 @@
                 href="@{Incidents.showAll}">
                 Incidents
               </a>
-
+              #{/if}
+              #{if user.is_authority || superhero}
               <a class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out"
                 href="@{Missions.showAll}">
                 Missions
@@ -57,19 +58,64 @@
               #{/if}
 
               <a class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out"
-                href="@{Incidents.create}">
-                Report an incident
+                 href="@{MissionsReports.showAll}">
+                Mission reports
               </a>
+              #{/if}
+              <div
+                class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+                <div class="dropdown-toggle">
+                  <div class="cursor-pointer relative">
+                    Declarations
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500"
+                      style="margin-top: 5px;margin-right: -10px;">
+                      <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                        style="margin-right: -96px;">
+                        <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="absolute z-50 mt-64 w-48 rounded-md shadow-lg dropdown-menu" style="display: none">
+                  <div class="rounded-md shadow-xs py-1 bg-white">
+                    <!-- Account Management -->
+                    <div class="block px-4 py-2 text-xs text-gray-400">
+                      Declarations
+                    </div>
 
-              <a class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out"
-                 href="@{Disputes.create}">
-                Declare a dispute
-              </a>
+                    <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
+                      href="@{Incidents.create}">
+                      Report an incident
+                    </a>
+                    <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
+                      href="@{Disputes.create}">
+                      Declare a dispute
+                    </a>
 
-              <a class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out"
-                 href="@{Crises.create}">
-                Declare a crisis
-              </a>
+                    <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
+                      href="@{Crises.create}">
+                      Declare a crisis
+                    </a>
+
+                    <div class="border-t border-gray-100"></div>
+                    <div class="block px-4 py-2 text-xs text-gray-400">
+                      SuperHero / SuperVillain
+                    </div>
+
+                    #{if !superhero}
+                    <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
+                      href="@{SuperHeroes.create}">Declare as superhero</a>
+                    #{/if}
+                    <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
+                      href="@{SuperVillains.create}">Unmask a supervillain</a>
+
+                  </div>
+                </div>
+
+
+
+
+              </div>
               #{/if}
             </div>
           </div>
@@ -78,9 +124,14 @@
           <div class="hidden sm:flex sm:items-center sm:ml-6">
 
             #{if user}
-            <div class="relative" x-data="{ open: false }" @click.away="open = false" @close.stop="open = false">
+            <div class="relative right-15 space-x-8 flex flex-row">
+              <a href="#"
+                class="h-8 w-8 rounded-full flex items-center justify-center text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out"
+                style="background-color: #fcf0cf;margin-top: 2px;">
+                <i class="fas fa-bell" style="color:#fdcf76;"></i>
+              </a>
 
-              <div class="dropdown-toggle" @click="open = ! open">
+              <div class="dropdown-toggle">
                 <button
                   class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out">
                   <img class="h-8 w-8 rounded-full object-cover"
@@ -89,13 +140,7 @@
                 </button>
               </div>
 
-              <div x-show="open" x-transition:enter="transition ease-out duration-200"
-                x-transition:enter-start="transform opacity-0 scale-95"
-                x-transition:enter-end="transform opacity-100 scale-100"
-                x-transition:leave="transition ease-in duration-75"
-                x-transition:leave-start="transform opacity-100 scale-100"
-                x-transition:leave-end="transform opacity-0 scale-95"
-                class="absolute z-50 mt-2 w-48 rounded-md shadow-lg origin-top-right right-0 dropdown-menu"
+              <div class="absolute z-50 mt-2 w-48 rounded-md shadow-lg origin-top-right right-0 dropdown-menu"
                 style="display: none" @click="open = false">
                 <div class="rounded-md shadow-xs py-1 bg-white">
                   <!-- Account Management -->
@@ -235,18 +280,24 @@
     #{/if}
     <main>#{doLayout /}</main>
   </div>
+  <input hidden id="is_user" value="#{ if user } 1 #{/if}">
   <script>
     (function () {
-        #{ if user }
-      document.getElementsByClassName("dropdown-toggle")[0].addEventListener('click', () => {
-        let menu = document.getElementsByClassName("dropdown-menu")[0];
-        menu.style.display = (menu.style.display === "none" ? "block" : "none")
-      })
-        #{/if}
-        document.getElementById("responsive-nav-toggle").addEventListener('click', () => {
-          document.getElementById("responsive-nav-content").classList.toggle("hidden");
+      if (document.getElementById('is_user').value === " 1 ") {
+        document.querySelectorAll('.dropdown-toggle').forEach((element, key) => {
+          element.addEventListener('click', () => {
+            let menu = document.querySelectorAll('.dropdown-menu')[key];
+            menu.style.display = (menu.style.display === "none" ? "block" : "none")
+          })
         })
-      }) ();
+      }
+
+
+
+      document.getElementById("responsive-nav-toggle").addEventListener('click', () => {
+        document.getElementById("responsive-nav-content").classList.toggle("hidden");
+      })
+    })();
 
   </script>
 

@@ -44,7 +44,7 @@ public class Mission extends Model {
     public List<SuperHero> super_heroes_list = new ArrayList<>();
 
     @Required
-    public String gravity_level;
+    public int gravity_level;
 
     @Required
     public String emergency_level;
