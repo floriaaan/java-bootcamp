@@ -26,12 +26,12 @@ public class MissionsReports extends SuperController {
      * GET
      * CRUD : Create an MissionReport
      */
-    public static void form() {
-        List<Mission> missionList = Mission.findAll();
+    public static void form(Long id) {
+        Mission mission = Mission.findById(id);
         List<SuperVillain> superVillainList = SuperVillain.findAll();
         List<Citizen> CitizenList = Citizen.findAll();
 
-        render(missionList, superVillainList, CitizenList);
+        render(mission, superVillainList, CitizenList);
     }
 
     /**
@@ -43,7 +43,7 @@ public class MissionsReports extends SuperController {
             flash.error("Erreur de validation.");
             params.flash();
             Validation.keep();
-            form();
+            form(missionReport.mission.id);
         }
 
         missionReport.save();

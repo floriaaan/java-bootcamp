@@ -2,7 +2,6 @@
 #{set title:'Missions list' /}
 
 
-
 <div class="py-12">
     <h3 class="mb-8 text-center font-medium text-gray-500" style="font-size: 3rem;">Missions</h3>
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -21,9 +20,20 @@
 
                             <span class="flex flex-row space-x-3 items-center">
                                 <!-- Missions.status ? <form action="" method="POST"> -->
+                                 <a href="/mission_report/create/${mission.id}">
+                                    <div class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-white bg-enedisB-100 border border-enedisB-100 ">
+                                        <span slot="avatar" style="height: 12px; margin-top: -16px;">
+                                            <i class="fas fa-plus w-4 h-4" style="font-size: 10px;"></i>
+                                        </span>
+                                        <div class="text-xs font-normal leading-none max-w-full flex-initial">
+                                            Create a mission report
+                                        </div>
+                                    </div>
+                                </a>
+
                                 <button type="submit">
                                     <div
-                                        class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-green-600 rounded-full text-white border border-green-600 ">
+                                            class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-green-600 rounded-full text-white border border-green-600 ">
                                         <span slot="avatar" style="height: 12px; margin-top: -16px;">
                                             <i class="fas fa-check w-4 h-4" style="font-size: 10px;"></i>
                                         </span>
@@ -37,7 +47,7 @@
 
                                 <a href="/mission/edit/${mission.id}">
                                     <div
-                                        class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-white text-yellow-700 border border-yellow-500 ">
+                                            class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-white text-yellow-700 border border-yellow-500 ">
                                         <span slot="avatar" style="height: 12px; margin-top: -16px;">
                                             <i class="fas fa-pencil-alt w-4 h-4" style="font-size: 10px;"></i>
                                         </span>
@@ -49,7 +59,7 @@
                                 </a>
                                 <a href="/mission/delete/${mission.id}">
                                     <div
-                                        class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-red-700 border border-red-500 ">
+                                            class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-red-700 border border-red-500 ">
                                         <span slot="avatar" style="height: 12px; margin-top: -16px;">
                                             <i class="fas fa-trash-alt w-4 h-4" style="font-size: 10px;"></i>
                                         </span>
@@ -62,8 +72,8 @@
                                 <a href="/mission/show/${mission.id}" class="text-gray-500">
                                     <svg viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
                                         <path fill-rule="evenodd"
-                                            d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                                            clip-rule="evenodd"></path>
+                                              d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                                              clip-rule="evenodd"></path>
                                     </svg>
                                 </a>
                             </span>

@@ -18,11 +18,7 @@
     ${flash.error}
     <textarea type="text" required placeholder="Détails de la mission" name="missionReport.details"></textarea>
 
-    <select required multiple name="missionReport.mission.id">
-        #{list missionList, as:'mission'}
-        <option value="${mission.id}">${mission.title}</option>
-        #{/list}
-    </select>
+    <input type="text" readonly value="${mission.title}" name="mission_report.mission">
 
     <select required multiple name="missionReport.interlocutor.id">
         #{list CitizenList, as:'citizen'}
