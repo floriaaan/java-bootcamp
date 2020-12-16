@@ -7,8 +7,7 @@ import play.data.validation.*;
 
 import java.util.*;
 
-import models.Citizen;
-import models.SuperHero;
+import models.*;
 import middlewares.Rights;
 
 import lib.BCrypt;
@@ -32,15 +31,31 @@ public class Citizens extends Rights {
     public static void show(Long id) {
         Citizen citizen = Citizen.findById(id);
 
-        SuperHero superhero = null;
         Citizen auth = getAuth();
+        SuperHero superhero = null;
+        List<Incident> incidents = null;
+        List<Mission> missions = null;
+
 
         if (auth != null && id == auth.id) {
             List<SuperHero> query = SuperHero.find("identity.id", id).fetch();
+            incidents = Incident.find("citizen.id", id).fetch();
+
             superhero = query.get(0);
+
+            if(superhero != null) {
+                List<Mission> all = Mission.all().fetch();
+                for( Mission m : all ) {
+                    for (SuperHero s : m.super_heroes_list) {
+                        if (s.identity.id == id) {
+                            //missions.add(m);
+                        }
+                    }
+                }
+            }
         }
 
-        render(citizen, superhero);
+        render(citizen, superhero, incidents, missions);
     }
 
     /**

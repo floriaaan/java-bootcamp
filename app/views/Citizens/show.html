@@ -39,7 +39,7 @@
                         </svg>
                         <div
                             class="ml-4 text-lg text-gray-600 leading-7 flex flex-row justify-between items-center font-semibold w-full">
-                            Missions in progress
+                            Missions you're implicated in
 
                             <span class="ml-1 text-gray-500">
                                 <svg viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
@@ -52,12 +52,18 @@
                     </div>
                     <div class="ml-8">
                         <div class="mt-2 text-xs text-gray-500">
-
-                            <a href="" class="no-hover">
+                            #{if missions}
+                            #{list missions, as:'mission'}
+                            <a href="/mission/show/${mission.id}" class="no-hover">
                                 <p>
-                                    Title - <span class="text-gray-400">Incident Title</span>
+                                    ${mission.title} - <span class="text-gray-400">${mission.incident.title}</span> at <span class="text-gray-300">${mission.address}</span>
                                 </p>
                             </a>
+                            #{/list}
+                            #{/if}
+                            #{else}
+                            <p>There's no mission for you</p>
+                            #{/else}
 
                         </div>
                     </div>
@@ -75,7 +81,7 @@
                         </svg>
                         <div
                             class="ml-4 text-lg text-gray-600 leading-7 flex flex-row justify-between items-center font-semibold w-full">
-                            Reported incidents
+                            Incidents you've reported
 
                             <span class="ml-1 text-gray-500">
                                 <svg viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
@@ -88,11 +94,19 @@
                     </div>
                     <div class="ml-8">
                         <div class="mt-2 text-xs text-gray-500">
-                            <a href="" class="no-hover">
+                            #{if incidents}
+                            #{list incidents, as:'incident'}
+                            <a href="/incident/show/${incident.id}" class="no-hover">
                                 <p>
-                                    Title - <span class="text-gray-400">Reporter name - date</span>
+                                    ${incident.title} - <span class="text-gray-400">${incident.address}</span>
                                 </p>
                             </a>
+                            #{/list}
+
+                            #{/if}
+                            #{else}
+                            <p>You haven't reported anything.</p>
+                            #{/else}
 
                         </div>
                     </div>
