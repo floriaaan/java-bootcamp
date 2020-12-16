@@ -10,6 +10,7 @@ import models.SuperHero;
 import play.*;
 import play.data.validation.*;
 import play.mvc.*;
+
 import java.util.*;
 
 import java.util.*;
@@ -33,16 +34,22 @@ public class MissionsReports extends SuperController {
         Mission mission = Mission.findById(id);
         mission.state = "ended";
         List<SuperHero> super_heroes_list = mission.super_heroes_list;
-        for (int i=0; i < super_heroes_list.size(); i++) {
-            if (mission.gravity_level == "high") {
-                super_heroes_list.get(i).score += 10;
+        for (int i = 0; i < super_heroes_list.size(); i++) {
+            SuperHero hero = SuperHero.findById(super_heroes_list.get(i).id);
+             if (mission.gravity_level == 4) {
+                System.out.println("URGENT");
+                hero.score += 15;
+            } else if (mission.gravity_level == 3) {
+                System.out.println("HIGH");
+                hero.score += 10;
+            } else if (mission.gravity_level == 2) {
+                System.out.println("MODERATE");
+                hero.score += 5;
+            } else if (mission.gravity_level == 1) {
+                System.out.println("LOW");
+                hero.score += 2;
             }
-            else if (mission.gravity_level == "moderate") {
-                super_heroes_list.get(i).score += 5;
-            }
-            else if (mission.gravity_level == "low") {
-                super_heroes_list.get(i).score += 2;
-            }
+            hero.save();
         }
         mission.save();
         List<SuperVillain> superVillainList = SuperVillain.findAll();
@@ -50,7 +57,7 @@ public class MissionsReports extends SuperController {
         Incident incident = Incident.findById(mission.getIncidentId());
         Citizen interlocutor = incident.citizen;
 
-        render(mission, superVillainList, CitizenList , interlocutor);
+        render(mission, superVillainList, CitizenList, interlocutor);
     }
 
     /**
