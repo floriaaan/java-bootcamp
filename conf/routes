@@ -96,6 +96,10 @@ GET         /crisis/showAll                    Crises.showAll
 GET         /crisis/create                     Crises.form
 POST        /crisis/create                     Crises.create
 
+# Superuser
+
+GET         /superuser/showAll                  Superusers.showAll
+
 # Ignore favicon requests
 GET         /favicon.ico                     404
 
