@@ -10,6 +10,8 @@ import java.util.*;
 import models.Organization;
 import models.Citizen;
 
+import lib.BCrypt;
+
 public class Organizations extends SuperController {
 
     /**
