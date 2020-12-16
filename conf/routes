@@ -56,8 +56,8 @@ POST        /mission/create           Missions.create
 # MissionReport pages
 
 GET         /mission_report/show/{id}        MissionsReports.show
-GET         /mission_report/create           MissionsReports.form
-POST        /mission_report/create           MissionsReports.create
+GET         /mission_report/create/{id}           MissionsReports.form
+POST        /mission_report/create          MissionsReports.create
 GET         /mission_report/showAll          MissionsReports.showAll
 
 # SuperHeroes pages
@@ -72,6 +72,12 @@ POST    /superhero/create                       SuperHeroes.create
 GET     /supervillain/show/{id}                    SuperVillains.show
 GET     /supervillain/create                       SuperVillains.form
 POST    /supervillain/create                       SuperVillains.create
+
+# Disputes pages
+
+GET     /dispute/show/{id}                      Disputes.show
+GET     /dispute/create                         Disputes.form
+POST    /dispute/create                         Disputes.create
 
 # Ignore favicon requests
 GET         /favicon.ico                            404
