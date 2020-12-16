@@ -16,8 +16,8 @@ import lib.BCrypt;
 public class Citizens extends Rights {
 
     /**
-     GET
-     CRUD : Read all citizens
+     * GET
+     * CRUD : Read all citizens
      */
     public static void showAll() {
         List<Citizen> citizenList = Citizen.findAll();
@@ -25,8 +25,8 @@ public class Citizens extends Rights {
     }
 
     /**
-    GET
-    CRUD : Read a citizen
+     * GET
+     * CRUD : Read a citizen
      */
     public static void show(Long id) {
         Citizen citizen = Citizen.findById(id);
@@ -40,12 +40,12 @@ public class Citizens extends Rights {
         if (auth != null && id == auth.id) {
             List<SuperHero> query = SuperHero.find("identity.id", id).fetch();
             incidents = Incident.find("citizen.id", id).fetch();
-
-            superhero = query.get(0);
-
-            if(superhero != null) {
+            if (query.size() > 0) {
+                superhero = query.get(0);
+            }
+            if (superhero != null) {
                 List<Mission> all = Mission.all().fetch();
-                for( Mission m : all ) {
+                for (Mission m : all) {
                     for (SuperHero s : m.super_heroes_list) {
                         if (s.identity.id == id) {
                             //missions.add(m);
@@ -59,19 +59,19 @@ public class Citizens extends Rights {
     }
 
     /**
-    GET
-    CRUD : Create a citizen
+     * GET
+     * CRUD : Create a citizen
      */
     public static void form() {
         render();
     }
 
     /**
-    POST
-    CRUD : Create a citizen
+     * POST
+     * CRUD : Create a citizen
      */
     public void create(@Required @Valid Citizen citizen) {
-        if(Validation.hasErrors()) {
+        if (Validation.hasErrors()) {
             params.flash();
             Validation.keep();
             form();
@@ -83,8 +83,8 @@ public class Citizens extends Rights {
     }
 
     /**
-    GET
-    CRUD : Edit a citizen
+     * GET
+     * CRUD : Edit a citizen
      */
     public static void editForm(Long id) {
         Citizen citizen = Citizen.findById(id);
@@ -92,11 +92,11 @@ public class Citizens extends Rights {
     }
 
     /**
-    POST
-    CRUD : Edit a citizen
+     * POST
+     * CRUD : Edit a citizen
      */
     public static void edit(Citizen citizen, String pwd) {
-        if(BCrypt.checkpw(pwd, citizen.password)) {
+        if (BCrypt.checkpw(pwd, citizen.password)) {
             citizen.save();
             show(citizen.id);
         } else {

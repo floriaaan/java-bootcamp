@@ -3,8 +3,10 @@ package models;
 import play.db.jpa.Model;
 import play.data.validation.*;
 import io.ebean.*;
+
 import java.util.*;
 import javax.persistence.*;
+
 import play.data.format.*;
 
 import play.db.ebean.*;
@@ -39,7 +41,7 @@ public class Citizen extends Model {
     public String nationality;
 
     @ManyToOne
-    @PrimaryKeyJoinColumn(name="organization", referencedColumnName="id")
+    @PrimaryKeyJoinColumn(name = "organization", referencedColumnName = "id")
     public Organization organization;
 
     public String comments;
@@ -55,7 +57,10 @@ public class Citizen extends Model {
 
     public Boolean is_authority;
 
-    public String getName(){
+    @OneToMany(cascade = CascadeType.ALL)
+    public List<Notification> notification_list = new ArrayList<>();
+
+    public String getName() {
         return this.fname + " " + this.lname;
     }
 
