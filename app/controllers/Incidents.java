@@ -10,8 +10,7 @@ import java.io.File;
 
 import play.mvc.Http;
 
-import models.Incident;
-import models.Citizen;
+import models.*;
 import middlewares.Rights;
 
 public class Incidents extends Rights {
@@ -34,8 +33,8 @@ public class Incidents extends Rights {
      */
     public static void show(Long id) {
         Incident incident = Incident.findById(id);
-        // TODO : render mission as mission
-        render(incident);
+        Mission mission = incident.getMission();
+        render(incident, mission);
     }
 
     /**
@@ -43,21 +42,29 @@ public class Incidents extends Rights {
      * CRUD : Create an incident
      */
     public static void form() {
-        List<Citizen> cList = Citizen.findAll();
         Long incidentsNb = Incident.count();
-        render(cList, incidentsNb);
+        Organization organization = getAuth().getOrg();
+
+        render(incidentsNb, organization);
     }
 
     /**
      * POST
      * CRUD : Create an incident
      */
-    public static void create(@Required @Valid Incident incident) {
+    public static void create(@Required @Valid Incident incident, @Required String reporter_type) {
+        System.out.println(reporter_type);
         if (Validation.hasErrors()) {
             flash.error("Erreur de validation.");
             params.flash();
             Validation.keep();
             form();
+        }
+
+        if (reporter_type.equals("organization")) {
+            incident.is_organization = true;
+        } else {
+            incident.is_organization = false;
         }
 
         incident.save();

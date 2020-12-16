@@ -2,16 +2,56 @@
 
 #{set title:'Answer satisfaction form' /}
 
-<form action="@{Satisfactions.create}" method="POST">
-    ${flash.error}
-    <select required name="satisfaction.mission.id">
-        #{list mList, as:'m'}
-        <option value="${m.id}">${m.getName()}</option>
-        #{/list}
-    </select>
-    <input type="number" required placeholder="Note" name="satisfaction.note"/>
-    <input type="text" required placeholder="Comment" name="satisfaction.comment"/>
-    <!--    TODO: replace by currently logged in user-->
-    <hr />
-    <button type="submit">Envoyer</button>
-</form>
+<div class="p-10">
+    <h3 class="mb-8 text-center font-medium text-gray-500" style="font-size: 3rem;">Satisfaction form</h3>
+    <h4 class="mb-8 text-center font-medium text-gray-500" style="font-size: 2rem;">Mission ${mission.getName()}</h4>
+    <form action="@{Satisfactions.create}" method="POST">
+        <div class="md:flex md:items-center mb-6">
+            <div class="md:w-1/4">
+                <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="note">
+                    Note
+                </label>
+
+            </div>
+            <div class="md:w-2/4">
+                <input type="number" min="1" max="5" required placeholder="Note" name="satisfaction.note" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-enedisB-100">
+            </div>
+
+        </div>
+
+
+        <div class="md:flex md:items-center mb-6">
+            <div class="md:w-1/4">
+                <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="boss">
+                    Reporter
+                </label>
+            </div>
+            <div class="md:w-2/4">
+                <input name="satisfaction.citizen.id" readonly value="${user?.id}" type="hidden">
+                <input readonly value="${user?.getName()}" class="bg-gray-400 appearance-none border-2 border-gray-400 rounded w-full py-2 px-4 text-gray-800 leading-tight" type="text">
+            </div>
+        </div>
+
+        <div class="md:flex md:items-center mb-6">
+            <div class="md:w-1/4">
+                <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="comments">
+                    Comments
+                </label>
+            </div>
+            <div class="md:w-2/4">
+                <textarea name="satisfaction.comment" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-enedisB-100" id="comments" rows="5"></textarea>
+            </div>
+        </div>
+
+        <input hidden name="satisfaction.mission.id" value="${mission.id}">
+
+        <div class="md:flex md:items-center">
+            <div class="md:w-2/4"></div>
+            <div class="md:w-2/4">
+                <button class="shadow bg-enedisB-100 hover:bg-enedisB-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
+                    Submit
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
