@@ -30,12 +30,12 @@ public class SuperController extends Controller {
     }
 
 
-    @Before
+    @Before(unless={"Authentication.login", "Authentication.connect"})
     public void middleware_auth() {
 
         if(this.INSTANCE == null) {
             //System.out.println("unauth");
-            //renderTemplate("Authentication/login.html");
+            renderTemplate("Authentication/login.html");
         } else {
             //System.out.println(this.INSTANCE.getName());
             long userSuperheroIdentity = SuperHero.count("identity = ?1", this.INSTANCE);
