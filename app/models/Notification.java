@@ -17,4 +17,7 @@ public class Notification extends Model {
 
     @Required
     public String comments;
+
+    @Required
+    public Boolean is_viewed = false;
 }
