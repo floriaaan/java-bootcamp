@@ -35,7 +35,6 @@ public class Organizations extends SuperController {
      CRUD : Create an organization
      */
     public static void create(@Required @Valid Organization organization) {
-        System.out.println(organization.boss);
         if(Validation.hasErrors()) {
             flash.error("Erreur de validation.");
             params.flash();

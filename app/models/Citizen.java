@@ -59,6 +59,15 @@ public class Citizen extends Model {
         return this.fname + " " + this.lname;
     }
 
+    public Organization getOrg(){
+        List<Organization> query = Organization.find("boss.id", this.id).fetch();
+        if(query.size() > 0) {
+            return query.get(0);
+        } else {
+            return null;
+        }
+    }
+
     @PrePersist
     public void created_at() {
         this.password = BCrypt.hashpw(this.password, BCrypt.gensalt());

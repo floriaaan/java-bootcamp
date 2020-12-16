@@ -34,15 +34,9 @@ public class Incident extends Model {
     @PrimaryKeyJoinColumn(name = "citizen", referencedColumnName = "id")
     public Citizen citizen;
 
-//    public Long reporter_type;
-//
-//    public String comments;
-//
-//    public boolean is_civil;
-//    public boolean is_organization;
-//    @ManyToOne
-//    @PrimaryKeyJoinColumn(name="organization", referencedColumnName="id")
-//    public Organization organization_id;
+
+    public boolean is_organization;
+
 
     @OneToOne
     public Mission mission;
@@ -60,5 +54,14 @@ public class Incident extends Model {
     @PreUpdate
     public void updated_at() {
         this.updated_at = new java.util.Date();
+    }
+
+    public Mission getMission(){
+        List<Mission> query = Mission.find("incident.id", this.id).fetch();
+        if(query.size() > 0) {
+            return query.get(0);
+        } else {
+            return null;
+        }
     }
 }
