@@ -73,6 +73,12 @@ GET     /supervillain/show/{id}                    SuperVillains.show
 GET     /supervillain/create                       SuperVillains.form
 POST    /supervillain/create                       SuperVillains.create
 
+# Disputes pages
+
+GET     /dispute/show/{id}                      Disputes.show
+GET     /dispute/create                         Disputes.form
+POST    /dispute/create                         Disputes.create
+
 # Ignore favicon requests
 GET         /favicon.ico                            404
 
