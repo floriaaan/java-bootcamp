@@ -78,9 +78,9 @@ POST        /supervillain/create             SuperVillains.create
 
 # Disputes pages
 
-GET     /dispute/show/{id}                   Disputes.show
-GET     /dispute/create                      Disputes.form
-POST    /dispute/create                      Disputes.create
+GET         /dispute/show/{id}               Disputes.show
+GET         /dispute/create                  Disputes.form
+POST        /dispute/create                  Disputes.create
 
 # Crisis pages
 

@@ -39,8 +39,12 @@ public class SuperController extends Controller {
         } else {
             //System.out.println(this.INSTANCE.getName());
             long userSuperheroIdentity = SuperHero.count("identity = ?1", this.INSTANCE);
+            long notifications = Notification.count("citizen = ?1 AND is_viewed = 0", this.INSTANCE);
+
+
             renderArgs.put("user", this.INSTANCE);
             renderArgs.put("superhero", userSuperheroIdentity);
+            renderArgs.put("notifications", notifications);
         }
     }
 
