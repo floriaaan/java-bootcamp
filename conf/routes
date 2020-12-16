@@ -4,7 +4,7 @@
 
 # Home page
 GET         /                                Application.index
-GET         /dashboard                       Application.dashboard
+# GET         /dashboard                       Application.dashboard
 
 # Authentication page
 
@@ -27,6 +27,8 @@ POST        /citizen/edit/                   Citizens.edit
 GET         /organization/show/{id}          Organizations.show
 GET         /organization/create             Organizations.form
 POST        /organization/create             Organizations.create
+GET         /organization/edit/{id}          Organizations.editForm
+POST        /organization/edit               Organizations.edit
 
 # Incident pages
 
@@ -42,7 +44,7 @@ POST        /incident/edit                   Incidents.edit
 # Satisfaction pages
 
 GET         /satisfaction/show/{id}          Satisfactions.show
-GET         /satisfaction/create/{id}             Satisfactions.form
+GET         /satisfaction/create/{id}        Satisfactions.form
 POST        /satisfaction/create             Satisfactions.create
 GET         /satisfaction/showAll            Satisfactions.showAll
 
@@ -56,8 +58,8 @@ POST        /mission/create                  Missions.create
 # MissionReport pages
 
 GET         /mission_report/show/{id}        MissionsReports.show
-GET         /mission_report/create/{id}           MissionsReports.form
-POST        /mission_report/create          MissionsReports.create
+GET         /mission_report/create/{id}      MissionsReports.form
+POST        /mission_report/create           MissionsReports.create
 GET         /mission_report/showAll          MissionsReports.showAll
 
 # SuperHeroes pages
@@ -76,9 +78,9 @@ POST        /supervillain/create             SuperVillains.create
 
 # Disputes pages
 
-GET     /dispute/show/{id}                      Disputes.show
-GET     /dispute/create                         Disputes.form
-POST    /dispute/create                         Disputes.create
+GET     /dispute/show/{id}                   Disputes.show
+GET     /dispute/create                      Disputes.form
+POST    /dispute/create                      Disputes.create
 
 # Crisis pages
 
@@ -88,10 +90,10 @@ GET         /crisis/create                   Crises.form
 POST        /crisis/create                   Crises.create
 
 # Ignore favicon requests
-GET         /favicon.ico                            404
+GET         /favicon.ico                     404
 
 # Map static resources from the /app/public folder to the /public path
 GET         /public/                         staticDir:public
 
 # Catch all
-#*       /{controller}/{action}                  {controller}.{action}
+#*       /{controller}/{action}              {controller}.{action}
