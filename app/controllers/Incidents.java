@@ -43,7 +43,13 @@ public class Incidents extends Rights {
      */
     public static void form() {
         Long incidentsNb = Incident.count();
-        Organization organization = getAuth().getOrg();
+        Citizen auth = getAuth();
+
+        Organization organization = null;
+        if (auth != null) {
+            organization = auth.getOrg();
+        }
+            
 
         render(incidentsNb, organization);
     }

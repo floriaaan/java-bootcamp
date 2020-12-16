@@ -1,33 +1,46 @@
 #{extends 'main.html' /}
 #{set title:'Super Heroes list' /}
 
-<table border="1">
-    <thead>
-    <tr>
-        <th>Nom</th>
-        <th>Secret identity</th>
-        <th>Power</th>
-        <th>Weakness</th>
-        <th>Score</th>
-        <th>Comments</th>
-        <th>Missions</th>
-        <th>Creation date</th>
-        <th>Last update</th>
-    </tr>
-    </thead>
-    <tbody>
+<div class="p-12">
+    <h3 class="mb-8 text-center font-medium text-gray-500" style="font-size: 3rem;">List of declared Super-Heroes</h3>
+
+
     #{list superHeroesList, as:'hero'}
-    <tr>
-        <td>${hero.name}</td>
-        <td>${hero.identity}</td>
-        <td>${hero.power}</td>
-        <td>${hero.weakness}</td>
-        <td>${hero.score}</td>
-        <td>${hero.comments}</td>
-        <td>${hero.mission}</td>
-        <td>${hero.created_at}</td>
-        <td>${hero.updated_at}</td>
-    </tr>
+    <a href="/superhero/show/${hero.id}">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                <div class="p-4 sm:px-20 bg-white border-b border-gray-200">
+                    <div class="flex flex-row my-4 text-2xl">
+
+                       
+
+                        <div class="flex flex-col ml-5">
+                            <div class="font-medium text-base text-gray-800" style="font-size: 1.5rem;">
+                                ${hero.name} - Score : <span class="text-enedisG-100">${hero.score}</span>
+                            </div>
+
+                            <div class="font-medium text-base text-gray-800" style="font-size: 0.7rem;">
+                                <span class="text-enedisG-100">Powers</span> : ${hero.power}
+                            </div>
+                            <div class="font-medium text-base text-gray-800" style="font-size: 0.7rem;">
+                                <span class="text-enedisG-100">Weakness</span> : ${hero.weakness}
+                            </div>
+
+                            
+
+                            <div class="font-medium text-xs text-gray-500">
+                                declared the <span class="text-enedisB-100 font-semibold">${hero.created_at}</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </a>
     #{/list}
-    </tbody>
-</table>
+
+</div>
