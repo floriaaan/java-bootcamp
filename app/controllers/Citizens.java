@@ -8,6 +8,7 @@ import play.data.validation.*;
 import java.util.*;
 
 import models.Citizen;
+import models.SuperHero;
 import middlewares.Rights;
 
 import lib.BCrypt;
@@ -29,8 +30,17 @@ public class Citizens extends Rights {
     CRUD : Read a citizen
      */
     public static void show(Long id) {
-        Citizen c = Citizen.findById(id);
-        render(c);
+        Citizen citizen = Citizen.findById(id);
+
+        SuperHero superhero = null;
+        Citizen auth = getAuth();
+
+        if (auth != null && id == auth.id) {
+            List<SuperHero> query = SuperHero.find("identity.id", id).fetch();
+            superhero = query.get(0);
+        }
+
+        render(citizen, superhero);
     }
 
     /**
