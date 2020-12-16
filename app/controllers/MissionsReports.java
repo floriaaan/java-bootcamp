@@ -16,6 +16,9 @@ import java.util.*;
 
 import java.util.*;
 
+/**
+ * Missions reports Controller
+ */
 public class MissionsReports extends SuperController {
 
     /**
@@ -30,6 +33,7 @@ public class MissionsReports extends SuperController {
     /**
      * GET
      * CRUD : Read an MissionReport
+     * @param {Long} id
      */
     public static void show(Long id) {
         MissionReport missionReport = MissionReport.findById(id);
@@ -40,6 +44,7 @@ public class MissionsReports extends SuperController {
     /**
      * GET
      * CRUD : Create an MissionReport
+     * @param {Long} id
      */
     public static void form(Long id) {
         Mission mission = Mission.findById(id);
@@ -74,6 +79,7 @@ public class MissionsReports extends SuperController {
     /**
      * POST
      * CRUD : Create an MissionReport
+     * @param {MissionReport} missionReport
      */
     public static void create(@Required @Valid MissionReport missionReport) {
         if (Validation.hasErrors()) {

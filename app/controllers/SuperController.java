@@ -9,7 +9,9 @@ import play.data.validation.*;
 
 import models.*;
 
-
+/**
+ * Super Controller that manage instance
+ */
 public class SuperController extends Controller {
 
     public SuperController()

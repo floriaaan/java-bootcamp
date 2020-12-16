@@ -54,6 +54,8 @@ GET         /mission/show/{id}                 Missions.show
 GET         /mission/showAll                   Missions.showAll
 GET         /mission/create/{id}               Missions.form
 POST        /mission/create                    Missions.create
+POST        /mission/close                     Missions.closeMission
+POST        /mission/open                      Missions.openMission
 
 # MissionReport pages
 

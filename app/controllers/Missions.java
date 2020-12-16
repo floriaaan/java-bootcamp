@@ -15,7 +15,9 @@ import models.Notification;
 
 import middlewares.Rights;
 
-
+/**
+ * Missions Controller
+ */
 public class Missions extends Rights {
 
     /**
@@ -30,6 +32,7 @@ public class Missions extends Rights {
     /**
      * GET
      * CRUD : Read an Mission
+     * @param {Long} id
      */
     public static void show(Long id) {
         Mission mission = Mission.findById(id);
@@ -39,6 +42,7 @@ public class Missions extends Rights {
     /**
      * GET
      * CRUD : Create an Mission
+     * @param {Long} id
      */
     public static void form(Long id) {
         List<SuperHero> sList = SuperHero.findAll();
@@ -49,6 +53,7 @@ public class Missions extends Rights {
     /**
      * POST
      * CRUD : Create an Mission
+     * @param {Mission} mission
      */
     public static void create(@Required @Valid Mission mission) {
         if (Validation.hasErrors()) {
@@ -84,4 +89,19 @@ public class Missions extends Rights {
         mission.save();
         show(mission.id);
     }
+
+    public static void closeMission(Long id) {
+        Mission mission = Mission.findById(id);
+        mission.state = "closed";
+        mission.save();
+        showAll();
+    }
+
+    public static void openMission(Long id) {
+        Mission mission = Mission.findById(id);
+        mission.state = "in progress";
+        mission.save();
+        showAll();
+    }
+
 }

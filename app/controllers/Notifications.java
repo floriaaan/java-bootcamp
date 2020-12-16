@@ -11,6 +11,9 @@ import middlewares.Rights;
 import models.Citizen;
 import models.Notification;
 
+/**
+ * Notification Controller
+ */
 public class Notifications extends Rights {
     /**
      * GET
