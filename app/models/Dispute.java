@@ -10,6 +10,8 @@ import play.data.format.*;
 import play.db.ebean.*;
 import com.avaje.ebean.*;
 
+import models.Crisis;
+
 @Entity(name="disputes")
 public class Dispute extends Model {
 
@@ -21,6 +23,9 @@ public class Dispute extends Model {
 
     @OneToOne
     public Citizen citizen;
+
+    @OneToOne
+    public Crisis crisis;
 
     public String comments;
 
