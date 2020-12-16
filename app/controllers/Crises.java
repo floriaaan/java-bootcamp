@@ -10,6 +10,8 @@ import java.util.*;
 import models.Crisis;
 import models.Mission;
 import models.Dispute;
+import models.Citizen;
+import models.Notification;
 import middlewares.Rights;
 
 import lib.BCrypt;
@@ -46,6 +48,19 @@ public class Crises extends Rights {
             params.flash();
             Validation.keep();
             form();
+        }
+
+        List<Citizen> cList = Citizen.findAll();
+        for (int i = 0; i < cList.size(); i++) {
+
+            Citizen citizen = cList.get(i);
+
+            Notification notif = new Notification();
+            notif.comments = crisis.comments;
+            notif.citizen = citizen;
+            citizen.notification_list.add(notif);
+
+            citizen.save();
         }
 
         crisis.save();

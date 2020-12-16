@@ -3,7 +3,9 @@ package controllers;
 import models.Citizen;
 import models.Mission;
 import models.MissionReport;
+import models.Incident;
 import models.SuperVillain;
+
 import play.*;
 import play.data.validation.*;
 import play.mvc.*;
@@ -32,8 +34,10 @@ public class MissionsReports extends SuperController {
         mission.save();
         List<SuperVillain> superVillainList = SuperVillain.findAll();
         List<Citizen> CitizenList = Citizen.findAll();
-
-        render(mission, superVillainList, CitizenList);
+        Incident incident = Incident.findById(mission.getIncidentId());
+        Citizen interlocutor = incident.citizen;
+        
+        render(mission, superVillainList, CitizenList , interlocutor);
     }
 
     /**

@@ -15,11 +15,19 @@
 
                     <div class="flex flex-col ml-5">
                         <div class="font-medium text-base text-gray-800" style="font-size: 3rem;">
-                            ${citizen?.getName()} #{if superhero} <span class="text-gray-500">also known as </span> <span class="text-enedisB-100">${superhero.name}</span> #{/if}
+                            ${citizen?.getName()} #{if superhero} <span class="text-gray-500">also known as </span>
+                            <span class="text-enedisB-100">${superhero.name}</span> #{/if}
                         </div>
-                        <div class="font-medium text-sm text-gray-500" style="font-size: 1.5rem; margin-top: -20px; margin-left: 5px;">
+                        <div class="font-medium text-sm text-gray-500"
+                            style="font-size: 1.5rem; margin-top: -10px; margin-left: 5px;">
                             ${citizen?.mail}
                         </div>
+                        #{if citizen.getOrg()}
+                        <div class="font-medium text-sm text-gray-500"
+                            style="font-size: 1.5rem; margin-left: 5px;">
+                            Boss of <span class="text-enedisB-100">${citizen.getOrg().name}</span> organisation
+                        </div>
+                        #{/if}
                         <div class="font-medium text-sm text-gray-500" style="margin-left: 5px;">
                             inscribed the <span class="text-enedisB-100 font-semibold">${citizen?.created_at}</span>
                         </div>
@@ -56,7 +64,8 @@
                             #{list missions, as:'mission'}
                             <a href="/mission/show/${mission.id}" class="no-hover">
                                 <p>
-                                    ${mission.title} - <span class="text-gray-400">${mission.incident.title}</span> at <span class="text-gray-300">${mission.address}</span>
+                                    ${mission.title} - <span class="text-gray-400">${mission.incident.title}</span> at
+                                    <span class="text-gray-300">${mission.address}</span>
                                 </p>
                             </a>
                             #{/list}
@@ -114,7 +123,7 @@
 
                 </div>
 
-                
+
             </div>
 
         </div>

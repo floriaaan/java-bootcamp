@@ -11,6 +11,7 @@ import java.util.*;
 
 import io.ebean.*;
 import models.Incident;
+import models.Citizen;
 
 @Entity(name="missions")
 public class Mission extends Model {
@@ -59,7 +60,6 @@ public class Mission extends Model {
         return this.title;
     }
 
-
     @PrePersist
     public void created_at() {
         this.created_at = new java.util.Date();
@@ -69,6 +69,10 @@ public class Mission extends Model {
     @PreUpdate
     public void updated_at() {
         this.updated_at = new java.util.Date();
+    }
+
+    public Long getIncidentId(){
+        return this.incident.id;
     }
 
 }
