@@ -111,6 +111,7 @@
         #{/if}
         #{else}
         <input type="hidden" value="civil" name="reporter_type">
+        <input name="incident.citizen.id" readonly value="${user.id}" type="hidden">
         #{/else}
         <div class="md:flex md:items-center mb-6">
             <div class="md:w-1/4">
