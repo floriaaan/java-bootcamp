@@ -18,7 +18,7 @@
     <h3 class="mb-2 text-center font-medium text-gray-500" style="font-size: 3rem;">Create report on mission :</h3>
     <h4 class="mb-8 text-center font-medium text-gray-400" style="font-size: 1.5rem;"> ${mission.title}</h4>
     ${flash.error}
-       
+
     <div class="md:flex md:items-center mb-6">
         <div class="md:w-1/4">
             <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
@@ -27,7 +27,7 @@
 
         </div>
         <div class="md:w-2/4">
-            <input readonly type="text" required placeholder="Title" name="mission_report.mission" value="${mission.title}"
+            <input readonly type="text" required placeholder="Title" name="missionReport.title" value="${mission.title}"
                 class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-enedisB-100">
         </div>
     </div>
@@ -54,7 +54,8 @@
 
         </div>
         <div class="md:w-2/4">
-            <input readonly type="text"  value="${interlocutor.getName()}"
+            <input name="missionReport.interlocutor.id" readonly value="${user.id}" type="hidden">
+            <input readonly type="text" value="${user.getName()}"
                 class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-enedisB-100">
         </div>
     </div>
@@ -67,7 +68,7 @@
         </div>
         <div class="md:w-2/4">
             <div class="relative">
-                <select required multiple             
+                <select required multiple
                     class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     name="missionReport.superVillainList.id"
                     id="sv"
@@ -85,6 +86,8 @@
             </div>
         </div>
     </div>
+
+    <input name="missionReport.mission.id" value="${mission.id}">
 
     <div class="md:flex md:items-center">
         <div class="md:w-1/4"></div>
