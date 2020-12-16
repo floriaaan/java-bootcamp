@@ -1,6 +1,6 @@
 #{extends 'main.html' /}
 
-#{set title:'Report an incident' /}
+#{set title:'Mission report form' /}
 
 <div class="">
     #{ifErrors}
@@ -14,24 +14,86 @@
     #{/ifErrors}
 </div>
 
-<form action="@{MissionsReports.create}" method="POST">
+<form action="@{MissionsReports.create}" method="POST" class="p-12">
+    <h3 class="mb-2 text-center font-medium text-gray-500" style="font-size: 3rem;">Create report on mission :</h3>
+    <h4 class="mb-8 text-center font-medium text-gray-400" style="font-size: 1.5rem;"> ${mission.title}</h4>
     ${flash.error}
-    <textarea type="text" required placeholder="Détails de la mission" name="missionReport.details"></textarea>
+       
+    <div class="md:flex md:items-center mb-6">
+        <div class="md:w-1/4">
+            <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
+                Mission title
+            </label>
 
-    <input type="text" readonly value="${mission.title}" name="mission_report.mission">
+        </div>
+        <div class="md:w-2/4">
+            <input readonly type="text" required placeholder="Title" name="mission_report.mission" value="${mission.title}"
+                class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-enedisB-100">
+        </div>
+    </div>
 
-    <select required multiple name="missionReport.interlocutor.id">
-        #{list CitizenList, as:'citizen'}
-        <option value="${citizen.id}">${citizen.fname}</option>
-        #{/list}
-    </select>
+    <div class="md:flex md:items-center mb-6">
+        <div class="md:w-1/4">
+            <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="details">
+                Mission details
+            </label>
+        </div>
+        <div class="md:w-2/4">
+            <textarea name="missionReport.details"
+                class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-enedisB-100"
+                id="details" rows="5" required>
+            </textarea>
+        </div>
+    </div>
 
-    <select required multiple name="missionReport.superVillainList.id">
-        #{list superVillainList, as:'superVillain'}
-        <option value="${superVillain.id}">${superVillain.name}</option>
-        #{/list}
-    </select>
+    <div class="md:flex md:items-center mb-6">
+        <div class="md:w-1/4">
+            <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
+                Principal interlocutor
+            </label>
 
-    <hr/>
-    <button type="submit">Envoyer</button>
+        </div>
+        <div class="md:w-2/4">
+            <input readonly type="text"  value="${interlocutor.getName()}"
+                class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-enedisB-100">
+        </div>
+    </div>
+
+    <div class="md:flex md:items-center mb-6">
+        <div class="md:w-1/4">
+            <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="sv">
+                Super-Villains
+            </label>
+        </div>
+        <div class="md:w-2/4">
+            <div class="relative">
+                <select required multiple             
+                    class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    name="missionReport.superVillainList.id"
+                    id="sv"
+                    >
+
+                    #{list superVillainList, as:'superVillain'}
+                    <option value="${superVillain.id}">${superVillain.name}</option>
+                    #{/list}
+                </select>
+
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                        <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="md:flex md:items-center">
+        <div class="md:w-1/4"></div>
+        <div class="md:w-2/4">
+            <button
+                    class="shadow bg-enedisB-100 hover:bg-enedisB-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+                    type="submit">
+                Create report
+            </button>
+        </div>
+    </div>
 </form>
