@@ -84,4 +84,19 @@ public class Missions extends Rights {
         mission.save();
         show(mission.id);
     }
+
+    public static void closeMission(Long id) {
+        Mission mission = Mission.findById(id);
+        mission.state = "closed";
+        mission.save();
+        showAll();
+    }
+
+    public static void openMission(Long id) {
+        Mission mission = Mission.findById(id);
+        mission.state = "in progress";
+        mission.save();
+        showAll();
+    }
+
 }
