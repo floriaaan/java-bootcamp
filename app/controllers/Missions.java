@@ -9,7 +9,9 @@ import java.util.*;
 
 import models.Mission;
 import models.Incident;
+import models.Citizen;
 import models.SuperHero;
+import models.Notification;
 
 import middlewares.Rights;
 
@@ -59,6 +61,25 @@ public class Missions extends Rights {
         Incident incident = Incident.findById(mission.incident.id);
         incident.state = "ended";
         incident.save();
+
+        if (mission.gravity_level == 4) {
+            System.out.println("URGENT");
+
+            List<SuperHero> sList = mission.super_heroes_list;
+
+            for (int i = 0; i < sList.size(); i++) {
+                SuperHero hero = sList.get(i);
+
+                Notification notif = new Notification();
+                notif.title = "Mission notification";
+                notif.comments = mission.informations;
+                notif.citizen = hero.identity;
+                Citizen citizen = hero.identity;
+                hero.identity.notification_list.add(notif);
+
+                citizen.save();
+            }
+        }
 
         mission.save();
         show(mission.id);
