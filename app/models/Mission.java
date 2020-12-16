@@ -47,6 +47,9 @@ public class Mission extends Model {
     public Date created_at;
     public Date updated_at;
 
+    @OneToMany(cascade=CascadeType.ALL, mappedBy="mission")
+    public List<Dispute> dispute_list;
+
     public String getName(){
         return this.title;
     }
