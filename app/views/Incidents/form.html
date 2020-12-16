@@ -8,7 +8,7 @@
     <li>${error}</li>
 
     #{/errors}
-    <hr />
+    <hr/>
     #{/ifErrors}
 </div>
 
@@ -25,7 +25,7 @@
             <div class="md:w-2/4">
                 #{if incidentNb != 0}
                 <input type="text" required placeholder="Title" name="incident.title"
-                    value="Incident #${incidentsNb + 1}" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded
+                       value="Incident #${incidentsNb + 1}" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded
                    w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none
                    focus:bg-white focus:border-enedisB-100">
                 #{/if}
@@ -47,7 +47,7 @@
             </div>
             <div class="md:w-2/4">
                 <input type="text" required placeholder="Address" name="incident.address"
-                    class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-enedisB-100">
+                       class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-enedisB-100">
             </div>
 
         </div>
@@ -62,8 +62,8 @@
             </div>
             <div class="md:w-2/4">
                 <textarea name="incident.comments"
-                    class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-enedisB-100"
-                    id="comments" rows="5"></textarea>
+                          class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-enedisB-100"
+                          id="comments" rows="5"></textarea>
             </div>
         </div>
 
@@ -97,18 +97,22 @@
             <div class="md:w-2/4">
                 <input name="incident.citizen.id" readonly value="${user.id}" type="hidden">
                 <input readonly value="${user.getName()}"
-                    class="bg-gray-400 appearance-none border-2 border-gray-400 rounded w-full py-2 px-4 text-gray-800 leading-tight"
-                    type="text"
-                    id="citizen-text"
-                    style="display: block;">
+                       class="bg-gray-400 appearance-none border-2 border-gray-400 rounded w-full py-2 px-4 text-gray-800 leading-tight"
+                       type="text"
+                       id="citizen-text"
+                       style="display: block;">
                 <input readonly value="${organization?.name}"
-                    class="bg-gray-400 appearance-none border-2 border-gray-400 rounded w-full py-2 px-4 text-gray-800 leading-tight"
-                    type="text"
-                    id="organization-text"
-                    style="display: none;">
+                       class="bg-gray-400 appearance-none border-2 border-gray-400 rounded w-full py-2 px-4 text-gray-800 leading-tight"
+                       type="text"
+                       id="organization-text"
+                       style="display: none;">
             </div>
         </div>
         #{/if}
+        #{else}
+        <input type="hidden" value="civil" name="reporter_type">
+        <input name="incident.citizen.id" readonly value="${user.id}" type="hidden">
+        #{/else}
         <div class="md:flex md:items-center mb-6">
             <div class="md:w-1/4">
                 <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="image">
@@ -172,11 +176,11 @@
 
                 <div class="custom-file">
                     <input type="file"
-                        class="custom-file-input bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-enedisB-100"
-                        id="image" name="incident.picture">
+                           class="custom-file-input bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-enedisB-100"
+                           id="image" name="incident.picture">
                     <label
-                        class="custom-file-label bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-enedisB-100"
-                        for="image">Upload a picture</label>
+                            class="custom-file-label bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-enedisB-100"
+                            for="image">Upload a picture</label>
                 </div>
 
             </div>
@@ -188,8 +192,8 @@
             <div class="md:w-1/4"></div>
             <div class="md:w-2/4">
                 <button
-                    class="shadow bg-enedisB-100 hover:bg-enedisB-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
-                    type="submit">
+                        class="shadow bg-enedisB-100 hover:bg-enedisB-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+                        type="submit">
                     Declare the incident
                 </button>
             </div>

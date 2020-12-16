@@ -1,0 +1,94 @@
+#{extends 'main.html' /}
+#{set title:'Superuser accesses' /}
+
+
+<div class="py-12">
+    <h3 class="mb-8 text-center font-medium text-gray-500" style="font-size: 3rem;">Citizens</h3>
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+
+            <ul class="list-unstyled">
+                #{list citizenList, as:'citizen'}
+                <li class="media p-3 mx-5 border-b border-gray-200">
+
+                    <div class="media-body">
+                        <div class="flex flex-row justify-between items-center font-semibold">
+                            <h5 class="mt-0 mb-1 font-weight-bolder text-1xl">${citizen.fname} ${citizen.lname}</h5>
+                        </div>
+                        <h5 class="mt-0 mb-1 font-weight-bolder text-1xl">${citizen.mail}</h5>
+                        <h5 class="mt-0 mb-1 font-weight-bolder text-1xl">${citizen.address}</h5>
+                        <span class="mt-0 mb-1 font-weight-bolder" style="color: #999999">${citizen.comments}</span>
+                    </div>
+                </li>
+                #{/list}
+            </ul>
+
+
+        </div>
+    </div>
+
+    <h3 class="mb-8 text-center font-medium text-gray-500 pt-10" style="font-size: 3rem;">Organizations</h3>
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+
+            <ul class="list-unstyled">
+                #{list organizationList, as:'organization'}
+                <li class="media p-3 mx-5 border-b border-gray-200">
+
+                    <div class="media-body">
+                        <div class="flex flex-row justify-between items-center font-semibold">
+                            <h5 class="mt-0 mb-1 font-weight-bolder text-1xl">${organization.name}</h5>
+                        </div>
+                        <h5 class="mt-0 mb-1 font-weight-bolder text-1l">${organization.address}</h5>
+                        <span class="mt-0 mb-1 font-weight-bolder" style="color: #999999">${organization.comments}</span>
+                    </div>
+                </li>
+                #{/list}
+            </ul>
+
+
+        </div>
+    </div>
+
+    <h3 class="mb-8 text-center font-medium text-gray-500 pt-10" style="font-size: 3rem;">Super Heroes</h3>
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+
+            <ul class="list-unstyled">
+                #{list superHeroList, as:'superhero'}
+                <li class="media p-3 mx-5 border-b border-gray-200">
+
+                    <div class="media-body">
+                        <div class="flex flex-row justify-between items-center font-semibold">
+                            <h5 class="mt-0 mb-1 font-weight-bolder text-1xl">${superhero.name}</h5>
+                        </div>
+                        <h5 class="mt-0 mb-1 font-weight-bolder text-1xl">${superhero.identity?.name}</h5>
+                        <span class="mt-0 mb-1 font-weight-bolder" style="color: #999999">${superhero.comments}</span>
+                    </div>
+                </li>
+                #{/list}
+            </ul>
+        </div>
+    </div>
+
+    <h3 class="mb-8 text-center font-medium text-gray-500 pt-10" style="font-size: 3rem;">Super Villains</h3>
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+
+            <ul class="list-unstyled">
+                #{list superVillainList, as:'supervillain'}
+                <li class="media p-3 mx-5 border-b border-gray-200">
+
+                    <div class="media-body">
+                        <div class="flex flex-row justify-between items-center font-semibold">
+                            <h5 class="mt-0 mb-1 font-weight-bolder text-1xl">${supervillain.name}</h5>
+                        </div>
+                        <h5 class="mt-0 mb-1 font-weight-bolder text-1xl">${supervillain.identity?.name}</h5>
+                        <span class="mt-0 mb-1 font-weight-bolder" style="color: #999999">${supervillain.comments}</span>
+                    </div>
+                </li>
+                #{/list}
+            </ul>
+        </div>
+    </div>
+</div>
