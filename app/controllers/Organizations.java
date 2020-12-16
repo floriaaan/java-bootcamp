@@ -7,8 +7,7 @@ import play.data.validation.*;
 
 import java.util.*;
 
-import models.Organization;
-import models.Citizen;
+import models.*;
 
 import lib.BCrypt;
 
@@ -24,7 +23,25 @@ public class Organizations extends SuperController {
      */
     public static void show(Long id) {
         Organization organization = Organization.findById(id);
-        render(organization);
+        long implicated = Incident.count("is_organization = 1 and citizen.id = ?1", organization.boss.id);
+
+        long missions = 0;
+        List<Incident> iList = Incident.find("is_organization = 1 and citizen.id = ?1", organization.boss.id).fetch();
+        for(Incident i: iList){
+            if (i.mission != null) {
+                missions++;
+            }
+        }
+
+
+        long superheroes = 0;
+        for(Citizen c: organization.members){
+            if (SuperHero.count("identity.id = ?1", c.id) > 0) {
+                superheroes++;
+            }
+        }
+
+        render(organization, implicated, superheroes, missions);
     }
 
     /**

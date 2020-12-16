@@ -1,3 +1,86 @@
 #{extends 'main.html' /}
+#{set title:'Organization' /}
 
-<h1>#${organization.id} - ${organization.name}</h1>
+
+
+<div class="p-12">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+            <div class="p-6 sm:px-20 bg-white border-b border-gray-200">
+                <div class="flex flex-row my-8 text-2xl">
+
+                    <img class="h-32 w-32 rounded-full object-cover"
+                        src="https://ui-avatars.com/api/?name=${organization?.name}&amp;color=7bb36e&amp;background=9ee68d"
+                        alt="${organization?.name}" />
+
+                    <div class="flex flex-col ml-5">
+                        <div class="font-medium text-base text-gray-800" style="font-size: 3rem;">
+                            ${organization?.name}
+                        </div>
+                        <div class="font-medium text-sm text-gray-500"
+                            style="font-size: 1rem; margin-top: -10px; margin-left: 5px;">
+                            ${organization?.address}
+                        </div>
+                        
+                        <div class="font-medium text-sm text-gray-500"
+                            style="font-size: 1rem; margin-left: 5px;">
+                            Boss : <span class="text-enedisB-100">${organization.boss.name}</span> 
+                        </div>
+                        
+                        <div class="font-medium text-sm text-gray-500" style="margin-left: 5px;">
+                            created the <span class="text-enedisB-100 font-semibold">${organization?.created_at}</span>
+                        </div>
+                        
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="bg-gray-200 bg-opacity-25 p-12">
+                <div class="sm:grid sm:h-32 sm:grid-flow-row sm:gap-4 sm:grid-cols-3">
+                    <div id="jh-stats-positive" class="flex flex-col justify-center px-4 py-4 bg-white border border-gray-300 rounded">
+                        <div>
+                            <div>
+                                <p class="flex items-center justify-end text-green-500 text-md">
+                                    <span class="font-bold">6%</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path class="heroicon-ui" d="M20 15a1 1 0 002 0V7a1 1 0 00-1-1h-8a1 1 0 000 2h5.59L13 13.59l-3.3-3.3a1 1 0 00-1.4 0l-6 6a1 1 0 001.4 1.42L9 12.4l3.3 3.3a1 1 0 001.4 0L20 9.4V15z"/></svg>
+                                </p>
+                            </div>
+                            <p class="text-3xl font-semibold text-center text-gray-800">${superheroes}</p>
+                            <p class="text-lg text-center text-gray-500">Super heroes</p>
+                        </div>
+                    </div>
+        
+                    <div id="jh-stats-negative" class="flex flex-col justify-center px-4 py-4 mt-4 bg-white border border-gray-300 rounded sm:mt-0">
+                        <div>
+                            <div>
+                                <p class="flex items-center justify-end text-red-500 text-md">
+                                    <span class="font-bold">6%</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path class="heroicon-ui" d="M20 9a1 1 0 012 0v8a1 1 0 01-1 1h-8a1 1 0 010-2h5.59L13 10.41l-3.3 3.3a1 1 0 01-1.4 0l-6-6a1 1 0 011.4-1.42L9 11.6l3.3-3.3a1 1 0 011.4 0l6.3 6.3V9z"/></svg>
+                                </p>
+                            </div>
+                            <p class="text-3xl font-semibold text-center text-gray-800">${implicated}</p>
+                            <p class="text-lg text-center text-gray-500">Incidents where ${organization?.name} is implicated</p>
+                        </div>
+                    </div>
+    
+                    <div id="jh-stats-neutral" class="flex flex-col justify-center px-4 py-4 mt-4 bg-white border border-gray-300 rounded sm:mt-0">
+                        <div>
+                            <div>
+                                <p class="flex items-center justify-end text-gray-500 text-md">
+                                    <span class="font-bold">0%</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path class="heroicon-ui" d="M17 11a1 1 0 010 2H7a1 1 0 010-2h10z"/></svg>
+                                </p>
+                            </div>
+                            <p class="text-3xl font-semibold text-center text-gray-800">${missions}</p>
+                            <p class="text-lg text-center text-gray-500">Missions launched on implicated </p>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
