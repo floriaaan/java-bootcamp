@@ -12,6 +12,7 @@ import java.util.*;
 import io.ebean.*;
 import models.Incident;
 import models.Citizen;
+import models.Crisis;
 
 @Entity(name="missions")
 public class Mission extends Model {
@@ -73,6 +74,10 @@ public class Mission extends Model {
 
     public Long getIncidentId(){
         return this.incident.id;
+    }
+
+    public Long getCrisisId(){
+        return this.crisis == null ? null : this.crisis.id;
     }
 
 }

@@ -6,6 +6,7 @@ import models.MissionReport;
 import models.Incident;
 import models.SuperVillain;
 import models.SuperHero;
+import models.Crisis;
 
 import play.*;
 import play.data.validation.*;
@@ -31,7 +32,8 @@ public class MissionsReports extends SuperController {
      */
     public static void show(Long id) {
         MissionReport missionReport = MissionReport.findById(id);
-        render(missionReport);
+        Long crisisId = missionReport.mission.getCrisisId();
+        render(missionReport , crisisId);
     }
 
     /**
