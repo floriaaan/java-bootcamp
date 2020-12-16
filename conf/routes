@@ -4,7 +4,7 @@
 
 # Home page
 GET         /                                Application.index
-# GET         /dashboard                       Application.dashboard
+GET         /dashboard                       Application.dashboard
 
 # Authentication page
 
