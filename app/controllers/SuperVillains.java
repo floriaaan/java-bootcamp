@@ -12,6 +12,14 @@ import models.Citizen;
 
 public class SuperVillains extends SuperController {
 
+/**
+     * GET CRUD : Read all villains
+     */
+    public static void showAll() {
+        List<SuperVillain> superVillainsList = SuperVillain.findAll();
+        render(superVillainsList);
+    }
+
     /**
      * GET
      * CRUD : Read a super villains
