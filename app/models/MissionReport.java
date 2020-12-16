@@ -17,6 +17,10 @@ import models.SuperVillain;
 
 @Entity(name = "missions_reports")
 public class MissionReport extends Model {
+
+    @Required
+    public String title;
+
     @Required
     public String details;
 
