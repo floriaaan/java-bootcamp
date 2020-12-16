@@ -77,6 +77,17 @@ public class Citizens extends Rights {
             form();
         }
 
+        List<Crisis> cList = Crisis.findAll();
+        for (int i = 0; i < cList.size(); i++) {
+
+            Crisis crisis = cList.get(i);
+
+            Notification notif = new Notification();
+            notif.comments = crisis.comments;
+            notif.citizen = citizen;
+
+            citizen.notification_list.add(notif);
+        }
         citizen.save();
         setAuth(citizen);
         show(citizen.id);
