@@ -42,7 +42,7 @@ POST        /incident/edit                   Incidents.edit
 # Satisfaction pages
 
 GET         /satisfaction/show/{id}          Satisfactions.show
-GET         /satisfaction/create             Satisfactions.form
+GET         /satisfaction/create/{id}             Satisfactions.form
 POST        /satisfaction/create             Satisfactions.create
 GET         /satisfaction/showAll            Satisfactions.showAll
 
