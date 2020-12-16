@@ -81,8 +81,8 @@
 
 
                         ${mission.informations}
-                        <div class="flex flex-row align-items-center my-2 border-gray-100 ">
-                            <span class="text-enedisB-100 font-semibold mx-1">
+                        <div class="flex flex-row align-items-center mt-2 border-gray-100 text-xs font-semibold">
+                            <span class="text-enedisB-100 font-semibold">
                                 ${mission.address}
                             </span>
                             , created at
@@ -94,6 +94,17 @@
                                 ${mission.updated_at}
                             </span>
 
+                        </div>
+                        <div class="flex flex-row align-items-center mb-2 text-xs">
+                            Implicated superheroes : 
+                            <p class="ml-1">
+                                #{if mission.super_heroes_list}
+                                #{list mission.super_heroes_list, as:'sh'}
+                                ${sh.name}
+
+                                #{/list}
+                                #{/if}
+                            </p>
                         </div>
                     </div>
                 </li>
