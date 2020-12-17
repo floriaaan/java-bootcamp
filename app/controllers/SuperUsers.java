@@ -11,6 +11,7 @@ import models.SuperHero;
 import models.SuperVillain;
 import models.Citizen;
 import models.Organization;
+import models.Notification;
 import middlewares.Rights;
 
 /**
@@ -33,29 +34,52 @@ public class SuperUsers extends Rights {
     }
 
     /**
+     * Mehtod that manange the validations
      * @param {Long}    id
      * @param {Boolean} bool
      * @param {Boolean} type
      */
     public static void validRole(Long id, Boolean bool, Boolean type) {
+        Notification notif = new Notification();
         if (type == true) {
             SuperHero superHero = SuperHero.findById(id);
             if (bool == true) {
                 superHero.is_validate = true;
                 superHero.save();
+                notif.comments = "Your request has been accepted";
             } else {
                 superHero.delete();
+                notif.comments = "your request was not accepted";
             }
+            notif.title = "Information about your super hero request";
+            notif.citizen = superHero.identity;
+            superHero.identity.notification_list.add(notif);
+
+            superHero.identity.save();
+
         } else {
             Citizen citizen = Citizen.findById(id);
             citizen.waiting_validation = false;
 
             if (bool == true) {
                 citizen.is_authority = true;
+                notif.comments = "Your request has been accepted";
+            }else{
+                notif.comments = "your request was not accepted";
             }
+            notif.title = "Information about your role request";
+            notif.citizen = citizen;
+            citizen.notification_list.add(notif);
 
             citizen.save();
         }
+
+        if (bool == true) {
+            notif.comments = "Your request has been accepted";
+        } else {
+            notif.comments = "your request was not accepted";
+        }
+
 
         showAll();
     }

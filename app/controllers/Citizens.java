@@ -117,22 +117,15 @@ public class Citizens extends Rights {
     }
 
     /**
-     * GET
-     */
-    public static void roleValidation() {
-        List<Citizen> cList = Citizen.findAll();
-        render(cList);
-    }
-
-    /**
-     *
+     * Render Role Request page
      */
     public static void roleRequest() {
         render();
     }
 
     /**
-     *
+     * Send the request and a notification to the super user
+     * @param {Notification} notification
      */
     public static void roleRequested(@Required @Valid Notification notification) {
         Citizen citizen = getAuth();
