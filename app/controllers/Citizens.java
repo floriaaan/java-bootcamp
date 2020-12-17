@@ -146,6 +146,10 @@ public class Citizens extends Rights {
      *
      */
     public static void roleRequested(@Required @Valid Notification notification) {
+        Citizen citizen = getAuth();
+        Citizen currentCitizen = Citizen.findById(citizen.id);
+        currentCitizen.waiting_validation = true;
+        currentCitizen.save();
 
         List<Citizen> cList = Citizen.find("is_superuser", true).fetch();
         Citizen superuser = cList.get(0);
