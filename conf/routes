@@ -5,6 +5,7 @@
 # Home page
 GET         /                                  Application.index
 GET         /dashboard                         Application.dashboard
+GET         /2020                              Application.easter
 
 # Authentication page
 

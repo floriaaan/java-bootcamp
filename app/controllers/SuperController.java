@@ -30,7 +30,7 @@ public class SuperController extends Controller {
     }
 
 
-    @Before(unless = {"Authentication.login", "Authentication.connect", "Authentication.register", "Authentication.logout", "Citizens.create"})
+    @Before(unless = {"Authentication.login", "Authentication.connect", "Authentication.register", "Authentication.logout", "Citizens.create", "Application.easter"})
     public void middleware_auth() {
 
         if (this.INSTANCE == null) {
