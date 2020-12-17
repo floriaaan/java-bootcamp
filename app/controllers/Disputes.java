@@ -65,6 +65,10 @@ public class Disputes extends Rights {
         }
 
         dispute.save();
+        Crisis crisis = Crisis.findById(dispute.crisis.id);
+        crisis.dispute = dispute;
+        System.out.println();
+        crisis.save();
         show(dispute.id);
     }
 

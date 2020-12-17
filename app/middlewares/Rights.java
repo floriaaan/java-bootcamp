@@ -14,7 +14,7 @@ import controllers.Application;
 
 public class Rights extends SuperController {
 
-    @Before(only={"Incidents.showAll"})
+    @Before(only={"Crises.showAll","Disputes.showAll", "Incidents.showAll", "Missions.create", "MissionReports.showAll", "MissionReports.create", "MissionReports.show", "Satisfactions.showAll", "SuperHeroes.showAll", "SuperVillains.showAll"})
     static void middleware() {
         Citizen citizen = getAuth();
         if (citizen == null) {
@@ -31,7 +31,7 @@ public class Rights extends SuperController {
         }
     }
 
-    @Before(only={"Citizens.showAll", "SuperHeroes.showAll"})
+    @Before(only={"SuperUsers.showAll"})
     public static void middleware_superuser() {
         Citizen citizen = getAuth();
         if (citizen == null) {

@@ -3,3 +3,6 @@ tmp/bytecode\DEV/
 tmp
 build.sbt
 .idea
+*.iml
+*.ipr
+*.iws

@@ -1,12 +1,12 @@
 package models;
 
+import play.data.validation.Required;
 import play.db.jpa.Model;
+
 import javax.persistence.*;
-
-import play.data.validation.*;
-
-import java.util.*;
-import models.Citizen;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 @Entity(name = "organizations")
 public class Organization extends Model {

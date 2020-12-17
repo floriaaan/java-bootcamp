@@ -1,18 +1,13 @@
 package models;
 
+import play.data.validation.Required;
 import play.db.jpa.Model;
 
-import javax.persistence.*;
-
-import play.data.validation.*;
-import play.data.format.*;
-
-import java.util.*;
-
-import io.ebean.*;
-
-import models.Mission;
-import models.Dispute;
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
+import java.util.Date;
 
 /**
  *
