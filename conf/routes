@@ -101,7 +101,7 @@ POST        /crisis/create                     Crises.create
 
 # Superuser
 
-GET         /superuser/showAll                  Superusers.showAll
+GET         /superuser/showAll                 SuperUsers.showAll
 
 # Ignore favicon requests
 GET         /favicon.ico                     404
