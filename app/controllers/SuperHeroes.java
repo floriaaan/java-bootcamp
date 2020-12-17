@@ -9,6 +9,7 @@ import java.util.*;
 
 import models.SuperHero;
 import models.Citizen;
+import models.Notification;
 import middlewares.Rights;
 
 /**
@@ -51,6 +52,18 @@ public class SuperHeroes extends Rights {
             Validation.keep();
             form();
         }
+
+
+        List<Citizen> cList = Citizen.find("is_superuser", true).fetch();
+        Citizen superuser = cList.get(0);
+
+        Notification notif = new Notification();
+        notif.title = "Request to be a Super Hero";
+        notif.comments = "Super Hero name : " + superhero.name + "\n" + "power : " + superhero.power + "\n" + "weakness : " + superhero.weakness;
+        notif.citizen = superuser;
+
+        superuser.notification_list.add(notif);
+        superuser.save();
 
         superhero.save();
         show(superhero.id);

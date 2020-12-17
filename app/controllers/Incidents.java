@@ -67,7 +67,6 @@ public class Incidents extends Rights {
      * @param {String}   reporter_type
      */
     public static void create(@Required @Valid Incident incident, @Required String reporter_type) {
-        System.out.println(reporter_type);
         if (Validation.hasErrors()) {
             flash.error("Erreur de validation.");
             params.flash();

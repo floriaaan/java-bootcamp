@@ -30,7 +30,7 @@ public class SuperVillains extends SuperController {
      */
     public static void show(Long id) {
         SuperVillain s = SuperVillain.findById(id);
-        System.out.println(s.identity);
+        // System.out.println(s.identity);
 
         render(s);
     }

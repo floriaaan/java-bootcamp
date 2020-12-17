@@ -18,4 +18,8 @@ public class Application extends SuperController {
         render();
     }
 
+    public static void easter() {
+        render();
+    }
+
 }

@@ -75,6 +75,15 @@ public class Citizen extends Model {
         }
     }
 
+    public SuperHero getSuperHero() {
+        List<SuperHero> query = SuperHero.find("identity.id", this.id).fetch();
+        if (query.size() > 0) {
+            return query.get(0);
+        } else {
+            return null;
+        }
+    }
+
     @PrePersist
     public void created_at() {
         this.password = BCrypt.hashpw(this.password, BCrypt.gensalt());

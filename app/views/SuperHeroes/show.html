@@ -8,8 +8,8 @@
                 <div class="flex flex-row my-8 text-2xl">
 
                     <img class="h-32 w-32 rounded-full object-cover"
-                        src="https://ui-avatars.com/api/?name=${s.identity.getName()}&amp;color=7F9CF5&amp;background=EBF4FF"
-                        alt="${s.identity.getName()}" />
+                         src="https://ui-avatars.com/api/?name=${s.identity.getName()}&amp;color=7F9CF5&amp;background=EBF4FF"
+                         alt="${s.identity.getName()}"/>
 
                     <div class="flex flex-col ml-5">
                         <div class="font-medium text-base text-gray-800" style="font-size: 3rem;">
@@ -20,16 +20,27 @@
 
                         #{if s.identity.getOrg()}
                         <div class="font-medium text-sm text-gray-500"
-                            style="font-size: 1.5rem; margin-left: 5px;">
-                            Boss of 
-                            <span class="text-enedisB-100">${s.identity.getOrg().name}</span> 
+                             style="font-size: 1.5rem; margin-left: 5px;">
+                            Boss of
+                            <span class="text-enedisB-100">${s.identity.getOrg().name}</span>
                             organisation
                         </div>
                         #{/if}
 
                         <div class="font-medium text-sm text-gray-500" style="margin-left: 5px;">
-                            Declared as super-hero the <span class="text-enedisB-100 font-semibold">${s.created_at}</span>
+                            Declared as super-hero the <span
+                                class="text-enedisB-100 font-semibold">${s.created_at}</span>
                         </div>
+                        #{if s.is_validate == true}
+                        <div class="font-medium text-sm text-gray-500" style="margin-left: 5px;">
+                            <span class="text-enedisB-100 font-semibold">You are validate</span>
+                        </div>
+                        #{/if}
+                        #{else}
+                        <div class="font-medium text-sm text-gray-500" style="margin-left: 5px;">
+                            <span class="text-enedisB-100 font-semibold">Pending the validation</span>
+                        </div>
+                        #{/else}
                         <div class="font-medium text-sm text-gray-500 pt-3" style="margin-left: 5px;">
                             Superhero score: <span class="text-enedisG-100 font-semibold">${s.score}</span>
                         </div>

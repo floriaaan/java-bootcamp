@@ -1,17 +1,21 @@
 package models;
 
 import play.db.jpa.Model;
+
 import javax.persistence.*;
 
 import play.data.validation.*;
 import play.data.format.*;
 
 import java.util.*;
+
 import io.ebean.*;
 
-/**  **/
-@Entity(name="super_heroes")
-public class SuperHero extends Model{
+/**
+ *
+ **/
+@Entity(name = "super_heroes")
+public class SuperHero extends Model {
 
     @Required
     public String name;
@@ -30,8 +34,10 @@ public class SuperHero extends Model{
 
     public String comments;
 
+    public Boolean is_validate = false;
+
     @ManyToOne
-    @PrimaryKeyJoinColumn(name="missions", referencedColumnName="id")
+    @PrimaryKeyJoinColumn(name = "missions", referencedColumnName = "id")
     public Mission mission;
 
     public Date created_at;

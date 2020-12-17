@@ -5,6 +5,7 @@
 # Home page
 GET         /                                  Application.index
 GET         /dashboard                         Application.dashboard
+GET         /2020                              Application.easter
 
 # Authentication page
 
@@ -101,7 +102,7 @@ POST        /crisis/create                     Crises.create
 
 # Superuser
 
-GET         /superuser/showAll                  Superusers.showAll
+GET         /superuser/showAll                 SuperUsers.showAll
 
 # Ignore favicon requests
 GET         /favicon.ico                     404

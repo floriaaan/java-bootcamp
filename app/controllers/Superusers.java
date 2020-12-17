@@ -16,7 +16,7 @@ import middlewares.Rights;
 /**
  * Super Heroes Controller
  */
-public class Superusers extends Rights {
+public class SuperUsers extends Rights {
 
     /**
      * GET CRUD : Read all superheroes

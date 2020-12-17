@@ -10,7 +10,7 @@
     <li>${error}</li>
 
     #{/errors}
-    <hr/>
+    <hr />
     #{/ifErrors}
 </div>
 
@@ -40,8 +40,7 @@
         <div class="md:w-2/4">
             <textarea name="missionReport.details"
                 class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-enedisB-100"
-                id="details" rows="5" required>
-            </textarea>
+                id="details" rows="5" required></textarea>
         </div>
     </div>
 
@@ -69,9 +68,7 @@
             <div class="relative">
                 <select required multiple
                     class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                    name="missionReport.superVillainList.id"
-                    id="sv"
-                    >
+                    name="missionReport.superVillainList.id" id="sv">
 
                     #{list superVillainList, as:'superVillain'}
                     <option value="${superVillain.id}">${superVillain.name}</option>
@@ -92,8 +89,8 @@
         <div class="md:w-1/4"></div>
         <div class="md:w-2/4">
             <button
-                    class="shadow bg-enedisB-100 hover:bg-enedisB-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
-                    type="submit">
+                class="shadow bg-enedisB-100 hover:bg-enedisB-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+                type="submit">
                 Create report
             </button>
         </div>
