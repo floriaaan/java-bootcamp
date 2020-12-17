@@ -14,6 +14,7 @@ import middlewares.Rights;
 import models.Dispute;
 import models.Citizen;
 import models.Mission;
+import models.Crisis;
 
 /**
  * Disputes Controller
@@ -46,7 +47,8 @@ public class Disputes extends Rights {
     public static void form() {
         List<Citizen> cList = Citizen.findAll();
         List<Mission> missions = Mission.findAll();
-        render(cList, missions);
+        List<Crisis> crises = Crisis.findAll();
+        render(cList, missions, crises);
     }
 
     /**
