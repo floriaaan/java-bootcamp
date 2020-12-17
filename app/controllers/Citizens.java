@@ -38,6 +38,7 @@ public class Citizens extends Rights {
         SuperHero superhero = null;
         List<Incident> incidents = null;
         List<Mission> missions = null;
+        List<Satisfaction> satisfactions = Satisfaction.find("citizen.id", id).fetch();
 
 
         if (auth != null && id == auth.id) {
@@ -58,7 +59,7 @@ public class Citizens extends Rights {
             }
         }
 
-        render(citizen, superhero, incidents, missions);
+        render(citizen, superhero, incidents, missions, satisfactions);
     }
 
     /**

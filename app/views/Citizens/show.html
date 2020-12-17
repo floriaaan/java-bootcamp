@@ -16,15 +16,15 @@
                     <div class="flex flex-col ml-5">
                         <div class="font-medium text-base text-gray-800" style="font-size: 3rem;">
                             ${citizen?.getName()} #{if superhero} <span class="text-gray-500">also known as </span>
-                            <a href="/superhero/show/${superhero.id}"><span class="text-enedisB-100">${superhero.name}</span></a> #{/if}
+                            <a href="/superhero/show/${superhero.id}"><span
+                                    class="text-enedisB-100">${superhero.name}</span></a> #{/if}
                         </div>
                         <div class="font-medium text-sm text-gray-500"
                             style="font-size: 1.5rem; margin-top: -10px; margin-left: 5px;">
                             ${citizen?.mail}
                         </div>
                         #{if citizen.getOrg()}
-                        <div class="font-medium text-sm text-gray-500"
-                            style="font-size: 1.5rem; margin-left: 5px;">
+                        <div class="font-medium text-sm text-gray-500" style="font-size: 1.5rem; margin-left: 5px;">
                             Boss of <span class="text-enedisB-100">${citizen.getOrg().name}</span> organisation
                         </div>
                         #{/if}
@@ -126,6 +126,89 @@
                     </div>
 
 
+                </div>
+
+                <div class="p-6 border-t border-gray-200">
+                    <div class="flex items-center">
+                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-400">
+                            <path
+                                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
+                            </path>
+                        </svg>
+                        <div
+                            class="ml-4 text-lg text-gray-600 leading-7 flex flex-row justify-between items-center font-semibold w-full">
+                            Satisfactions forms you've sent
+
+                        </div>
+                    </div>
+                    <div class="ml-8">
+                        <div class="mt-2 text-xs text-gray-500">
+                            #{if satisfactions}
+                            #{list satisfactions, as:'satisfaction'}
+                            <a href="/satisfaction/show/${satisfaction.id}" class="no-hover">
+                                <p>
+                                    Note <span class="text-enedisB-100 font-semibold">${satisfaction.note}</span>/5 -
+                                    ${satisfaction.mission.title} - <span
+                                        class="text-gray-400">${satisfaction.mission.incident.address}</span>
+                                </p>
+                            </a>
+                            #{/list}
+
+                            #{/if}
+                            #{else}
+                            <p>You haven't reported anything.</p>
+                            #{/else}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-6 border-t border-gray-200 md:border-l">
+                    <div class="flex items-center">
+                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-400">
+                            <path
+                                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                            </path>
+                        </svg>
+                        <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold">Organization</div>
+                    </div>
+
+                    <div class="ml-12">
+                        <div class="mt-2 text-sm text-gray-500">
+                            #{if citizen.getOrg()}
+                            Manage ${citizen.getOrg().name}
+                            #{/if}
+                            #{else}
+                            Create an organization
+                            #{/else}
+                        </div>
+                        <div class="ml-1 mt-3 text-gray-500">
+                            #{if citizen.getOrg()}
+                            <a href="/organization/show/${citizen.getOrg().id}"
+                                class="flex flex-row-reverse items-center">
+                                <svg viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
+                                    <path fill-rule="evenodd"
+                                        d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="mx-2">See</span>
+                            </a>
+                            #{/if}
+                            #{else}
+                            <a href="/organization/create"
+                                class="flex flex-row-reverse items-center">
+                                <svg viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
+                                    <path fill-rule="evenodd"
+                                        d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="mx-2">Create</span>
+                            </a>
+                            #{/else}
+
+                        </div>
+                    </div>
                 </div>
 
 
