@@ -7,6 +7,7 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
 
+            #{if user.is_authority || user.is_superuser || superhero }
             <div class="sm:px-20 border-b border-gray-300">
                 <div class="flex flex-column py-6">
                     <h5 class="font-semibold text-4xl">In progress</h5>
@@ -259,11 +260,17 @@
 
             </ul>
         </div>
+        #{/if}
         <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg mt-5">
 
             <div class="sm:px-20 border-b border-gray-300">
                 <div class="flex flex-column py-6">
+                    #{if user.is_authority || user.is_superuser || superhero }
                     <h5 class="font-semibold text-4xl">Ended</h5>
+                    #{/if}
+                    #{else}
+                    <h5 class="font-semibold text-4xl">Ended missions</h5>
+                    #{/else}
                 </div>
             </div>
 
@@ -427,9 +434,89 @@
                 #{/if}
                 #{/list}
                 #{/else}
+                #{else}
+                #{if mission.state == 'ended'}
+                <li class="media p-3 mx-5 border-b border-gray-200">
+
+                    <div class="media-body">
+
+                        <div class="flex flex-row justify-between items-center font-semibold">
+                            <a href="/mission/show/${mission.id}">
+                                <h5 class="mt-0 mb-1 font-weight-bolder text-2xl">${mission.title}</h5>
+                            </a>
+
+                            <span class="flex flex-row space-x-3 items-center">
+                                <!-- Missions.status ? <form action="" method="POST"> -->
+                                 <a href="/mission_report/create/${mission.id}">
+                                    <div class="flex justify-center items-center m-1 font-medium py-1 px-2 rounded-full text-white bg-blue-500 border border-blue-500 ">
+                                        <span slot="avatar" style="height: 12px; margin-top: -16px;">
+                                            <i class="fas fa-smile w-4 h-4" style="font-size: 10px;"></i>
+                                        </span>
+                                        <div class="text-xs font-normal leading-none max-w-full flex-initial">
+                                            Satisfaction
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <input hidden name="id" value="${mission.id}">
+
+                                <!--                                <a href="/mission/delete/${mission.id}">-->
+                                <!--                                    <div-->
+                                <!--                                            class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-red-700 border border-red-500 ">-->
+                                <!--                                        <span slot="avatar" style="height: 12px; margin-top: -16px;">-->
+                                <!--                                            <i class="fas fa-trash-alt w-4 h-4" style="font-size: 10px;"></i>-->
+                                <!--                                        </span>-->
+                                <!--                                        <div class="text-xs font-normal leading-none max-w-full flex-initial">-->
+                                <!--                                            Delete-->
+                                <!--                                        </div>-->
+
+                                <!--                                    </div>-->
+                                <!--                                </a>-->
+                                <a href="/mission/show/${mission.id}" class="text-gray-500">
+                                    <svg viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
+                                        <path fill-rule="evenodd"
+                                              d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                                              clip-rule="evenodd"></path>
+                                    </svg>
+                                </a>
+                            </span>
+                        </div>
+
+
+                        ${mission.informations}
+                        <div class="flex flex-row align-items-center mt-2 border-gray-100 text-xs font-semibold">
+                            <span class="text-enedisB-100 font-semibold">
+                                ${mission.address}
+                            </span>
+                            , created at
+                            <span class="text-enedisB-100 font-semibold mx-1">
+                                ${mission.created_at}
+                            </span>
+                            , last updated at
+                            <span class="text-enedisB-100 font-semibold mx-1">
+                                ${mission.updated_at}
+                            </span>
+
+                        </div>
+                        <div class="flex flex-row align-items-center mb-2 text-xs">
+                            Implicated superheroes :
+                            <p class="ml-1">
+                                #{if mission.super_heroes_list}
+                                #{list mission.super_heroes_list, as:'sh'}
+                                ${sh.name}
+
+                                #{/list}
+                                #{/if}
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                #{/if}
+                #{/else}
                 #{/list}
             </ul>
         </div>
+        #{if user.is_authority || user.is_superuser || superhero }
         <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg mt-5">
 
             <div class="sm:px-20 border-b border-gray-300">
@@ -605,7 +692,9 @@
                 #{/list}
             </ul>
         </div>
+        #{/if}
     </div>
+
 
 </div>
 

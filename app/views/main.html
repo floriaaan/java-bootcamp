@@ -45,7 +45,7 @@
                 Incidents
               </a>
               #{/if}
-              #{if user.is_authority || isUserSuperhero}
+              #{if user.is_authority || superhero}
               <a class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out"
                 href="@{Missions.showAll}">
                 Missions
@@ -61,6 +61,12 @@
                 Crises
               </a>
               #{/if}
+              #{else}
+              <a class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out"
+                href="@{Missions.showAll}">
+                Ended missions
+              </a>
+              #{/else}
               <div
                 class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
                 <div class="dropdown-toggle">
