@@ -2,25 +2,78 @@
 #{set title:'Notifications list' /}
 
 
+<div class="py-12">
+    <h3 class="mb-8 text-center font-medium text-gray-500" style="font-size: 3rem;">Notifications list</h3>
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+            <div class="sm:px-20 border-b border-gray-300">
+                <div class="flex flex-column py-6">
+                    <h6 class="font-semibold text-4xl text-gray-700">Unread</h6>
+                </div>
 
-Unread
-#{if unread}
-#{list unread, as:'notification'}
-${notification.title}
-${notification.comments}
-${notification.is_viewed}
-${notification.citizen.id}
+            </div>
+            <ul class="list-unstyled">
 
-#{/list}
-#{/if}
+                #{list unread, as:'notification'}
+                <li class="media p-3 mx-5 border-b border-gray-200">
 
-Read
-#{if read}
-#{list read, as:'notification'}
-${notification.title}
-${notification.comments}
-${notification.is_viewed}
-${notification.citizen.id}
+                    <div class="media-body">
 
-#{/list}
-#{/if}
+                        <div class="flex flex-row justify-between items-center font-semibold">
+                            <a href="/incident/show/${incident.id}">
+                                <h5 class="mt-0 mb-1 font-weight-bolder text-2xl">${notification.title}</h5>
+                            </a>
+
+                            <span class="flex flex-row space-x-3 items-center">
+                                
+                            </span>
+                        </div>
+
+
+                        ${notification.comments}
+                        
+                    </div>
+                </li>
+                #{/list}
+
+            </ul>
+        </div>
+
+        <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg mt-5">
+            <div class="sm:px-20 border-b border-gray-300">
+                <div class="flex flex-column py-6">
+                    <h5 class="font-semibold text-4xl text-gray-700">Read</h5>
+                </div>
+
+            </div>
+            <ul class="list-unstyled">
+
+                #{list unread, as:'notification'}
+                <li class="media p-3 mx-5 border-b border-gray-200">
+
+                    <div class="media-body">
+
+                        <div class="flex flex-row justify-between items-center font-semibold">
+                            <a href="/incident/show/${incident.id}">
+                                <h5 class="mt-0 mb-1 font-weight-bolder text-2xl">${notification.title}</h5>
+                            </a>
+
+                            <span class="flex flex-row space-x-3 items-center">
+                                
+                            </span>
+                        </div>
+
+
+                        ${notification.comments}
+                        
+                    </div>
+                </li>
+                #{/list}
+            </ul>
+        </div>
+
+        
+    </div>
+
+</div>
+

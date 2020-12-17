@@ -20,14 +20,14 @@
                             <span class="flex flex-row space-x-3 items-center">
                                 <!-- Missions.status ? <form action="" method="POST"> -->
                                 <input hidden name="id" value="${mr.mission.id}">
-                                  <a href="/mission_report/edit/${mr.id}">
+                                  <a href="/mission/show/${mr.mission.id}">
                                     <div
                                             class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-white text-yellow-700 border border-yellow-500 ">
                                         <span slot="avatar" style="height: 12px; margin-top: -16px;">
-                                            <i class="fas fa-pencil-alt w-4 h-4" style="font-size: 10px;"></i>
+                                            <i class="fas fa-eye w-4 h-4" style="font-size: 10px;"></i>
                                         </span>
                                         <div class="text-xs font-normal leading-none max-w-full flex-initial">
-                                            Edit
+                                            Show related mission
                                         </div>
                                     </div>
                                 </a>
