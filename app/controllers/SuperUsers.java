@@ -29,4 +29,27 @@ public class SuperUsers extends Rights {
         render(citizenList, organizationList, superHeroList, superVillainList);
     }
 
+    public static void validRole(Long id, Boolean bool, Boolean type) {
+        if (type == true) {
+            SuperHero superHero = SuperHero.findById(id);
+            if (bool == true) {
+                SuperHero.is_validate = true;
+                SuperHero.save();
+            } else {
+                SuperHero.delete();
+            }
+        } else {
+            Citizen citizen = Citizen.findById(id);
+            citizen.waiting_validation = false;
+
+            if (bool == true) {
+                citizen.is_authority = true;
+            }
+
+            citizen.save();
+        }
+
+        showAll()
+    }
+
 }
