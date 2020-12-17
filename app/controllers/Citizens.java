@@ -35,27 +35,16 @@ public class Citizens extends Rights {
         Citizen citizen = Citizen.findById(id);
 
         Citizen auth = getAuth();
-        SuperHero superhero = null;
+        SuperHero superhero = citizen.getSuperHero();
         List<Incident> incidents = null;
         List<Mission> missions = null;
         List<Satisfaction> satisfactions = Satisfaction.find("citizen.id", id).fetch();
 
 
         if (auth != null && id == auth.id) {
-            List<SuperHero> query = SuperHero.find("identity.id", id).fetch();
             incidents = Incident.find("citizen.id", id).fetch();
-            if (query.size() > 0) {
-                superhero = query.get(0);
-            }
             if (superhero != null) {
-                List<Mission> all = Mission.all().fetch();
-                for (Mission m : all) {
-                    for (SuperHero s : m.super_heroes_list) {
-                        if (s.identity.id == id) {
-                            //missions.add(m);
-                        }
-                    }
-                }
+                missions = superhero.getRelatedMissions();
             }
         }
 
@@ -146,6 +135,10 @@ public class Citizens extends Rights {
      *
      */
     public static void roleRequested(@Required @Valid Notification notification) {
+        Citizen citizen = getAuth();
+        Citizen currentCitizen = Citizen.findById(citizen.id);
+        currentCitizen.waiting_validation = true;
+        currentCitizen.save();
 
         List<Citizen> cList = Citizen.find("is_superuser", true).fetch();
         Citizen superuser = cList.get(0);

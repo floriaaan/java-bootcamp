@@ -53,4 +53,16 @@ public class SuperHero extends Model {
     public void updated_at() {
         this.updated_at = new java.util.Date();
     }
+
+    public List<Mission> getRelatedMissions() {
+        List<Mission> missions = null;
+        List<Mission> all = Mission.all().fetch();
+
+        for(Mission m: all) {
+            if(m.super_heroes_list.contains(this)) {
+                //missions.add(m);
+            }
+        }
+        return missions;
+    }
 }

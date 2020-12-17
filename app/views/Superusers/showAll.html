@@ -3,6 +3,65 @@
 
 
 <div class="py-12">
+    #{if validHeroList}
+    <h3 class="mb-8 text-center font-medium text-gray-500" style="font-size: 3rem;">New Super Heroes</h3>
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+
+            <ul class="list-unstyled">
+                #{list validHeroList, as:'validHero'}
+                <li class="media p-3 mx-5 border-b border-gray-200 flex flex-row">
+
+                    <div class="media-body md:w-2/4">
+                        <div class="flex flex-row justify-between items-center font-semibold">
+                            <h5 class="mt-0 mb-1 font-weight-bolder text-1xl">${validHero.identity.fname}
+                                ${validHero.identity.lname}</h5>
+                        </div>
+                        <h5 class="mt-0 mb-1 font-weight-bolder text-1xl">Super Hero Name: ${validHero.name}</h5>
+                        <h5 class="mt-0 mb-1 font-weight-bolder text-1xl">Super Power: ${validHero.power}</h5>
+                        <h5 class="mt-0 mb-1 font-weight-bolder text-1xl">Weakness: ${validHero.weakness}</h5>
+                    </div>
+                    <div class="md:w-2/4">
+                        <a href="@{SuperUsers.validRole(validHero.id, true, true )}">Accept</a>
+                        <a href="@{SuperUsers.validRole(validHero.id, false, true )}">Reject</a>
+                    </div>
+                </li>
+                #{/list}
+            </ul>
+        </div>
+    </div>
+    #{/if}
+
+    #{if validCitizenList}
+    <h3 class="mb-8 text-center font-medium text-gray-500" style="font-size: 3rem;">Requests to be an authority</h3>
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+
+            <ul class="list-unstyled">
+                #{list validCitizenList, as:'validCitizen'}
+                <li class="media p-3 mx-5 border-b border-gray-200 flex flex-row">
+
+                    <div class="media-body md:w-2/4">
+                        <div class="flex flex-row justify-between items-center font-semibold">
+                            <h5 class="mt-0 mb-1 font-weight-bolder text-1xl">${validCitizen.fname}
+                                ${validCitizen.lname}</h5>
+                        </div>
+                        <h5 class="mt-0 mb-1 font-weight-bolder text-1xl">${validCitizen.mail}</h5>
+                        <h5 class="mt-0 mb-1 font-weight-bolder text-1xl">${validCitizen.address}</h5>
+                        <span class="mt-0 mb-1 font-weight-bolder"
+                              style="color: #999999">${validCitizen.comments}</span>
+                    </div>
+                    <div class="md:w-2/4">
+                        <a href="@{SuperUsers.validRole(validCitizen.id, true, false )}">Accept</a>
+                        <a href="@{SuperUsers.validRole(validCitizen.id, false, false )}">Reject</a>
+                    </div>
+                </li>
+                #{/list}
+            </ul>
+        </div>
+    </div>
+    #{/if}
+
     <h3 class="mb-8 text-center font-medium text-gray-500" style="font-size: 3rem;">Citizens</h3>
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
@@ -22,8 +81,6 @@
                 </li>
                 #{/list}
             </ul>
-
-
         </div>
     </div>
 
@@ -40,13 +97,12 @@
                             <h5 class="mt-0 mb-1 font-weight-bolder text-1xl">${organization.name}</h5>
                         </div>
                         <h5 class="mt-0 mb-1 font-weight-bolder text-1l">${organization.address}</h5>
-                        <span class="mt-0 mb-1 font-weight-bolder" style="color: #999999">${organization.comments}</span>
+                        <span class="mt-0 mb-1 font-weight-bolder"
+                              style="color: #999999">${organization.comments}</span>
                     </div>
                 </li>
                 #{/list}
             </ul>
-
-
         </div>
     </div>
 
@@ -84,7 +140,8 @@
                             <h5 class="mt-0 mb-1 font-weight-bolder text-1xl">${supervillain.name}</h5>
                         </div>
                         <h5 class="mt-0 mb-1 font-weight-bolder text-1xl">${supervillain.identity?.name}</h5>
-                        <span class="mt-0 mb-1 font-weight-bolder" style="color: #999999">${supervillain.comments}</span>
+                        <span class="mt-0 mb-1 font-weight-bolder"
+                              style="color: #999999">${supervillain.comments}</span>
                     </div>
                 </li>
                 #{/list}

@@ -7,9 +7,7 @@ import play.data.validation.*;
 
 import java.util.*;
 
-import models.SuperHero;
-import models.Citizen;
-import models.Notification;
+import models.*;
 import middlewares.Rights;
 
 /**
@@ -31,7 +29,8 @@ public class SuperHeroes extends Rights {
      */
     public static void show(Long id) {
         SuperHero s = SuperHero.findById(id);
-        render(s);
+        List<Mission> missions = s.getRelatedMissions();
+        render(s, missions);
     }
 
     /**
