@@ -434,8 +434,7 @@
                 #{/if}
                 #{/list}
                 #{/else}
-                #{else}
-                #{if mission.state == 'ended'}
+                #{if mission.state == 'ended' && !superhero && !user.is_authority && !user.is_superuser}
                 <li class="media p-3 mx-5 border-b border-gray-200">
 
                     <div class="media-body">
@@ -512,7 +511,6 @@
                     </div>
                 </li>
                 #{/if}
-                #{/else}
                 #{/list}
             </ul>
         </div>
