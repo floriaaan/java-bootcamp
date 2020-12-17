@@ -1,15 +1,12 @@
 package models;
 
+import play.data.validation.Required;
 import play.db.jpa.Model;
 
 import javax.persistence.*;
-
-import play.data.validation.*;
-import play.data.format.*;
-
-import java.util.*;
-
-import io.ebean.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -58,8 +55,8 @@ public class SuperHero extends Model {
         List<Mission> missions = new ArrayList<>();
         List<Mission> all = Mission.all().fetch();
 
-        for(Mission m: all) {
-            if(m.super_heroes_list.contains(this)) {
+        for (Mission m : all) {
+            if (m.super_heroes_list.contains(this)) {
                 missions.add(m);
             }
         }

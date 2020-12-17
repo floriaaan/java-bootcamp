@@ -1,18 +1,13 @@
 package models;
 
-import play.db.jpa.Model;
-import play.data.validation.*;
-import io.ebean.*;
-
-import java.util.*;
-import javax.persistence.*;
-
-import play.data.format.*;
-
-import play.db.ebean.*;
-import com.avaje.ebean.*;
-
 import lib.BCrypt;
+import play.data.validation.Required;
+import play.db.jpa.Model;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 
 @Entity(name = "citizens")
