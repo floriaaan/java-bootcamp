@@ -15,7 +15,7 @@
 
                     <div class="flex flex-col ml-5">
                         <div class="font-medium text-base text-gray-800" style="font-size: 3rem;">
-                            ${citizen?.getName()} #{if superhero} <span class="text-gray-500">also known as </span>
+                            ${citizen?.getName()} #{if isUserSuperhero} <span class="text-gray-500">also known as </span>
                             <span class="text-enedisB-100">${superhero.name}</span> #{/if}
                         </div>
                         <div class="font-medium text-sm text-gray-500"
@@ -31,7 +31,7 @@
                         <div class="font-medium text-sm text-gray-500" style="margin-left: 5px;">
                             inscribed the <span class="text-enedisB-100 font-semibold">${citizen?.created_at}</span>
                         </div>
-                        #{if superhero}
+                        #{if isUserSuperhero}
                         <div class="font-medium text-sm text-gray-500 pt-3" style="margin-left: 5px;">
                             Superhero score: <span class="text-enedisG-100 font-semibold">${superhero.score}</span>
                         </div>
