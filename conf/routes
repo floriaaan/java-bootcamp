@@ -38,12 +38,13 @@ POST        /organization/edit                 Organizations.edit
 
 GET         /incident/show/{id}                Incidents.show
 GET         /incident/create                   Incidents.form
-POST        /incident/create                   Incidents.create
+POST        /incident/create/save              Incidents.create
 GET         /incident/showAll                  Incidents.showAll
 POST        /incident/setAside                 Incidents.setAside
 POST        /incident/delete                   Incidents.delete
 GET         /incident/edit/{id}                Incidents.editForm
 POST        /incident/edit                     Incidents.edit
+GET         /incident/getFile/{id}             Incidents.getFile
 
 # Satisfaction pages
 

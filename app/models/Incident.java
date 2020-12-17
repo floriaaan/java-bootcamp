@@ -43,7 +43,12 @@ public class Incident extends Model {
 
     public String comments;
 
-    public File picture;
+    @Lob
+    @Basic(fetch = FetchType.LAZY)
+    @Column(length = 10000000, columnDefinition = "longblob")
+    public byte[] pictureData;
+
+    public String pictureMime;
 
     @PrePersist
     public void created_at() {
