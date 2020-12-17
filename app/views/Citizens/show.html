@@ -16,7 +16,7 @@
                     <div class="flex flex-col ml-5">
                         <div class="font-medium text-base text-gray-800" style="font-size: 3rem;">
                             ${citizen?.getName()} #{if isUserSuperhero} <span class="text-gray-500">also known as </span>
-                            <span class="text-enedisB-100">${superhero.name}</span> #{/if}
+                            <a href="/superhero/show/${superhero.id}"><span class="text-enedisB-100">${superhero.name}</span></a> #{/if}
                         </div>
                         <div class="font-medium text-sm text-gray-500"
                             style="font-size: 1.5rem; margin-top: -10px; margin-left: 5px;">
