@@ -68,7 +68,6 @@ public class Missions extends Rights {
         incident.save();
 
         if (mission.gravity_level == 4) {
-            System.out.println("URGENT");
 
             List<SuperHero> sList = mission.super_heroes_list;
 

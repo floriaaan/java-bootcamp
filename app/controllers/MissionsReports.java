@@ -53,16 +53,16 @@ public class MissionsReports extends SuperController {
         for (int i = 0; i < super_heroes_list.size(); i++) {
             SuperHero hero = SuperHero.findById(super_heroes_list.get(i).id);
             if (mission.gravity_level == 4) {
-                System.out.println("URGENT");
+                // System.out.println("URGENT");
                 hero.score += 15;
             } else if (mission.gravity_level == 3) {
-                System.out.println("HIGH");
+                // System.out.println("HIGH");
                 hero.score += 10;
             } else if (mission.gravity_level == 2) {
-                System.out.println("MODERATE");
+                // System.out.println("MODERATE");
                 hero.score += 5;
             } else if (mission.gravity_level == 1) {
-                System.out.println("LOW");
+                // System.out.println("LOW");
                 hero.score += 2;
             }
             hero.save();
@@ -95,16 +95,16 @@ public class MissionsReports extends SuperController {
 
             SuperVillain villain = SuperVillain.findById(sList.get(i).id);
             if (mission.gravity_level == 4) {
-                System.out.println("URGENT");
+                // System.out.println("URGENT");
                 villain.malicious_score += 15;
             } else if (mission.gravity_level == 3) {
-                System.out.println("HIGH");
+                // System.out.println("HIGH");
                 villain.malicious_score += 10;
             } else if (mission.gravity_level == 2) {
-                System.out.println("MODERATE");
+                // System.out.println("MODERATE");
                 villain.malicious_score += 5;
             } else if (mission.gravity_level == 1) {
-                System.out.println("LOW");
+                // System.out.println("LOW");
                 villain.malicious_score += 2;
             }
             villain.save();
