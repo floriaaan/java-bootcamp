@@ -7,43 +7,138 @@
 
 
     #{list citizenList, as:'citizen'}
-    <a href="/citizen/show/${citizen.id}">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <div class="p-4 sm:px-20 bg-white border-b border-gray-200">
-                    <div class="flex flex-row my-4 text-2xl">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+            <div class="p-4 sm:px-20 bg-white border-b border-gray-200">
+                <div class="flex flex-row my-4 text-2xl">
 
-                        <img class="h-20 w-20 rounded-full object-cover"
-                            src="https://ui-avatars.com/api/?name=${citizen?.getName()}&amp;color=7F9CF5&amp;background=EBF4FF"
-                            alt="${citizen?.getName()}" />
+                    <img class="h-20 w-20 rounded-full object-cover"
+                        src="https://ui-avatars.com/api/?name=${citizen?.getName()}&amp;color=7F9CF5&amp;background=EBF4FF"
+                        alt="${citizen?.getName()}" />
 
-                        <div class="flex flex-col ml-5">
-                            <div class="font-medium text-base text-gray-800" style="font-size: 1.2rem;">
-                                ${citizen?.getName()}
-                            </div>
-                            <div class="font-medium text-sm text-gray-500" style="font-size: 0.8rem; margin-left: 5px;">
-                                ${citizen?.mail}
-                            </div>
-
-                            #{if citizen.getOrg()}
-                            <div class="font-medium text-sm text-gray-500" style="font-size: 0.8rem; margin-left: 5px;">
-                                Boss of <span class="text-enedisB-100">${citizen.getOrg().name}</span> organisation
-                            </div>
-                            #{/if}
-
-                            <div class="font-medium text-sm text-gray-500" style="margin-left: 5px;">
-                                inscribed the <span class="text-enedisB-100 font-semibold">${citizen?.created_at}</span>
-                            </div>
+                    <div class="flex flex-col ml-5">
+                        <div class="font-medium text-base text-gray-800" style="font-size: 1.2rem;">
+                            ${citizen?.getName()}
+                        </div>
+                        <div class="font-medium text-sm text-gray-500" style="font-size: 0.8rem; margin-left: 5px;">
+                            ${citizen?.mail}
                         </div>
 
+                        #{if citizen.getOrg()}
+                        <div class="font-medium text-sm text-gray-500" style="font-size: 0.8rem; margin-left: 5px;">
+                            Boss of <span class="text-enedisB-100">${citizen.getOrg().name}</span> organisation
+                        </div>
+                        #{/if}
+
+                        <div class="font-medium text-sm text-gray-500" style="margin-left: 5px;">
+                            inscribed the <span class="text-enedisB-100 font-semibold">${citizen?.created_at}</span>
+                        </div>
                     </div>
+
                 </div>
 
 
+                <div class="flex flex-row space-x-2">
 
+                    #{if citizen.deathdate == null}
+                    <div id="${citizen.id}"
+                        class="modal-toggle cursor-pointer flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-white  border border-gray-600 text-gray-800 ">
+                        <span slot="avatar" style="height: 12px; margin-top: -16px;">
+                            <i class="fas fa-skull-crossbones mr-2"></i>
+                        </span>
+                        <div class="text-xs font-normal leading-none max-w-full flex-initial">
+                            Declare ${citizen.fname} as dead
+                        </div>
+
+                    </div>
+                    #{/if}
+                    #{else}
+                    <form action="@{SuperUsers.declareAlive}" method="POST">
+                        <input type="hidden" name="citizen_id" value="${citizen.id}">
+                        <button type="submit">
+                            <div id="${citizen.id}"
+                                class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-white  border border-green-600 text-green-600 ">
+                                <span slot="avatar" style="height: 12px; margin-top: -16px;">
+                                    <i class="fas fa-skull-crossbones mr-2"></i>
+                                </span>
+                                <div class="text-xs font-normal leading-none max-w-full flex-initial">
+                                    HE'S ALIVE !
+                                </div>
+
+                            </div>
+                        </button>
+                    </form>
+                    #{/else}
+
+                    #{if citizen.getSuperHero() != null}
+                    <div
+                        class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-white  border border-red-300 text-red-800 ">
+                        <span slot="avatar" style="height: 12px; margin-top: -16px;">
+                            <i class="fas fa-mask mr-2 text-red-400"></i>
+                        </span>
+                        <div class="text-xs font-normal leading-none max-w-full flex-initial">
+                            ${citizen.getSuperHero().name}
+                        </div>
+
+                    </div>
+                    #{/if}
+
+
+
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <form action="@{SuperUsers.declareDead}" method="POST">
+        <div class="bg-white w-100 rounded-lg modal-content" style="display: none;">
+            <div class=" border-t-8 border-gray-600 rounded-lg flex">
+                <div class="w-1/3 pt-6 flex justify-center items-center">
+                    <div class="flex justify-center items-center w-16 h-16 bg-gray-600 text-white p-3 rounded-full ">
+                        <i class="fas fa-lg fa-skull-crossbones mx-auto"></i>
+                    </div>
+
+
+                </div>
+                <div class="w-full pt-9 pr-4">
+                    <h3 class="font-bold text-gray-700">Declare as dead</h3>
+                    <input type="hidden" name="citizen_id" value="${citizen.id}">
+                    <input type="date" required name="dead_date"
+                        class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-enedisB-100">
+
+                </div>
+            </div>
+
+            <div class="p-4 flex space-x-4">
+                <span
+                    class="modal-cancel cursor-pointer w-1/2 px-4 py-3 text-center bg-gray-100 text-gray-400 hover:bg-gray-200 hover:text-black font-bold rounded-lg text-sm">Cancel</span>
+                <button href="#"
+                    class="w-1/2 px-4 py-3 text-center text-white bg-gray-600 rounded-lg hover:bg-gray-700 hover:text-white font-bold text-sm">
+                    Declare as dead
+                </button>
             </div>
         </div>
-    </a>
+    </form>
+
     #{/list}
 
 </div>
+
+<script>
+    document.querySelectorAll('.modal-toggle').forEach((element, key) => {
+        element.addEventListener('click', () => {
+            let menu = document.querySelectorAll('.modal-content')[key];
+            menu.style.display = (menu.style.display === "none" ? "block" : "none")
+        })
+    })
+
+    document.querySelectorAll('.modal-cancel').forEach((element, key) => {
+        element.addEventListener('click', () => {
+            let menu = document.querySelectorAll('.modal-content')[key];
+            menu.style.display = "none";
+        })
+    })
+
+</script>

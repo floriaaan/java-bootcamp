@@ -83,4 +83,20 @@ public class SuperUsers extends Rights {
 
         showAll();
     }
+
+    public static void declareDead(@Required Date dead_date, @Required Long citizen_id) {
+        Citizen citizen = Citizen.findById(citizen_id);
+        citizen.deathdate = dead_date;
+        citizen.save();
+
+        Citizens.showAll();
+    };
+    
+    public static void declareAlive(@Required Long citizen_id) {
+        Citizen citizen = Citizen.findById(citizen_id);
+        citizen.deathdate = null;
+        citizen.save();
+
+        Citizens.showAll();
+    };
 }
