@@ -2,7 +2,7 @@
 #{set title:'Satisfaction forms list' /}
 
 <div class="p-12">
-    <h3 class="mb-8 text-center font-medium text-gray-500" style="font-size: 3rem;">Satisfaction forms List</h3>
+    <h3 class="mb-8 text-center font-medium text-gray-500" style="font-size: 3rem;">Satisfactions List</h3>
 
 
     #{list satisfactionsList, as:'satisfaction'}
@@ -12,10 +12,10 @@
                 <div class="p-4 sm:px-20 bg-white border-b border-gray-200">
                     <div class="flex flex-row my-4 text-2xl">
 
-                       
+
 
                         <div class="flex flex-col ml-5">
-                            
+
                             <div class="font-medium text-base text-gray-800" style="font-size: 1.5rem;">
                                 Note <span class="text-enedisB-100 font-semibold">${satisfaction.note}</span>/5
                             </div>
@@ -27,7 +27,7 @@
                                 <span class="text-enedisG-100">Sent at</span> : ${satisfaction.created_at}
                             </div>
 
-                            
+
 
                             <div class="font-medium text-xs text-gray-500">
                                 sent by <span class="text-enedisB-100 font-semibold">${satisfaction.citizen.getName()}</span>
