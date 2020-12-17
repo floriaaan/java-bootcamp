@@ -46,6 +46,21 @@
                                 <h2 class="mt-0 mb-1 font-weight-bolder text-gray-700">${mr.details}</h5>
                             </a>
                         </div>
+
+                        <div class="flex flex-row align-items-center mt-2 border-gray-100 text-xs font-semibold">
+                            <span class="text-enedisB-100 font-semibold">
+                                ${mr.mission.address}
+                            </span>
+                            , created at
+                            <span class="text-enedisB-100 font-semibold mx-1">
+                                ${mr.created_at}
+                            </span>
+                            , last updated at
+                            <span class="text-enedisB-100 font-semibold mx-1">
+                                ${mr.updated_at}
+                            </span>
+
+                        </div>
                     </div>
                 </li>
                 #{/list}
