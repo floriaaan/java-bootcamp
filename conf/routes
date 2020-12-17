@@ -24,6 +24,8 @@ GET         /citizen/edit/{id}                 Citizens.editForm
 POST        /citizen/edit/                     Citizens.edit
 GET         /citizen/role_request              Citizens.roleRequest
 POST        /citizen/role_request              Citizens.roleRequested
+POST        /citizen/declare/death             SuperUsers.declareDead
+POST        /citizen/declare/alive             SuperUsers.declareAlive
 
 # Organization pages
 

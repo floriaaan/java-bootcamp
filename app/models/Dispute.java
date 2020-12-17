@@ -1,16 +1,13 @@
 package models;
 
+import play.data.validation.Required;
 import play.db.jpa.Model;
-import play.data.validation.*;
-import io.ebean.*;
-import java.util.*;
-import javax.persistence.*;
-import play.data.format.*;
 
-import play.db.ebean.*;
-import com.avaje.ebean.*;
-
-import models.Crisis;
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
+import java.util.Date;
 
 @Entity(name="disputes")
 public class Dispute extends Model {

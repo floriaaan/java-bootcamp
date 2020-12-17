@@ -1,15 +1,12 @@
 package models;
 
-import models.Citizen;
-import models.MissionReport;
-
-import play.data.validation.*;
+import play.data.validation.Required;
 import play.db.jpa.Model;
-import play.data.format.*;
-import io.ebean.*;
 
 import javax.persistence.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 
 @Entity(name = "super_villains")

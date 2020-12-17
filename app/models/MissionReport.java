@@ -1,19 +1,12 @@
 package models;
 
+import play.data.validation.Required;
 import play.db.jpa.Model;
 
 import javax.persistence.*;
-
-import play.data.validation.*;
-import play.data.format.*;
-
-import java.util.*;
-
-import io.ebean.*;
-
-import models.Mission;
-import models.Citizen;
-import models.SuperVillain;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 @Entity(name = "missions_reports")
 public class MissionReport extends Model {

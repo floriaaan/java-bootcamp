@@ -1,12 +1,11 @@
 package models;
 
+import play.data.validation.Required;
 import play.db.jpa.Model;
 
-import javax.persistence.*;
-
-import play.data.validation.*;
-
-import java.util.*;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity(name = "notifications")
 public class Notification extends Model {
