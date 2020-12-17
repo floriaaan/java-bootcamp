@@ -1,31 +1,48 @@
 #{extends 'main.html' /}
 #{set title:'Satisfaction forms list' /}
 
-<table border="1">
-    <thead>
-    <tr>
-        <th>Id</th>
-        <th>Note</th>
-        <th>Comment</th>
-        <th>superHeroes</th>
+<div class="p-12">
+    <h3 class="mb-8 text-center font-medium text-gray-500" style="font-size: 3rem;">Satisfaction forms List</h3>
 
-    </tr>
-    </thead>
-    <tbody>
+
     #{list satisfactionsList, as:'satisfaction'}
-    <tr>
-        <td>${satisfaction.id}</td>
-        <td>${satisfaction.note}</td>
-        <td>${satisfaction.comment}</td>
-        <td>
-            <ul>
-            #{list satisfaction.superHeroes, as: 'sh' } 
-               <li>${sh.id}</li> 
-            #{/list}
-            </ul>
-        </td>
-        
-    </tr>
+    <a href="/satisfaction/show/${satisfaction.id}">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                <div class="p-4 sm:px-20 bg-white border-b border-gray-200">
+                    <div class="flex flex-row my-4 text-2xl">
+
+                       
+
+                        <div class="flex flex-col ml-5">
+                            
+                            <div class="font-medium text-base text-gray-800" style="font-size: 1.5rem;">
+                                Note <span class="text-enedisB-100 font-semibold">${satisfaction.note}</span>/5
+                            </div>
+
+                            <div class="font-medium text-base text-gray-800" style="font-size: 0.7rem;">
+                                <span class="text-enedisG-100">Mission</span> : ${satisfaction.mission.title}
+                            </div>
+                            <div class="font-medium text-base text-gray-800" style="font-size: 0.7rem;">
+                                <span class="text-enedisG-100">Sent at</span> : ${satisfaction.created_at}
+                            </div>
+
+                            
+
+                            <div class="font-medium text-xs text-gray-500">
+                                sent by <span class="text-enedisB-100 font-semibold">${satisfaction.citizen.getName()}</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </a>
     #{/list}
-    </tbody>
-</table>
+
+</div>
+
