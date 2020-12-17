@@ -38,15 +38,23 @@ public class Authentication extends SuperController {
         }
 
         List<Citizen> auth = Citizen.find("mail", mail).fetch();
-        if (BCrypt.checkpw(password, auth.get(0).password)) {
-            this.setAuth(auth.get(0));
-            Application.index();
-        } else {
-            flash.error("Wrong credentials");
-            params.flash();
-            Validation.keep();
-            login();
+        try{
+            if (BCrypt.checkpw(password, auth.get(0).password)) {
+                this.setAuth(auth.get(0));
+                Application.index();
+            } else {
+                flash.error("Wrong credentials");
+                params.flash();
+                Validation.keep();
+                login();
+            }
+        } catch (Exception e) {
+                flash.error("Wrong credentials");
+                params.flash();
+                Validation.keep();
+                login();
         }
+        
 
     }
 
