@@ -55,12 +55,12 @@ public class SuperHero extends Model {
     }
 
     public List<Mission> getRelatedMissions() {
-        List<Mission> missions = null;
+        List<Mission> missions = new ArrayList<>();
         List<Mission> all = Mission.all().fetch();
 
         for(Mission m: all) {
             if(m.super_heroes_list.contains(this)) {
-                //missions.add(m);
+                missions.add(m);
             }
         }
         return missions;

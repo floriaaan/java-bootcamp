@@ -6,70 +6,79 @@
             <div class="sm:px-20 xs:px-8 bg-white border-b border-gray-200">
                 <div class="flex flex-column mt-8 mb-3">
                     <div class="md:flex md:items-center mb-6">
+                        <div class="flex flex-row">
+                            #{if incident.pictureData}
+                            <a href="@@{Incidents.getFile(incident.id)}" target="_blank">
+                                <img class="w-32 h-32 mr-5" src="@@{Incidents.getFile(incident.id)}" alt="Incident picture">
+                            </a>
+                            #{/if}
 
-                        <div class="">
-                            <h4 class="font-semibold" style="font-size: 3rem;">${incident.title}</h4>
-                            <div class="text-xs ml-5 flex flex-row">
-                                created on <span
-                                    class="font-semibold text-enedisB-100 ml-1">${incident.created_at}</span>,
-                                #{if incident.created_at != incident.updated_at}
-                                updated last on <span
-                                    class="font-semibold text-enedisB-100 ml-1">${incident.updated_at}, </span>
-                                #{/if}
-                                by 
+                            <div class="flex flex-col">
+                                <h4 class="font-semibold" style="font-size: 3rem;">${incident.title}</h4>
+                                <div class="text-xs ml-5 flex flex-row">
+                                    created on <span
+                                        class="font-semibold text-enedisB-100 ml-1">${incident.created_at}</span>,
+                                    #{if incident.created_at != incident.updated_at}
+                                    updated last on <span
+                                        class="font-semibold text-enedisB-100 ml-1">${incident.updated_at}, </span>
+                                    #{/if}
+                                    by
                                     #{if incident.is_organization}
-                                    <span
-                                    class="font-semibold text-enedisB-100 mx-1">
+                                    <span class="font-semibold text-enedisB-100 mx-1">
                                         ${incident.citizen.getOrg().name} organization
                                     </span>
-                                    (<span
-                                    class="font-semibold text-gray-600">
+                                    (<span class="font-semibold text-gray-600">
                                         ${incident.citizen.getName()}
                                     </span>)
 
                                     #{/if}
                                     #{else}
-                                    <span
-                                        class="font-semibold text-enedisB-100 ml-1">
+                                    <span class="font-semibold text-enedisB-100 ml-1">
                                         ${incident.citizen.getName()}
                                     </span>
                                     #{/else}
-                                
+
+                                </div>
+                                <div class="text-xs ml-5 flex flex-row">
+                                    located at <span
+                                        class="font-semibold text-enedisB-100 ml-1">${incident.address}</span>
+                                </div>
+                                <p class="lead ml-4 mt-2">${incident.comments}</p>
+
+                                <div class="flex flex-row mt-6 space-x-4">
+
+                                    #{if user?.id == incident.citizen.id || user?.is_superuser}
+                                    <a href="/incident/edit/${incident.id}"
+                                        class="bg-gray-500 hover:text-white border-gray-600 hover:bg-gray-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+                                        type="submit">
+                                        <i class="fas fa-pencil-alt"></i>
+                                        Edit
+                                    </a>
+                                    #{/if}
+                                    #{if user?.is_authority || user?.is_superuser}
+                                    #{if incident.mission == null}
+                                    <a href="/mission/create/${incident.id}"
+                                        class="bg-enedisG-100 border-enedisG-100 hover:bg-enedisG-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+                                        type="submit">
+                                        <i class="fas fa-rocket"></i>
+                                        Launch a mission
+                                    </a>
+                                    #{/if}
+                                    <a href="#"
+                                        class=" bg-red-500 hover:text-white border-red-600 hover:bg-red-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+                                        type="submit">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                        Close
+                                    </a>
+                                    #{/if}
+
+
+                                </div>
+
                             </div>
-                            <div class="text-xs ml-5 flex flex-row">
-                                located at <span class="font-semibold text-enedisB-100 ml-1">${incident.address}</span>
-                            </div>
-                            <p class="lead ml-4 mt-2">${incident.comments}</p>
-
-                            <div class="flex flex-row mt-6 space-x-4">
-
-                                #{if user?.id == incident.citizen.id || user?.is_superuser}
-                                <a href="/incident/edit/${incident.id}"
-                                    class="bg-gray-500 hover:text-white border-gray-600 hover:bg-gray-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
-                                    type="submit">
-                                    <i class="fas fa-pencil-alt"></i>
-                                    Edit
-                                </a>
-                                #{/if}
-                                #{if user?.is_authority || user?.is_superuser}
-                                <a href="/mission/create/${incident.id}"
-                                    class="bg-enedisG-100 border-enedisG-100 hover:bg-enedisG-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
-                                    type="submit">
-                                    <i class="fas fa-rocket"></i>
-                                    Launch a mission
-                                </a>
-                                <a href="#"
-                                    class=" bg-red-500 hover:text-white border-red-600 hover:bg-red-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
-                                    type="submit">
-                                    <i class="fas fa-exclamation-triangle"></i>
-                                    Close
-                                </a>
-                                #{/if}
-
-
-                            </div>
-
                         </div>
+
+
 
                     </div>
 
@@ -86,8 +95,9 @@
 
                         <span class="flex flex-row space-x-3 items-center">
                             <!-- Missions.status ? <form action="" method="POST"> -->
-                             <a href="/mission_report/create/${mission.id}">
-                                <div class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-white bg-enedisB-100 border border-enedisB-100 ">
+                            <a href="/mission_report/create/${mission.id}">
+                                <div
+                                    class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-white bg-enedisB-100 border border-enedisB-100 ">
                                     <span slot="avatar" style="height: 12px; margin-top: -16px;">
                                         <i class="fas fa-plus w-4 h-4" style="font-size: 10px;"></i>
                                     </span>
@@ -99,7 +109,7 @@
 
                             <button type="submit">
                                 <div
-                                        class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-green-600 rounded-full text-white border border-green-600 ">
+                                    class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-green-600 rounded-full text-white border border-green-600 ">
                                     <span slot="avatar" style="height: 12px; margin-top: -16px;">
                                         <i class="fas fa-check w-4 h-4" style="font-size: 10px;"></i>
                                     </span>
@@ -111,21 +121,21 @@
                             <input hidden name="id" value="${mission.id}">
                             <!-- </form> -->
 
-<!--                                <a href="/mission/edit/${mission.id}">-->
-<!--                                    <div-->
-<!--                                            class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-white text-yellow-700 border border-yellow-500 ">-->
-<!--                                        <span slot="avatar" style="height: 12px; margin-top: -16px;">-->
-<!--                                            <i class="fas fa-pencil-alt w-4 h-4" style="font-size: 10px;"></i>-->
-<!--                                        </span>-->
-<!--                                        <div class="text-xs font-normal leading-none max-w-full flex-initial">-->
-<!--                                            Edit-->
-<!--                                        </div>-->
+                            <!--                                <a href="/mission/edit/${mission.id}">-->
+                            <!--                                    <div-->
+                            <!--                                            class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-white text-yellow-700 border border-yellow-500 ">-->
+                            <!--                                        <span slot="avatar" style="height: 12px; margin-top: -16px;">-->
+                            <!--                                            <i class="fas fa-pencil-alt w-4 h-4" style="font-size: 10px;"></i>-->
+                            <!--                                        </span>-->
+                            <!--                                        <div class="text-xs font-normal leading-none max-w-full flex-initial">-->
+                            <!--                                            Edit-->
+                            <!--                                        </div>-->
 
-<!--                                    </div>-->
-<!--                                </a>-->
+                            <!--                                    </div>-->
+                            <!--                                </a>-->
                             <a href="/mission/delete/${mission.id}">
                                 <div
-                                        class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-red-700 border border-red-500 ">
+                                    class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-red-700 border border-red-500 ">
                                     <span slot="avatar" style="height: 12px; margin-top: -16px;">
                                         <i class="fas fa-trash-alt w-4 h-4" style="font-size: 10px;"></i>
                                     </span>
@@ -138,8 +148,8 @@
                             <a href="/mission/show/${mission.id}" class="text-gray-500">
                                 <svg viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
                                     <path fill-rule="evenodd"
-                                          d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                                          clip-rule="evenodd"></path>
+                                        d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                                        clip-rule="evenodd"></path>
                                 </svg>
                             </a>
                         </span>
@@ -162,7 +172,7 @@
 
                     </div>
                     <div class="flex flex-row align-items-center mb-2 text-xs">
-                        Implicated superheroes : 
+                        Implicated superheroes :
                         <p class="ml-1">
                             #{if mission.super_heroes_list}
                             #{list mission.super_heroes_list, as:'sh'}

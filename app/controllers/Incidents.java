@@ -6,12 +6,14 @@ import play.mvc.*;
 import play.data.validation.*;
 
 import java.util.*;
-import java.io.File;
+import java.io.*;
 
 import play.mvc.Http;
 
 import models.*;
 import middlewares.Rights;
+
+import play.data.Upload;
 
 /**
  * Incidents Controller
@@ -66,7 +68,7 @@ public class Incidents extends Rights {
      * @param {Incident} incident
      * @param {String}   reporter_type
      */
-    public static void create(@Required @Valid Incident incident, @Required String reporter_type) {
+    public static void create(@Required @Valid Incident incident, @Required String reporter_type, Upload picture) {
         if (Validation.hasErrors()) {
             flash.error("Erreur de validation.");
             params.flash();
@@ -79,6 +81,21 @@ public class Incidents extends Rights {
         } else {
             incident.is_organization = false;
         }
+
+        try {
+            File file = picture.asFile();
+
+            byte[] data = new byte[(int) file.length()];
+            FileInputStream fileInputStream = new FileInputStream(file);
+            fileInputStream.read(data);
+            fileInputStream.close();
+
+            incident.pictureData = data;
+            incident.pictureMime = picture.getContentType();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        
 
         incident.save();
         show(incident.id);
@@ -119,5 +136,19 @@ public class Incidents extends Rights {
         Incident incident = Incident.findById(id);
         incident.delete();
         showAll();
+    }
+
+    public static void getFile(Long id) {
+        Incident incident = Incident.findById(id);
+        if (incident.pictureData != null) {
+            try{
+                ByteArrayInputStream inputstream = new ByteArrayInputStream(incident.pictureData);
+                response.setContentTypeIfNotSet(incident.pictureMime);
+                renderBinary(inputstream);
+            }catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+            
+        }
     }
 }
