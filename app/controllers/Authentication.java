@@ -1,17 +1,11 @@
 package controllers;
 
-import play.*;
-import play.mvc.*;
-
-import java.util.*;
-
-import play.data.validation.*;
-
-
-import models.*;
 import lib.BCrypt;
+import models.Citizen;
+import play.data.validation.Required;
+import play.data.validation.Validation;
 
-import java.lang.Object;
+import java.util.List;
 
 /**
  * Authentication Controller
@@ -38,7 +32,7 @@ public class Authentication extends SuperController {
         }
 
         List<Citizen> auth = Citizen.find("mail", mail).fetch();
-        try{
+        try {
             if (BCrypt.checkpw(password, auth.get(0).password)) {
                 this.setAuth(auth.get(0));
                 Application.index();
@@ -49,12 +43,12 @@ public class Authentication extends SuperController {
                 login();
             }
         } catch (Exception e) {
-                flash.error("Wrong credentials");
-                params.flash();
-                Validation.keep();
-                login();
+            flash.error("Wrong credentials");
+            params.flash();
+            Validation.keep();
+            login();
         }
-        
+
 
     }
 

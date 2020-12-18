@@ -1,18 +1,11 @@
 package controllers;
 
-import play.*;
-import play.mvc.*;
-
-import play.data.validation.*;
-
-import java.util.*;
-
-import models.SuperHero;
-import models.SuperVillain;
-import models.Citizen;
-import models.Organization;
-import models.Notification;
 import middlewares.Rights;
+import models.*;
+import play.data.validation.Required;
+
+import java.util.Date;
+import java.util.List;
 
 /**
  * Super Heroes Controller
@@ -41,9 +34,9 @@ public class SuperUsers extends Rights {
      */
     public static void validRole(Long id, Boolean bool, Boolean type) {
         Notification notif = new Notification();
-        if (type == true) {
+        if (type) {
             SuperHero superHero = SuperHero.findById(id);
-            if (bool == true) {
+            if (bool) {
                 superHero.is_validate = true;
                 superHero.save();
                 notif.comments = "Your request has been accepted";
@@ -61,10 +54,10 @@ public class SuperUsers extends Rights {
             Citizen citizen = Citizen.findById(id);
             citizen.waiting_validation = false;
 
-            if (bool == true) {
+            if (bool) {
                 citizen.is_authority = true;
                 notif.comments = "Your request has been accepted";
-            }else{
+            } else {
                 notif.comments = "your request was not accepted";
             }
             notif.title = "Information about your role request";
@@ -74,7 +67,7 @@ public class SuperUsers extends Rights {
             citizen.save();
         }
 
-        if (bool == true) {
+        if (bool) {
             notif.comments = "Your request has been accepted";
         } else {
             notif.comments = "your request was not accepted";
@@ -90,13 +83,13 @@ public class SuperUsers extends Rights {
         citizen.save();
 
         Citizens.showAll();
-    };
-    
+    }
+
     public static void declareAlive(@Required Long citizen_id) {
         Citizen citizen = Citizen.findById(citizen_id);
         citizen.deathdate = null;
         citizen.save();
 
         Citizens.showAll();
-    };
+    }
 }

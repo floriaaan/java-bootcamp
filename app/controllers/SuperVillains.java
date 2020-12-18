@@ -1,16 +1,13 @@
 package controllers;
 
-import play.*;
-import play.mvc.*;
-
-import play.data.validation.*;
-
-import java.util.*;
-
-import models.SuperVillain;
-import models.Citizen;
-
 import lib.BCrypt;
+import models.Citizen;
+import models.SuperVillain;
+import play.data.validation.Required;
+import play.data.validation.Valid;
+import play.data.validation.Validation;
+
+import java.util.List;
 
 /**
  * Super Villains Controller

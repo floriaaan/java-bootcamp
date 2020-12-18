@@ -1,19 +1,12 @@
 package controllers;
 
-import play.*;
-import play.mvc.*;
-
-import play.data.validation.*;
-
-import java.util.*;
-
-import models.Mission;
-import models.Incident;
-import models.Citizen;
-import models.SuperHero;
-import models.Notification;
-
 import middlewares.Rights;
+import models.*;
+import play.data.validation.Required;
+import play.data.validation.Valid;
+import play.data.validation.Validation;
+
+import java.util.List;
 
 /**
  * Missions Controller

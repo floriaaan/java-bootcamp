@@ -1,14 +1,11 @@
 package controllers;
 
-import play.*;
-import play.mvc.*;
-import play.mvc.Scope.*;
-
-import java.util.*;
-
-import play.data.validation.*;
-
-import models.*;
+import models.Citizen;
+import models.Notification;
+import models.SuperHero;
+import play.data.validation.Validation;
+import play.mvc.Before;
+import play.mvc.Controller;
 
 /**
  * Super Controller that manage instance
