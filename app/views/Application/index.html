@@ -1,10 +1,6 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
 
-
-
-
-
 <div class="py-12">
     <div
         class="flex flex-col md:flex-row items-center px-6 pt-16 pb-6 md:pt-32 md:pb-16 lg:pt-40 lg:pb-32 xl:pt-48 xl:pb-30">
@@ -58,7 +54,7 @@
                   Create a superhero
                 </a>
                 #{/else}
-  
+
                 #{if user.getOrg()}
                 <a href="/organization/show/${user.getOrg().id}"
                   class="h-8 px-3 rounded-full flex items-center justify-center text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out"
@@ -75,15 +71,12 @@
                   Create an organization
                 </a>
                 #{/else}
-  
+
                 <a href="@{Notifications.showAll}"
                   class="h-8 px-3 rounded-full flex items-center justify-center text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out"
                   style="background-color: #fcf0cf;margin-top: 2px;color:#fdcf76;">
                   <i class="fas fa-bell mr-2" style=""></i>
                   Notifications
-                  #{if notifications > 0}
-                  <span class="absolute rounded-full bg-red-600 rounded h-2 w-2" style="top: 4px;right: 68px;"></span>
-                  #{/if}
                 </a>
             </div>
         </div>
