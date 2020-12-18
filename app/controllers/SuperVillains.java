@@ -57,7 +57,6 @@ public class SuperVillains extends SuperController {
         supervillain.save();
         show(supervillain.id);
     }
-}
 
     /**
      * GET
