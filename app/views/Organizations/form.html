@@ -69,7 +69,7 @@
                         >
     
                         #{list cList, as:'c'}
-                        #{if c.id != organization.boss.id}
+                        #{if c.id != user.id}
                         <option value="${c.id}">${c.name}</option>
                         #{/if}
                         #{/list}
