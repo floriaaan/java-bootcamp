@@ -1,19 +1,19 @@
 package controllers;
 
-import play.*;
-import play.mvc.*;
-
-import play.data.validation.*;
-
-import java.util.*;
-import java.io.*;
-
-import play.mvc.Http;
-
-import models.*;
 import middlewares.Rights;
-
+import models.Citizen;
+import models.Incident;
+import models.Mission;
+import models.Organization;
 import play.data.Upload;
+import play.data.validation.Required;
+import play.data.validation.Valid;
+import play.data.validation.Validation;
+
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.util.List;
 
 /**
  * Incidents Controller

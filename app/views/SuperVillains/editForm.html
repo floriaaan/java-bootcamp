@@ -1,0 +1,114 @@
+#{extends 'main.html' /} #{set title:'Edit a Supervillain' /}
+
+
+<div class="p-10">
+    <h3 class="mb-8 text-center font-medium text-gray-500" style="font-size: 3rem;">Report a Super Villain</h3>
+    <form action="@{SuperVillains.edit}" method="POST">
+        <input type="hidden" value="${supervillain.id}" required name="supervillain.id" />
+
+        <div class="md:flex md:items-center mb-6">
+            <div class="md:w-1/4">
+              <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="password">
+                Confirm by entering your password
+              </label>
+            </div>
+            <div class="md:w-2/4">
+              <input required name="pwd"
+                class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-enedisB-100"
+                type="password">
+            </div>
+          </div>
+        
+          <hr class="my-4 mx-15">
+
+        <div class="md:flex md:items-center mb-6">
+            <div class="md:w-1/4">
+                <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="title">
+                    Super villain name
+                </label>
+
+            </div>
+            <div class="md:w-2/4">
+                <input type="text" required placeholder="Name" name="supervillain.name" value="${supervillain.name}"
+                    class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-enedisB-100">
+            </div>
+        </div>
+
+
+        <div class="md:flex md:items-center mb-6">
+            <div class="md:w-1/4">
+                <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="image">
+                    Secret identity
+                </label>
+            </div>
+            <div class="md:w-2/4">
+                <div class="relative">
+                    <select required
+                        class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        name="supervillain.identity.id">
+                        <option></option>
+                        #{list cList, as:'c'}
+                        <option value="${c.id}">${c.getName()}</option>
+                        #{/list}
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                            </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="md:flex md:items-center mb-6">
+            <div class="md:w-1/4">
+                <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="power">
+                    Super powers
+                </label>
+            </div>
+            <div class="md:w-2/4">
+                <textarea name="supervillain.power" required
+                    class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-enedisB-100"
+                    id="power" rows="5">${supervillain.power}</textarea>
+            </div>
+        </div>
+
+        <div class="md:flex md:items-center mb-6">
+            <div class="md:w-1/4">
+                <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="weakness">
+                    Weakness
+                </label>
+            </div>
+            <div class="md:w-2/4">
+                <textarea name="supervillain.weakness" required
+                    class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-enedisB-100"
+                    id="weakness" rows="5">${supervillain.weakness}</textarea>
+            </div>
+        </div>
+
+        <div class="md:flex md:items-center mb-6">
+            <div class="md:w-1/4">
+                <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="comments">
+                    Comments
+                </label>
+            </div>
+            <div class="md:w-2/4">
+                <textarea name="supervillain.comments"
+                    class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-enedisB-100"
+                    id="comments" rows="5">${supervillain.comments}</textarea>
+            </div>
+        </div>
+
+        <div class="md:flex md:items-center">
+            <div class="md:w-1/4"></div>
+            <div class="md:w-2/4">
+                <button
+                    class="shadow bg-enedisB-100 hover:bg-enedisB-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+                    type="submit">
+                    Edit
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

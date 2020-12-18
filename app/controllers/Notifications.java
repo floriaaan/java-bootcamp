@@ -1,15 +1,10 @@
 package controllers;
 
-import play.*;
-import play.mvc.*;
-
-import play.data.validation.*;
-
-import java.util.*;
 import middlewares.Rights;
-
 import models.Citizen;
 import models.Notification;
+
+import java.util.List;
 
 /**
  * Notification Controller

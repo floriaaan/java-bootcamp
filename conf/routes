@@ -83,6 +83,8 @@ GET         /supervillain/show/{id}            SuperVillains.show
 GET         /supervillain/showAll              SuperVillains.showAll
 GET         /supervillain/create               SuperVillains.form
 POST        /supervillain/create               SuperVillains.create
+GET         /supervillain/edit/{id}            SuperVillains.editForm
+POST        /supervillain/edit                 SuperVillains.edit
 
 # Notifications pages
 

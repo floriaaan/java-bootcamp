@@ -40,6 +40,52 @@
 
                 </div>
             </div>
+
+            <div class="flex flex-row space-x-4 w-full justify-center mt-8">
+                #{if user.getSuperHero()}
+                <a href="/superhero/show/${user.getSuperHero().id}"
+                  class="h-8 px-3 rounded-full flex items-center justify-center text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out"
+                  style="background-color: #febdb9;margin-top: 2px;color:#ff7068;">
+                  <i class="fas fa-mask mr-2"></i>
+                  ${user.getSuperHero().name}
+                </a>
+                #{/if}
+                #{else}
+                <a href="@{SuperHeroes.form}"
+                  class="h-8 px-3 rounded-full flex items-center justify-center text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out"
+                  style="background-color: #febdb9;margin-top: 2px;color:#ff7068">
+                  <i class="fas fa-plus mr-2"></i>
+                  Create a superhero
+                </a>
+                #{/else}
+  
+                #{if user.getOrg()}
+                <a href="/organization/show/${user.getOrg().id}"
+                  class="h-8 px-3 rounded-full flex items-center justify-center text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out"
+                  style="background-color: #9ee68d;margin-top: 2px;color:#439430">
+                  <i class="fas fa-building mr-2"></i>
+                  ${user.getOrg().name}
+                </a>
+                #{/if}
+                #{else}
+                <a href="@{Organizations.form}"
+                  class="h-8 px-3 rounded-full flex items-center justify-center text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out"
+                  style="background-color: #9ee68d;margin-top: 2px;color:#439430">
+                  <i class="fas fa-plus mr-2"></i>
+                  Create an organization
+                </a>
+                #{/else}
+  
+                <a href="@{Notifications.showAll}"
+                  class="h-8 px-3 rounded-full flex items-center justify-center text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out"
+                  style="background-color: #fcf0cf;margin-top: 2px;color:#fdcf76;">
+                  <i class="fas fa-bell mr-2" style=""></i>
+                  Notifications
+                  #{if notifications > 0}
+                  <span class="absolute rounded-full bg-red-600 rounded h-2 w-2" style="top: 4px;right: 68px;"></span>
+                  #{/if}
+                </a>
+            </div>
         </div>
     </div>
 </div>

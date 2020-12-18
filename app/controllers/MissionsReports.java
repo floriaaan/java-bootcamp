@@ -1,20 +1,11 @@
 package controllers;
 
-import models.Citizen;
-import models.Mission;
-import models.MissionReport;
-import models.Incident;
-import models.SuperVillain;
-import models.SuperHero;
-import models.Crisis;
+import models.*;
+import play.data.validation.Required;
+import play.data.validation.Valid;
+import play.data.validation.Validation;
 
-import play.*;
-import play.data.validation.*;
-import play.mvc.*;
-
-import java.util.*;
-
-import java.util.*;
+import java.util.List;
 
 /**
  * Missions reports Controller

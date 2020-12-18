@@ -1,20 +1,12 @@
 package controllers;
 
-import play.*;
-import play.mvc.*;
-
-import play.data.validation.*;
-
-import java.util.*;
-
-import models.Crisis;
-import models.Mission;
-import models.Dispute;
-import models.Citizen;
-import models.Notification;
 import middlewares.Rights;
+import models.*;
+import play.data.validation.Required;
+import play.data.validation.Valid;
+import play.data.validation.Validation;
 
-import lib.BCrypt;
+import java.util.List;
 
 /**
  * Crises Controller

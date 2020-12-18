@@ -1,14 +1,13 @@
 package controllers;
 
-import play.*;
-import play.mvc.*;
-
-import play.data.validation.*;
-
-import java.util.*;
-
-import models.SuperVillain;
+import lib.BCrypt;
 import models.Citizen;
+import models.SuperVillain;
+import play.data.validation.Required;
+import play.data.validation.Valid;
+import play.data.validation.Validation;
+
+import java.util.List;
 
 /**
  * Super Villains Controller
@@ -57,5 +56,37 @@ public class SuperVillains extends SuperController {
         }
         supervillain.save();
         show(supervillain.id);
+    }
+}
+
+    /**
+     * GET
+     * CRUD : Edit a supervillain
+     * @param {Long} id
+     */
+    public static void editForm(Long id) {
+        SuperVillain supervillain = SuperVillain.findById(id);
+        List<Citizen> cList = Citizen.findAll();
+
+        render(supervillain, cList);
+    }
+
+    /**
+     * POST
+     * CRUD : Edit a supervillain
+     * @param {SuperVillain} supervillain
+     * @param {String}  pwd
+     */
+    public static void edit(SuperVillain supervillain, String pwd) {
+        Citizen citizen = getAuth();
+        if (BCrypt.checkpw(pwd, citizen.password)) {
+            supervillain.save();
+            show(supervillain.id);
+        } else {
+            flash.error("Wrong credentials");
+            params.flash();
+            Validation.keep();
+            editForm(supervillain.id);
+        }
     }
 }
