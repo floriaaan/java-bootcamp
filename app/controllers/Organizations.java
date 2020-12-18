@@ -77,7 +77,8 @@ public class Organizations extends SuperController {
      */
     public static void editForm(Long id) {
         Organization organization = Organization.findById(id);
-        render(organization);
+        List<Citizen> cList = Citizen.findAll();
+        render(organization , cList);
     }
 
     /**

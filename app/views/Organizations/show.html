@@ -24,11 +24,33 @@
                         
                         <div class="font-medium text-sm text-gray-500"
                             style="font-size: 1rem; margin-left: 5px;">
-                            Boss : <span class="text-enedisB-100">${organization.boss.name}</span> 
+                            Boss : <a href="/citizen/show/${organization?.boss.id}"><span class="text-enedisB-100">${organization.boss.name}</span> </a>
                         </div>
                         
                         <div class="font-medium text-sm text-gray-500" style="margin-left: 5px;">
                             created the <span class="text-enedisB-100 font-semibold">${organization?.created_at}</span>
+                        </div>
+
+                        <hr/>
+
+                        <div class="font-medium text-sm text-gray-500" style="margin-left: 5px;">
+                            Members: <span> </span> <a href="/citizen/show/${organization?.boss.id}"></a><span class="text-enedisB-100 font-semibold">${organization?.boss.name}</span></a>
+                            #{list organization?.members , as:'m'}
+                                #{if m.id != organization?.boss.id}
+                                    ,  <a href="/citizen/show/${m.id}"><span class="text-enedisB-100 font-semibold">${m.name}</span></a>
+                                #{/if}
+                            #{/list}
+                        </div>
+
+                        <div class="flex flex-row mt-4 space-x-4">
+                        #{if user.id == organization?.boss.id}
+                        <a href="/organization/edit/${organization?.id}"
+                        class="text-sm bg-enedisB-100 border-enedisB-100 hover:bg-enedisB-500 focus:shadow-outline focus:outline-none text-white hover:text-white font-bold text-md py-2 px-4 rounded"
+                        type="submit">
+                         <i class="fas fa-pen"></i>
+                         Edit organization
+                        </a>
+                        #{/if}
                         </div>
                         
                     </div>
