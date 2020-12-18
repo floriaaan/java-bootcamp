@@ -21,6 +21,11 @@ import lib.BCrypt;
  */
 public class Crises extends Rights {
 
+    /**
+     * GET
+     * CRUD : Read all crisis
+     * @param {Long} id
+     */
     public static void showAll() {
         List<Crisis> crisisList = Crisis.findAll();
         render(crisisList);
@@ -28,7 +33,7 @@ public class Crises extends Rights {
 
     /**
      * GET
-     * CRUD : Read an crisis
+     * CRUD : Read a crisis
      * @param {Long} id
      */
     public static void show(Long id) {
@@ -48,7 +53,7 @@ public class Crises extends Rights {
 
     /**
      * POST
-     * CRUD : Create an crisis
+     * CRUD : Create a crisis
      * @param {Crisis} crisis
      */
     public static void create(@Required @Valid Crisis crisis) {

@@ -15,21 +15,37 @@ import models.*;
  */
 public class SuperController extends Controller {
 
+    /**
+     * Invoke play's controller constructor
+     */
     public SuperController() {
         super();
     }
 
+    /**
+     * Singleton property
+     */
     private static Citizen INSTANCE;
 
+    /**
+     * Singleton getter
+     * @return {Citizen} INSTANCE
+     */
     public static Citizen getAuth() {
         return INSTANCE;
     }
 
+    /**
+     * Singleton setter
+     * @param {Citizen} c
+     */
     public static void setAuth(Citizen c) {
         INSTANCE = c;
     }
 
-
+    /**
+     * Middleware authentication & global variables
+     */
     @Before(unless = {"Authentication.login", "Authentication.connect", "Authentication.register", "Authentication.logout", "Citizens.create", "Application.easter"})
     public void middleware_auth() {
 

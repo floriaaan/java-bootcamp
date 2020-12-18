@@ -25,7 +25,7 @@ public class SuperVillains extends SuperController {
 
     /**
      * GET
-     * CRUD : Read a super villains
+     * CRUD : Read a super villain
      * @param {Long} id
      */
     public static void show(Long id) {
@@ -37,7 +37,7 @@ public class SuperVillains extends SuperController {
 
     /**
      * GET
-     * CRUD : Create a super villains
+     * CRUD : Create a super villain
      */
     public static void form() {
         List<Citizen> cList = Citizen.findAll();
@@ -46,7 +46,7 @@ public class SuperVillains extends SuperController {
 
     /**
      * POST
-     * CRUD : Create a super villains
+     * CRUD : Create a super villain
      * @param {SuperVillain} supervillain
      */
     public static void create(@Required @Valid SuperVillain supervillain) {

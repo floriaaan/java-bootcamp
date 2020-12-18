@@ -32,7 +32,7 @@ public class MissionsReports extends SuperController {
 
     /**
      * GET
-     * CRUD : Read an MissionReport
+     * CRUD : Read a MissionReport
      * @param {Long} id
      */
     public static void show(Long id) {
@@ -43,7 +43,7 @@ public class MissionsReports extends SuperController {
 
     /**
      * GET
-     * CRUD : Create an MissionReport
+     * CRUD : Create a MissionReport
      * @param {Long} id
      */
     public static void form(Long id) {
@@ -78,7 +78,7 @@ public class MissionsReports extends SuperController {
 
     /**
      * POST
-     * CRUD : Create an MissionReport
+     * CRUD : Create a MissionReport
      * @param {MissionReport} missionReport
      */
     public static void create(@Required @Valid MissionReport missionReport) {

@@ -42,7 +42,7 @@ public class Disputes extends Rights {
 
     /**
      * GET
-     * CRUD : Create an incident
+     * CRUD : Create a dispute
      */
     public static void form() {
         List<Citizen> cList = Citizen.findAll();
@@ -53,7 +53,7 @@ public class Disputes extends Rights {
 
     /**
      * POST
-     * CRUD : Create an incident
+     * CRUD : Create a dispute
      * @param {Dispute} dispute
      */
     public static void create(@Required @Valid Dispute dispute) {
@@ -71,41 +71,4 @@ public class Disputes extends Rights {
         crisis.save();
         show(dispute.id);
     }
-
-//    /**
-//     * GET
-//     * CRUD : Edit an incident
-//     * @param {Long} id
-//     */
-//    public static void editForm(Long id) {
-//        Dispute dispute = Dispute.findById(id);
-//        render(dispute);
-//    }
-//
-//    /**
-//     * POST
-//     * CRUD : Edit an incident
-//     * @param {Dispute} dispute
-//     */
-//    public static void edit(@Required @Valid Dispute dispute) {
-//        if(Validation.hasErrors()) {
-//            params.flash();
-//            Validation.keep();
-//            form();
-//        }
-//
-//        dispute.save();
-//        show(dispute.id);
-//    }
-//
-//    /**
-//     * GET
-//     * CRUD : Delete an incident
-//     * @param {Long} id
-//     */
-//    public static void delete(Long id) {
-//        Dispute dispute = Dispute.findById(id);
-//        dispute.delete();
-//        showAll();
-//    }
 }

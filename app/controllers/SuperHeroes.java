@@ -24,7 +24,8 @@ public class SuperHeroes extends Rights {
     }
 
     /**
-     * GET CRUD : Read a superhero
+     * GET
+     * CRUD : Read a superhero
      * @param {Long} id
      */
     public static void show(Long id) {
@@ -34,7 +35,8 @@ public class SuperHeroes extends Rights {
     }
 
     /**
-     * GET CRUD : Create a superhero
+     * GET
+     * CRUD : Create a superhero
      */
     public static void form() {
         List<Citizen> cList = Citizen.findAll();
@@ -42,7 +44,8 @@ public class SuperHeroes extends Rights {
     }
 
     /**
-     * POST CRUD : Create a superhero
+     * POST
+     * CRUD : Create a superhero
      * @param {SuperHero} superhero
      */
     public static void create(@Required @Valid SuperHero superhero) {

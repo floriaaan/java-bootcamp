@@ -17,6 +17,10 @@ import models.Citizen;
  */
 public class Satisfactions extends SuperController {
 
+    /**
+     * GET
+     * CRUD : Read all satisfactions
+     */
     public static void showAll() {
         List<Satisfaction> satisfactionsList = Satisfaction.findAll();
         render(satisfactionsList);
@@ -24,7 +28,7 @@ public class Satisfactions extends SuperController {
 
     /**
      * GET
-     * CRUD : Read an incident
+     * CRUD : Read a satisfaction
      * @param {Long} id
      */
     public static void show(Long id) {
@@ -34,7 +38,7 @@ public class Satisfactions extends SuperController {
 
     /**
      * GET
-     * CRUD : Create an satifaction form
+     * CRUD : Create a satifaction
      * @param {Long} id
      */
     public static void form(Long id) {
@@ -44,7 +48,7 @@ public class Satisfactions extends SuperController {
 
     /**
      * POST
-     * CRUD : Create an incident
+     * CRUD : Create a satisfaction
      * @param {Satisfaction} satisfaction
      */
     public static void create(@Required @Valid Satisfaction satisfaction) {

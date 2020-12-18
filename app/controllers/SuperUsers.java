@@ -20,7 +20,8 @@ import middlewares.Rights;
 public class SuperUsers extends Rights {
 
     /**
-     * GET CRUD : Read all superheroes
+     * GET
+     * CRUD : Read all citizens, organizations, superheroes, supervillains / Display role requests
      */
     public static void showAll() {
         List<Citizen> citizenList = Citizen.findAll();
@@ -34,7 +35,8 @@ public class SuperUsers extends Rights {
     }
 
     /**
-     * Mehtod that manange the validations
+     * GET
+     * CRUD : Manange the role validations
      * @param {Long}    id
      * @param {Boolean} bool
      * @param {Boolean} type
@@ -84,6 +86,12 @@ public class SuperUsers extends Rights {
         showAll();
     }
 
+    /**
+     * POST
+     * CRUD : Declare a citizen's death
+     * @param {Date}  dead_date
+     * @param {Long}  citizen_id
+     */
     public static void declareDead(@Required Date dead_date, @Required Long citizen_id) {
         Citizen citizen = Citizen.findById(citizen_id);
         citizen.deathdate = dead_date;
@@ -91,7 +99,12 @@ public class SuperUsers extends Rights {
 
         Citizens.showAll();
     };
-    
+
+    /**
+     * POST
+     * CRUD : Declare a citizen alive
+     * @param {Long}  citizen_id
+     */
     public static void declareAlive(@Required Long citizen_id) {
         Citizen citizen = Citizen.findById(citizen_id);
         citizen.deathdate = null;
