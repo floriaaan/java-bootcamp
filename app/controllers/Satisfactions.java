@@ -1,22 +1,22 @@
 package controllers;
 
-import play.*;
-import play.mvc.*;
-
-import play.data.validation.*;
-
-import java.util.*;
-
-import models.Satisfaction;
 import models.Mission;
-import models.SuperHero;
-import models.Citizen;
+import models.Satisfaction;
+import play.data.validation.Required;
+import play.data.validation.Valid;
+import play.data.validation.Validation;
+
+import java.util.List;
 
 /**
  * Satisfactions Controller
  */
 public class Satisfactions extends SuperController {
 
+    /**
+     * GET
+     * CRUD : Read all satisfactions
+     */
     public static void showAll() {
         List<Satisfaction> satisfactionsList = Satisfaction.findAll();
         render(satisfactionsList);
@@ -24,7 +24,7 @@ public class Satisfactions extends SuperController {
 
     /**
      * GET
-     * CRUD : Read an incident
+     * CRUD : Read a satisfaction
      * @param {Long} id
      */
     public static void show(Long id) {
@@ -34,7 +34,7 @@ public class Satisfactions extends SuperController {
 
     /**
      * GET
-     * CRUD : Create an satifaction form
+     * CRUD : Create a satifaction
      * @param {Long} id
      */
     public static void form(Long id) {
@@ -44,7 +44,7 @@ public class Satisfactions extends SuperController {
 
     /**
      * POST
-     * CRUD : Create an incident
+     * CRUD : Create a satisfaction
      * @param {Satisfaction} satisfaction
      */
     public static void create(@Required @Valid Satisfaction satisfaction) {

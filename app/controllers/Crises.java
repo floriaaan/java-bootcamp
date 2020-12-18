@@ -1,26 +1,23 @@
 package controllers;
 
-import play.*;
-import play.mvc.*;
-
-import play.data.validation.*;
-
-import java.util.*;
-
-import models.Crisis;
-import models.Mission;
-import models.Dispute;
-import models.Citizen;
-import models.Notification;
 import middlewares.Rights;
+import models.*;
+import play.data.validation.Required;
+import play.data.validation.Valid;
+import play.data.validation.Validation;
 
-import lib.BCrypt;
+import java.util.List;
 
 /**
  * Crises Controller
  */
 public class Crises extends Rights {
 
+    /**
+     * GET
+     * CRUD : Read all crisis
+     * @param {Long} id
+     */
     public static void showAll() {
         List<Crisis> crisisList = Crisis.findAll();
         render(crisisList);
@@ -28,7 +25,7 @@ public class Crises extends Rights {
 
     /**
      * GET
-     * CRUD : Read an crisis
+     * CRUD : Read a crisis
      * @param {Long} id
      */
     public static void show(Long id) {
@@ -48,7 +45,7 @@ public class Crises extends Rights {
 
     /**
      * POST
-     * CRUD : Create an crisis
+     * CRUD : Create a crisis
      * @param {Crisis} crisis
      */
     public static void create(@Required @Valid Crisis crisis) {

@@ -1,14 +1,15 @@
 package controllers;
 
-import play.*;
-import play.mvc.*;
-
-import play.data.validation.*;
-
-import java.util.*;
-
-import models.*;
 import middlewares.Rights;
+import models.Citizen;
+import models.Mission;
+import models.Notification;
+import models.SuperHero;
+import play.data.validation.Required;
+import play.data.validation.Valid;
+import play.data.validation.Validation;
+
+import java.util.List;
 
 /**
  * Super Heroes Controller
@@ -24,7 +25,8 @@ public class SuperHeroes extends Rights {
     }
 
     /**
-     * GET CRUD : Read a superhero
+     * GET
+     * CRUD : Read a superhero
      * @param {Long} id
      */
     public static void show(Long id) {
@@ -34,7 +36,8 @@ public class SuperHeroes extends Rights {
     }
 
     /**
-     * GET CRUD : Create a superhero
+     * GET
+     * CRUD : Create a superhero
      */
     public static void form() {
         List<Citizen> cList = Citizen.findAll();
@@ -42,7 +45,8 @@ public class SuperHeroes extends Rights {
     }
 
     /**
-     * POST CRUD : Create a superhero
+     * POST
+     * CRUD : Create a superhero
      * @param {SuperHero} superhero
      */
     public static void create(@Required @Valid SuperHero superhero) {

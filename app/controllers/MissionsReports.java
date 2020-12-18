@@ -1,20 +1,11 @@
 package controllers;
 
-import models.Citizen;
-import models.Mission;
-import models.MissionReport;
-import models.Incident;
-import models.SuperVillain;
-import models.SuperHero;
-import models.Crisis;
+import models.*;
+import play.data.validation.Required;
+import play.data.validation.Valid;
+import play.data.validation.Validation;
 
-import play.*;
-import play.data.validation.*;
-import play.mvc.*;
-
-import java.util.*;
-
-import java.util.*;
+import java.util.List;
 
 /**
  * Missions reports Controller
@@ -32,7 +23,7 @@ public class MissionsReports extends SuperController {
 
     /**
      * GET
-     * CRUD : Read an MissionReport
+     * CRUD : Read a MissionReport
      * @param {Long} id
      */
     public static void show(Long id) {
@@ -43,7 +34,7 @@ public class MissionsReports extends SuperController {
 
     /**
      * GET
-     * CRUD : Create an MissionReport
+     * CRUD : Create a MissionReport
      * @param {Long} id
      */
     public static void form(Long id) {
@@ -78,7 +69,7 @@ public class MissionsReports extends SuperController {
 
     /**
      * POST
-     * CRUD : Create an MissionReport
+     * CRUD : Create a MissionReport
      * @param {MissionReport} missionReport
      */
     public static void create(@Required @Valid MissionReport missionReport) {

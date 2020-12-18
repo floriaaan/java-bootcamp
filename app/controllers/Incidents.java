@@ -1,19 +1,19 @@
 package controllers;
 
-import play.*;
-import play.mvc.*;
-
-import play.data.validation.*;
-
-import java.util.*;
-import java.io.*;
-
-import play.mvc.Http;
-
-import models.*;
 import middlewares.Rights;
-
+import models.Citizen;
+import models.Incident;
+import models.Mission;
+import models.Organization;
 import play.data.Upload;
+import play.data.validation.Required;
+import play.data.validation.Valid;
+import play.data.validation.Validation;
+
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.util.List;
 
 /**
  * Incidents Controller
@@ -28,6 +28,11 @@ public class Incidents extends Rights {
         render(incidentsList);
     }
 
+    /**
+     * POST
+     * CRUD : Set incident state to aside
+     * @param {Long} id
+     */
     public static void setAside(Long id) {
         Incident incident = Incident.findById(id);
         incident.state = "aside";
@@ -66,7 +71,8 @@ public class Incidents extends Rights {
      * POST
      * CRUD : Create an incident
      * @param {Incident} incident
-     * @param {String}   reporter_type
+     * @param {String} reporter_type
+     * @param {Upload} picture
      */
     public static void create(@Required @Valid Incident incident, @Required String reporter_type, Upload picture) {
         if (Validation.hasErrors()) {
@@ -95,7 +101,7 @@ public class Incidents extends Rights {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        
+
 
         incident.save();
         show(incident.id);
@@ -138,6 +144,11 @@ public class Incidents extends Rights {
         showAll();
     }
 
+    /**
+     * GET
+     * CRUD : Render the stocked picture of an incident
+     * @param {Long} id
+     */
     public static void getFile(Long id) {
         Incident incident = Incident.findById(id);
         if (incident.pictureData != null) {
@@ -148,7 +159,7 @@ public class Incidents extends Rights {
             }catch (Exception e) {
                 System.out.println(e.getMessage());
             }
-            
+
         }
     }
 }
